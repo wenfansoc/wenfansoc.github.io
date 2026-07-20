@@ -1,0 +1,77 @@
+baseURL = "https://www.wenfan.co/"
+languageCode = "en-us"
+defaultContentLanguage = "en"
+title = "Wen Fan"
+theme = "even"
+enableEmoji = true
+hasCJKLanguage = true
+
+[author]
+  name = "Wen Fan"
+
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.5
+  filename = "sitemap.xml"
+
+[params]
+  version = "4.x"
+  since = "2015"
+  description = "Wen Fan — Associate Professor of Sociology, Boston College"
+  keyword = "Wen Fan, sociology, Boston College, future of work, health, life course"
+  # show a small profile / avatar
+  avatar = ""
+  gravatarEmail = ""
+  # date format
+  dateFormatToUse = "2006-01-02"
+  # toc
+  toc = false
+  # post meta
+  showActualDateInList = false
+  # custom stylesheet (loaded from static/css/)
+  customCSS = ["custom.css"]
+
+  [params.social]
+    a-email = "mailto:wen.fan@bc.edu"
+    g-scholar = "https://scholar.google.com/citations?user=9jU_nrUAAAAJ&hl=en"
+
+# ----- Top navigation -----
+[menu]
+  [[menu.main]]
+    name = "Home"
+    weight = 1
+    identifier = "home"
+    url = "/"
+  [[menu.main]]
+    name = "Research"
+    weight = 2
+    identifier = "research"
+    url = "/research/"
+  [[menu.main]]
+    name = "Publications"
+    weight = 3
+    identifier = "publications"
+    url = "/publications/"
+  [[menu.main]]
+    name = "Teaching"
+    weight = 4
+    identifier = "teaching"
+    url = "/teaching/"
+  [[menu.main]]
+    name = "Resources"
+    weight = 5
+    identifier = "resources"
+    url = "/resources/"
+  [[menu.main]]
+    name = "CV"
+    weight = 6
+    identifier = "cv"
+    url = "/cv/"
+
+[markup]
+  [markup.tableOfContents]
+    endLevel = 4
+    ordered = false
+    startLevel = 2
+  [markup.goldmark.renderer]
+    unsafe = true

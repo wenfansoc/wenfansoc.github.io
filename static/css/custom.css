@@ -1,0 +1,60 @@
+:root {
+  --accent: #7a1f2b;        /* warm deep maroon (BC-ish) */
+  --ink: #2b2b2b;
+  --muted: #6b6b6b;
+}
+
+.post-content, .hero__inner { font-size: 1.02rem; }
+
+/* ---- Hero: slim Van Gogh band + text below ---- */
+.hero {
+  margin: -20px -20px 0 -20px;
+  height: 150px;
+  background-image: url("/img/banner.jpg");
+  background-size: cover;
+  background-position: center 60%;
+}
+.hero__inner {
+  /* text sits below the band, on the page background */
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 26px 0 18px 0;
+  text-align: left;
+}
+.hero__name {
+  margin: 0;
+  font-size: 2.3rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--ink);
+  border: none;
+}
+.hero__cn { font-weight: 400; opacity: 0.75; font-size: 1.8rem; margin-left: 6px; }
+.hero__title {
+  margin: 6px 0 14px 0;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+.hero__links a {
+  color: var(--accent);
+  border: 1px solid #d8cccc;
+  border-radius: 4px;
+  padding: 4px 12px;
+  margin: 0 6px 0 0;
+  font-size: 0.88rem;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+.hero__links a:hover { background: #f3ecec; }
+/* ---- Annotated publications ---- */
+.pub { margin: 0 0 22px 0; padding-left: 14px; border-left: 3px solid #e6dcdc; }
+.pub__title { font-weight: 600; color: var(--ink); }
+.pub__venue { font-style: italic; color: var(--muted); }
+.pub__note { margin: 4px 0 6px 0; color: #444; font-size: 0.97rem; }
+.pub__links a { font-size: 0.85rem; margin-right: 10px; color: var(--accent); text-decoration: none; }
+.pub__links a:hover { text-decoration: underline; }
+.pub__award { color: var(--accent); font-size: 0.85rem; font-weight: 600; }
+
+/* warm up content links a touch */
+.post-content a { color: var(--accent); }

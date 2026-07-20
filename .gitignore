@@ -1,0 +1,10 @@
+# Hugo build output & cache
+/public/
+/resources/_gen/
+.hugo_build.lock
+
+# macOS
+.DS_Store
+
+# Working notes (not part of the site)
+MIGRATION_INVENTORY.md

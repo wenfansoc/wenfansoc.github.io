@@ -1,0 +1,21 @@
+{{ define "content" }}
+
+  <section class="hero">
+    <div class="hero__inner">
+      <h1 class="hero__name">Wen Fan <span class="hero__cn">范雯</span></h1>
+      <p class="hero__title">Associate Professor of Sociology &middot; Boston College</p>
+      <p class="hero__links">
+        <a href="mailto:wen.fan@bc.edu">Email</a>
+        <a href="https://scholar.google.com/citations?user=9jU_nrUAAAAJ&hl=en">Google Scholar</a>
+        <a href="/files/CV_Fan_Jan2026.pdf">CV</a>
+      </p>
+    </div>
+  </section>
+
+  <article class="post">
+    <div class="post-content">
+      {{ .Content }}
+    </div>
+  </article>
+
+{{ end }}
