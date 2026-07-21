@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ block "title" . }}{{ if .IsHome }}Wen Fan — Associate Professor of Sociology, Boston College{{ else }}{{ .Title }} · Wen Fan{{ end }}{{ end }}</title>
+<meta name="description" content="{{ if .IsHome }}Wen Fan is an Associate Professor of Sociology at Boston College. Research on the future of work, health, gender, and the life course.{{ else }}{{ .Title }} — Wen Fan, Associate Professor of Sociology, Boston College.{{ end }}">
+<meta name="author" content="Wen Fan">
+<meta property="og:title" content="{{ if .IsHome }}Wen Fan{{ else }}{{ .Title }} · Wen Fan{{ end }}">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8E%93%3C/text%3E%3C/svg%3E">
+{{ partial "site-style.html" . }}
+</head>
+<body>
+{{ partial "site-nav.html" . }}
+<main>
+{{ block "main" . }}{{ end }}
+</main>
+{{ partial "site-footer.html" . }}
+{{ partial "site-scripts.html" . }}
+</body>
+</html>

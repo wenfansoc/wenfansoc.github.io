@@ -21,4 +21,4 @@ Fall 2024, Fall 2023, Spring 2022, Spring 2021
 
 ---
 
-_Course pages and syllabi from the current site will be carried over here._
+_Individual course pages and syllabi will be linked here._

@@ -1,0 +1,41 @@
+<script>
+(function(){
+  // theme toggle: cycle explicit light/dark, stamped on <html>
+  var btn=document.getElementById('themeBtn');
+  if(btn){
+    btn.addEventListener('click',function(){
+      var cur=document.documentElement.getAttribute('data-theme');
+      var sysDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches;
+      var isDark = cur ? cur==='dark' : sysDark;
+      document.documentElement.setAttribute('data-theme', isDark?'light':'dark');
+    });
+  }
+
+  // typewriter tagline (home only — guarded)
+  var el=document.getElementById('typed');
+  if(!el) return;
+  var phrases=[
+    'the future of work',
+    'four-day workweeks',
+    'gender, health, and the life course',
+    'how work shapes well-being',
+    'social change in China'
+  ];
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(reduce){ el.textContent=phrases[0]; return; }
+  var pi=0,ci=0,deleting=false;
+  function tick(){
+    var word=phrases[pi];
+    if(!deleting){
+      ci++; el.textContent=word.slice(0,ci);
+      if(ci===word.length){ deleting=true; return setTimeout(tick,1500); }
+      return setTimeout(tick,62);
+    }else{
+      ci--; el.textContent=word.slice(0,ci);
+      if(ci===0){ deleting=false; pi=(pi+1)%phrases.length; return setTimeout(tick,320); }
+      return setTimeout(tick,32);
+    }
+  }
+  setTimeout(tick,600);
+})();
+</script>

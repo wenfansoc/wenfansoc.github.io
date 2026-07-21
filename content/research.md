@@ -2,7 +2,7 @@
 title: "Research"
 ---
 
-My research clusters around four themes.
+My research clusters around four themes. The complete list of publications, in reverse chronological order, appears on the [Publications](/publications/) page.
 
 ## 1. The Future of Work
 
