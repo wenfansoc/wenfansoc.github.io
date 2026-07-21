@@ -1,0 +1,279 @@
+# Publications, reverse-chronological. Rendered by layouts/_default/publications.html
+# Fields: year, authors, title, venue (italic), details (vol/pages/publisher),
+#         award (optional badge text), selected (optional true), and links:
+#         any of {journal, pdf, doi, code, arxiv} — buttons render only when a link is present.
+
+- year: "Forthcoming"
+  authors: "Fan, W., and P. Moen"
+  title: "Remote/Hybrid Work in Flux: Work-Place/Preference Mismatch and Adaptations"
+  venue: "Social Forces"
+  selected: true
+
+- year: "Forthcoming"
+  authors: "Qian, Y., and W. Fan"
+  title: "Working from Home and Affective Well-Being"
+  venue: "ILR Review"
+
+- year: "Forthcoming"
+  authors: "Petts, R., D. Carlson, and W. Fan"
+  title: "Work-Place Mismatch, Work-Family Conflict, and Psychological Well-Being among Parents"
+  venue: "Society and Mental Health"
+
+- year: "2025"
+  authors: "Fan, W., J. Schor, O. Kelly, and G. Gu"
+  title: "Work Time Reduction Via a Four-day Workweek Finds Improvements in Workers' Well-being"
+  venue: "Nature Human Behaviour"
+  selected: true
+
+- year: "2025"
+  authors: "Fan, W., and Y. Qian"
+  title: "Whose Parents Matter? Intergenerational Transmission of Earnings Arrangements in Different-Sex Couples"
+  venue: "Demography"
+  selected: true
+
+- year: "2025"
+  authors: "Fan, W., and P. Moen"
+  title: "Disparities around Changing Job Conditions"
+  venue: "Work and Occupations"
+  details: "52(1): 91–129"
+
+- year: "2025"
+  authors: "Guo, M., J. Ling, W. Fan, and Y. Wang"
+  title: "Work-Schedule Instability across Socioeconomic Strata in China"
+  venue: "Research in Social Stratification and Mobility"
+  details: "95: 101008"
+
+- year: "2024"
+  authors: "Fan, W."
+  title: "Becoming a Parent: Trajectories of Family Division of Labor in Germany and the United States"
+  venue: "Advances in Life Course Research"
+  details: "60: 100611"
+
+- year: "2024"
+  authors: "Qian, Y., and W. Fan"
+  title: "Stressful Life Events and Depressive Symptoms during COVID-19"
+  venue: "British Journal of Sociology"
+  details: "75(1): 38–47"
+
+- year: "2024"
+  authors: "Fan, W., and P. Moen"
+  title: "The Shifting Stress of Working Parents"
+  venue: "Social Sciences"
+  details: "13(1): 36"
+
+- year: "2023"
+  authors: "Fan, W., and P. Moen"
+  title: "Subjective Well-Being during COVID-19 Work Transitions"
+  venue: "Journal of Health and Social Behavior"
+  details: "64(1): 152–171"
+  selected: true
+
+- year: "2023"
+  authors: "Qian, Y., and W. Fan"
+  title: "The Early-2020 COVID-19 Outbreak in China and Subsequent Flourishing"
+  venue: "Society and Mental Health"
+  details: "13(3): 208–226"
+
+- year: "2023"
+  authors: "Yucel, D., and W. Fan"
+  title: "Workplace Flexibility, Work–Family Interface, and Psychological Distress"
+  venue: "Applied Research in Quality of Life"
+  details: "18: 1825–1847"
+
+- year: "2023"
+  authors: "Fan, W., and Y. Qian"
+  title: "State Contexts, Job Insecurity, and Subjective Well-Being"
+  venue: "Journal of Happiness Studies"
+  details: "24: 2039–2059"
+
+- year: "2023"
+  authors: "Qian, Y., and W. Fan"
+  title: "Student Loans, Mental Health, and Substance Use"
+  venue: "Journal of American College Health"
+  details: "71(3): 930–941"
+
+- year: "2022"
+  authors: "Fan, W."
+  title: "Breadwinning, Occupational Sex Composition, and Stress"
+  venue: "Gender and Society"
+  details: "36(6): 922–960"
+  selected: true
+
+- year: "2022"
+  authors: "Fan, W., and P. Moen"
+  title: "A Mixed-Method Intersectional Analysis of Remote Workers"
+  venue: "Work and Occupations"
+  details: "49(2): 143–186"
+
+- year: "2022"
+  authors: "Fan, W., and Y. Qian"
+  title: "Gender Ideology, Earnings Arrangements, and Marital Satisfaction across East Asia"
+  venue: "Asian Population Studies"
+  details: "18(1): 24–40"
+
+- year: "2022"
+  authors: "Nano, J., M. Ghaly, and W. Fan"
+  title: "Undergraduate Students' Academic Performance during Early COVID-19"
+  venue: "International Journal of Public Health"
+  details: "67: 1604806"
+
+- year: "2022"
+  authors: "Fan, W., and F. Chen"
+  title: "Temporal Work Arrangements and Well-Being in China"
+  venue: "Social Inequalities in China"
+  details: "Imperial College Press (book chapter)"
+
+- year: "2021"
+  authors: "Fan, W., Y. Qian, and S. Jin"
+  title: "Stigma, Perceived Discrimination, and Mental Health during China's COVID-19 Outbreak"
+  venue: "Journal of Health and Social Behavior"
+  details: "62(4): 562–581"
+
+- year: "2021"
+  authors: "Fan, W., and J. Lam"
+  title: "Educational Differences in Mortality after Cardiovascular Events"
+  venue: "Research on Aging"
+  details: "43: 403–415"
+
+- year: "2020"
+  authors: "Fan, W., and Q. Luo"
+  title: "Understanding Trends in the Concentration of Infant Mortality among Disadvantaged White and Black Mothers"
+  venue: "Demography"
+  details: "57: 979–1005"
+  selected: true
+
+- year: "2020"
+  authors: "Fan, W., and S. Han"
+  title: "Cross-National Variation in the Health Benefits of Education"
+  venue: "European Sociological Review"
+
+- year: "2020"
+  authors: "Qian, Y., and W. Fan"
+  title: "Who Loses Income during the COVID-19 Outbreak?"
+  venue: "Research in Social Stratification and Mobility"
+  details: "68: 100522"
+
+- year: "2020"
+  authors: "Fan, W."
+  title: "Workplace Flexibility"
+  venue: "Oxford Bibliographies in Sociology"
+
+- year: "2020"
+  authors: "Fan, W."
+  title: "Couples' Conjoint Work Hours and Health Behaviors"
+  venue: "Marriage and Health: The Well-Being of Same-Sex Couples"
+  details: "Rutgers University Press (book chapter)"
+
+- year: "2019"
+  authors: "Fan, W., J. Lam, and P. Moen"
+  title: "Stress Proliferation? Precarity and Work-Family Conflict at the Intersection of Gender and Household Income"
+  venue: "Journal of Family Issues"
+  details: "40(18): 2751–2773"
+  award: "Nominee, 2020 Rosabeth Moss Kanter Award"
+
+- year: "2019"
+  authors: "Yucel, D., and W. Fan"
+  title: "Work–Family Conflict and Well-Being among German Couples"
+  venue: "Journal of Health and Social Behavior"
+  details: "60(3): 377–395"
+
+- year: "2019"
+  authors: "Fan, W., P. Moen, E. Kelly, L. Hammer, and L. Berkman"
+  title: "Job Strain, Time Strain, and Well-Being"
+  venue: "Journal of Vocational Behavior"
+  details: "110: 102–116"
+
+- year: "2019"
+  authors: "Qian, Y., and W. Fan"
+  title: "Occupational Gender Composition and Affective Well-Being"
+  venue: "Journal of Happiness Studies"
+  details: "20(7): 2077–2099"
+
+- year: "2019"
+  authors: "Fan, W., and Y. Qian"
+  title: "Rising Educational Gradients in Mortality among U.S. Whites"
+  venue: "Social Science & Medicine"
+  details: "235: 112365"
+
+- year: "2018"
+  authors: "Fan, W."
+  title: "Micro-Level Experiences of Macro-Level Change: A Cohort Perspective on China's Shift Away from State-Sector Employment"
+  venue: "Advances in Life Course Research"
+  details: "35: 77–86"
+
+- year: "2017"
+  authors: "Moen, P., et al."
+  title: "Can a Flexibility/Support Initiative Reduce Turnover?"
+  venue: "Social Problems"
+  details: "64: 53–85"
+
+- year: "2017"
+  authors: "Fan, W., and Y. Qian"
+  title: "Native-Immigrant Occupational Segregation and Worker Health"
+  venue: "Social Science & Medicine"
+  details: "183: 130–141"
+
+- year: "2017"
+  authors: "Fan, W."
+  title: "Education Delayed but Not Denied: The Chinese Cultural Revolution Cohort Returning to School"
+  venue: "Advances in Life Course Research"
+  details: "33C: 53–65"
+
+- year: "2016"
+  authors: "Moen, P., E. Kelly, W. Fan, et al."
+  title: "Does a Flexibility/Support Organizational Initiative Improve High-Tech Employees' Well-Being?"
+  venue: "American Sociological Review"
+  details: "81(1): 134–164"
+  selected: true
+
+- year: "2016"
+  authors: "Fan, W."
+  title: "Turning Point or Selection? The Effect of Rustication on Subsequent Health for the Chinese Cultural Revolution Cohort"
+  venue: "Social Science & Medicine"
+  details: "157: 68–77"
+
+- year: "2015"
+  authors: "Fan, W., J. Lam, P. Moen, E. Kelly, R. King, and S. McHale"
+  title: "Constrained Choices: Linking Employees' and Spouses' Work Conditions to Health Behaviors"
+  venue: "Social Science & Medicine"
+  details: "126: 99–109"
+
+- year: "2015"
+  authors: "Lam, J., K. Fox, W. Fan, et al."
+  title: "Manager Characteristics and Employee Job Insecurity"
+  venue: "The Sociological Quarterly"
+  details: "56(3): 558–580"
+
+- year: "2015"
+  authors: "Fan, W., and P. Moen"
+  title: "Comment: Capturing Linked Lives—A Promising New Method"
+  venue: "Sociological Methodology"
+  details: "45: 51–56"
+
+- year: "2015"
+  authors: "Fan, W., and Y. Qian"
+  title: "Long-Term Health and Socioeconomic Consequences of Early-Life Exposure to the 1959–1961 Chinese Famine"
+  venue: "Social Science Research"
+  details: "49: 53–69"
+  award: "Winner, Frank Mott Award, Ohio State University"
+  selected: true
+
+- year: "2014"
+  authors: "Kelly, E., P. Moen, J. Oakes, W. Fan, et al."
+  title: "Changing Work and Work-Family Conflict"
+  venue: "American Sociological Review"
+  details: "79(3): 485–516"
+  award: "Winner, 2015 Rosabeth Moss Kanter Award"
+  selected: true
+
+- year: "2014"
+  authors: "Lam, J., W. Fan, and P. Moen"
+  title: "Is Insecurity Worse for Well-Being in Turbulent Times?"
+  venue: "Society and Mental Health"
+  details: "4(1): 55–73"
+
+- year: "2013"
+  authors: "Moen, P., W. Fan, and E. Kelly"
+  title: "Team-Level Flexibility and Health Behavior"
+  venue: "Social Science & Medicine"
+  details: "84: 69–79"

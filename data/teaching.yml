@@ -1,0 +1,22 @@
+# Courses, rendered as cards by layouts/_default/teaching.html
+# Fields: title, level, terms, and optional description + syllabus (PDF link).
+
+- title: "Introductory Sociology for Healthcare Professions"
+  level: "Undergraduate"
+  terms: "Fall 2015–2021, Fall 2023, Fall 2024"
+
+- title: "Medical Sociology"
+  level: "Graduate"
+  terms: "Spring 2017"
+
+- title: "Regression Models for Categorical Data"
+  level: "Graduate"
+  terms: "Fall 2015–2021, Spring 2018, Spring 2023, Spring 2024"
+
+- title: "Event History Analysis and Sequence Analysis"
+  level: "Graduate"
+  terms: "Spring 2019"
+
+- title: "Multivariate Statistics"
+  level: "Graduate"
+  terms: "Spring 2021, Spring 2022, Fall 2023, Fall 2024"

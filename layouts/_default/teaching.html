@@ -1,0 +1,19 @@
+{{ define "main" }}
+<div class="wrap">
+  <article class="page">
+    <h1 class="page-title">{{ .Title }}</h1>
+    {{ .Content }}
+    <div class="courses">
+      {{ range hugo.Data.teaching }}
+      <div class="course-card">
+        <span class="course-level">{{ .level }}</span>
+        <div class="course-title">{{ .title }}</div>
+        <div class="course-terms">{{ .terms }}</div>
+        {{ with .description }}<div class="course-desc">{{ . }}</div>{{ end }}
+        {{ with .syllabus }}<div class="course-links"><a href="{{ . }}">Syllabus (PDF)</a></div>{{ end }}
+      </div>
+      {{ end }}
+    </div>
+  </article>
+</div>
+{{ end }}

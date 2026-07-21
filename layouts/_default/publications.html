@@ -1,0 +1,33 @@
+{{ define "main" }}
+<div class="wrap">
+  <article class="page">
+    <h1 class="page-title">{{ .Title }}</h1>
+    {{ .Content }}
+    <div class="biblio">
+      {{ $last := "" }}
+      {{ range hugo.Data.publications }}
+        {{ if ne .year $last }}
+          <h2 class="bib-year">{{ .year }}</h2>
+          {{ $last = .year }}
+        {{ end }}
+        <div class="bib-entry{{ if .selected }} selected{{ end }}">
+          <div class="bib-title">{{ .title }}</div>
+          <div class="bib-authors">{{ .authors | replaceRE "(W\\. Fan|Fan, W\\.)" "<b>$1</b>" | safeHTML }}</div>
+          <div class="bib-venue"><em>{{ .venue }}</em>{{ with .details }} {{ . }}{{ end }}</div>
+          {{ with .award }}<div class="bib-award">{{ . }}</div>{{ end }}
+          <div class="bib-links">
+            <a class="bib-btn" href="https://scholar.google.com/scholar?q={{ .title | urlquery }}" target="_blank" rel="noopener">Scholar</a>
+            {{ with .links }}
+              {{ with .journal }}<a class="bib-btn" href="{{ . }}">Journal</a>{{ end }}
+              {{ with .pdf }}<a class="bib-btn" href="{{ . }}">PDF</a>{{ end }}
+              {{ with .doi }}<a class="bib-btn" href="{{ . }}">DOI</a>{{ end }}
+              {{ with .code }}<a class="bib-btn" href="{{ . }}">Code</a>{{ end }}
+              {{ with .arxiv }}<a class="bib-btn" href="{{ . }}">arXiv</a>{{ end }}
+            {{ end }}
+          </div>
+        </div>
+      {{ end }}
+    </div>
+  </article>
+</div>
+{{ end }}
