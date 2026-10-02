@@ -31,15 +31,15 @@
   <section id="news">
     <p class="eyebrow">News and events</p>
     <ul class="news">
-      {{ range first 5 hugo.Data.news }}
+      {{ range first 3 hugo.Data.news }}
       <li><span class="nd">{{ .date }}</span><span class="nt">{{ .text | safeHTML }}</span></li>
       {{ end }}
     </ul>
-    {{ if gt (len hugo.Data.news) 5 }}
+    {{ if gt (len hugo.Data.news) 3 }}
     <details class="news-more">
       <summary>Earlier news</summary>
       <ul class="news">
-        {{ range after 5 hugo.Data.news }}
+        {{ range after 3 hugo.Data.news }}
         <li><span class="nd">{{ .date }}</span><span class="nt">{{ .text | safeHTML }}</span></li>
         {{ end }}
       </ul>
@@ -55,7 +55,6 @@
         <div class="body">
           <div class="t"><a href="https://doi.org/10.1093/sf/soaf035" target="_blank" rel="noopener">Remote/Hybrid Work in Flux: Work-Place/Preference Mismatch and Adaptations</a></div>
           <div class="meta"><em>Social Forces</em> · with Phyllis Moen</div>
-          <div class="note">As employers first sent workers home and then called many back, we examine the gap between where people work and where they want to work—what we call work-place mismatch—and how workers respond: by changing where they work, changing what they want, or leaving their employer.</div>
         </div>
       </div>
       <div class="pub">
@@ -63,7 +62,6 @@
         <div class="body">
           <div class="t"><a href="https://doi.org/10.1038/s41562-025-02259-6" target="_blank" rel="noopener">Work Time Reduction Via a Four-day Workweek Finds Improvements in Workers' Well-being</a></div>
           <div class="meta"><em>Nature Human Behaviour</em> · with Juliet Schor, Orla Kelly, and Guolin Gu</div>
-          <div class="note">Drawing on trials across organizations in multiple countries, we find that moving to a four-day week—with no loss of pay—improves workers' well-being, reducing burnout and lifting mental and physical health.</div>
         </div>
       </div>
       <div class="pub">
@@ -71,7 +69,6 @@
         <div class="body">
           <div class="t"><a href="https://doi.org/10.1177/00221465211040550" target="_blank" rel="noopener">Stigma, Perceived Discrimination, and Mental Health during China's COVID-19 Outbreak: A Mixed-Methods Investigation</a></div>
           <div class="meta"><em>Journal of Health and Social Behavior</em> · with Yue Qian and Yongai Jin</div>
-          <div class="note">Drawing on a national survey with an embedded experiment and 50 interviews, we show how people tied to Hubei and those labeled as patients were stigmatized during China's outbreak, and how the discrimination they faced led to psychological distress.</div>
         </div>
       </div>
       <div class="pub">
@@ -79,7 +76,6 @@
         <div class="body">
           <div class="t"><a href="https://doi.org/10.1007/s13524-020-00878-4" target="_blank" rel="noopener">Understanding Trends in the Concentration of Infant Mortality among Disadvantaged White and Black Mothers</a></div>
           <div class="meta"><em>Demography</em> · with Liying Luo</div>
-          <div class="note">We develop an index of how concentrated infant deaths are among unmarried and less-educated mothers, and show that it has stayed higher for Black than for White mothers over three decades, even as its trends differed between the two groups.</div>
         </div>
       </div>
     </div>
