@@ -12,7 +12,7 @@
         {{ end }}
         <div class="bib-entry{{ if .selected }} selected{{ end }}">
           <div class="bib-title">{{ .title }}</div>
-          <div class="bib-authors">{{ .authors | replaceRE "(W\\. Fan|Fan, W\\.)" "<b>$1</b>" | safeHTML }}</div>
+          <div class="bib-authors">{{ .authors | replaceRE "(Wen Fan|Fan, Wen)" "<b>$1</b>" | safeHTML }}</div>
           <div class="bib-venue"><em>{{ .venue }}</em>{{ with .details }} {{ . }}{{ end }}</div>
           {{ with .award }}<div class="bib-award">{{ . }}</div>{{ end }}
           <div class="bib-links">
