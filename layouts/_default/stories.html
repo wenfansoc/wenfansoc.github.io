@@ -1,0 +1,162 @@
+{{ define "main" }}
+<style>
+  .st-intro{font-size:1.15rem; line-height:1.6; color:var(--muted); margin:0 0 22px}
+  .st-index{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 8px}
+  .st-index a,.st-index span{font-size:13px; font-weight:600; padding:6px 12px; border-radius:999px; border:1px solid var(--line); text-decoration:none; color:var(--muted); background:var(--surface)}
+  .st-index a.on{color:var(--accent); border-color:var(--ring); background:var(--accent-soft)}
+  .st-index span{opacity:.6}
+
+  .story{padding:34px 0 10px; margin-top:6px}
+  .story .eyebrow{margin-bottom:10px}
+  .page h2.st-q{border:none; padding:0; font-family:var(--serif); font-weight:600; font-size:clamp(1.7rem,4.6vw,2.3rem); line-height:1.15; letter-spacing:-.01em; margin:0 0 14px; text-wrap:balance}
+  .st-meta{font-size:13.5px; color:var(--muted); margin:0 0 18px}
+  .st-lead{margin:0 0 26px}
+
+  .st-hero{display:flex; gap:22px; align-items:center; padding:20px 22px; border-radius:14px; background:var(--accent-soft); border:1px solid var(--ring); margin:0 0 30px}
+  .st-num{font-family:var(--serif); font-weight:600; font-size:clamp(2.6rem,8vw,3.6rem); line-height:1; color:var(--accent); white-space:nowrap}
+  .st-hero p{margin:0; font-size:1.02rem; line-height:1.5}
+
+  .st-fig{border:1px solid var(--line); border-radius:14px; background:var(--surface); padding:20px 20px 14px; margin:0 0 30px}
+  .st-fig h3{font-family:var(--serif); font-weight:600; font-size:1.25rem; margin:0 0 4px}
+  .st-fig .sub{font-size:14px; color:var(--muted); margin:0 0 10px}
+  .st-fig svg{display:block; width:100%; height:auto; overflow:visible}
+  .st-fig .src{font-size:12.5px; color:var(--muted); margin-top:8px}
+  .legend{display:flex; gap:18px; flex-wrap:wrap; font-size:13.5px; color:var(--muted); margin:2px 0 6px}
+  .legend i{display:inline-block; width:18px; height:0; border-top:2.5px solid; vertical-align:middle; margin-right:6px}
+  .legend i.dash{border-top-style:dashed}
+  .tip{position:absolute; pointer-events:none; background:var(--surface); border:1px solid var(--line); border-radius:8px; padding:7px 10px; font-size:13px; box-shadow:0 8px 24px -12px rgba(0,0,0,.35); opacity:0; transition:opacity .12s; white-space:nowrap; color:var(--ink)}
+  .tip b{display:block; margin-bottom:2px}
+  .tip .row{display:flex; justify-content:space-between; gap:14px; color:var(--muted)}
+  .tip .row span:last-child{color:var(--ink); font-variant-numeric:tabular-nums}
+
+  .st-find{display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:14px; margin:0 0 30px}
+  .st-find div{border-top:3px solid var(--gold); padding:12px 2px 0}
+  .st-find h4{font-size:15.5px; margin:0 0 6px; color:var(--ink)}
+  .st-find p{font-size:14.5px; line-height:1.55; color:var(--muted); margin:0}
+
+  .st-sub{font-size:12px; text-transform:uppercase; letter-spacing:.14em; color:var(--accent); font-weight:700; margin:0 0 8px}
+  .st-papers{list-style:none; padding:0; margin:0 0 24px}
+  .page .st-papers li{padding:10px 0; border-top:1px solid var(--line); margin:0; max-width:none}
+  .page .st-papers li::before{display:none}
+  .st-papers li:first-child{border-top:none}
+  .st-papers a{color:var(--ink); font-weight:650; text-decoration:none; border-bottom:1px solid transparent}
+  .st-papers a:hover{color:var(--accent); border-bottom-color:var(--ring)}
+  .st-papers .v{display:block; font-size:14px; color:var(--muted); margin-top:2px}
+  .st-papers .v em{font-family:var(--serif)}
+  .st-press{font-family:var(--serif); color:var(--muted); line-height:1.8; margin:0}
+  .st-press a{color:inherit; text-decoration:none; border-bottom:1px solid transparent}
+  .st-press a:hover{color:var(--accent); border-bottom-color:var(--ring)}
+
+  .st-next{margin:40px 0 0; padding:22px; border:1px dashed var(--ring); border-radius:14px}
+  .st-next .eyebrow{margin-bottom:6px}
+  .st-next h3{font-family:var(--serif); font-weight:600; font-size:1.4rem; margin:0 0 6px}
+  .st-next p{margin:0; color:var(--muted); font-size:15px}
+
+  .mock-note{font-size:13px; background:var(--accent-soft); border:1px solid var(--ring); color:var(--accent); padding:8px 12px; border-radius:8px; margin:0 0 20px}
+
+  :root{--s1:#A8323F; --s2:#B88424}
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){--s1:#CF5868; --s2:#B5892A} }
+  :root[data-theme="dark"]{--s1:#CF5868; --s2:#B5892A}
+  @media (max-width:620px){ .st-hero{flex-direction:column; align-items:flex-start; gap:10px} }
+</style>
+
+<div class="wrap">
+  <article class="page">
+    <p class="mock-note">样稿（只在本地预览）：先做"远程和混合办公"一条主线，其他主线等方向定了再写。</p>
+    <h1 class="page-title">Research</h1>
+    <p class="st-intro">My research follows a few questions about work: where it happens, how long it lasts, what people want from it, and what it gives back or takes away. Each section below starts with a question and then turns to what we found.</p>
+    <nav class="st-index" aria-label="Research areas">
+      <a class="on" href="#remote">Remote &amp; hybrid work</a>
+      <span>Four-day workweeks</span>
+      <span>The meaning of work</span>
+      <span>Work, family &amp; health</span>
+    </nav>
+
+    <section class="story" id="remote">
+      <p class="eyebrow">Remote &amp; hybrid work</p>
+      <h2 class="st-q">Where do people want to work—and who gets to choose?</h2>
+      <p class="st-meta">With Phyllis Moen · Funded by the National Science Foundation · National panel survey, October 2020–April 2022</p>
+      <p class="st-lead">The pandemic sent millions of office workers home almost overnight. Then employers began calling them back. Where work happens turned into a running negotiation between what workers want and what their jobs allow. We followed the same workers for 18 months to see how their preferences and their actual work locations moved apart, who could close the gap, and what the gap did to their working lives and well-being.</p>
+
+      <div class="st-hero">
+        <div class="st-num">1 in 2</div>
+        <p>As many as half of the workers we followed were, at some point during those 18 months, not working where they wanted to work.</p>
+      </div>
+
+      <figure class="st-fig" style="position:relative">
+        <h3>The mismatch didn't go away—it flipped</h3>
+        <p class="sub">Share of workers whose work location did not match where they wanted to work, by survey wave</p>
+        <div class="legend">
+          <span><i style="border-color:var(--s1)"></i>Working on-site, would rather be remote</span>
+          <span><i class="dash" style="border-color:var(--s2)"></i>Working remotely, would rather be on-site</span>
+        </div>
+        <svg id="mm" viewBox="0 0 640 260" role="img" aria-label="Line chart. Working on-site but preferring remote rose from 9.6% in October 2020 to 18.4% in April 2022. Working remotely but preferring on-site fell from 15.4% to 5.1%."></svg>
+        <div class="tip" id="mmtip"></div>
+        <p class="src">Source: Fan and Moen (2025), <em>Social Forces</em>, Figure 2.</p>
+        <table hidden><caption>Work-place mismatch by wave (%)</caption><tr><th>Wave</th><th>On-site, prefer remote</th><th>Remote, prefer on-site</th></tr><tr><td>Oct 2020</td><td>9.6</td><td>15.4</td></tr><tr><td>Apr 2021</td><td>12.5</td><td>10.6</td></tr><tr><td>Oct 2021</td><td>17.1</td><td>6.5</td></tr><tr><td>Apr 2022</td><td>18.4</td><td>5.1</td></tr></table>
+      </figure>
+
+      <div class="st-find">
+        <div><h4>The gap is unequal</h4><p>Hispanic workers, Black men, and workers without a college degree who prefer remote work are the most likely to be stuck on-site—and the least able to change where they work or to quit.</p></div>
+        <div><h4>Going back raised the pressure</h4><p>Compared with staying remote or moving to hybrid, returning to the workplace raised psychological job demands, and for women it cut decision latitude and schedule control—most of all for Black and Hispanic women.</p></div>
+        <div><h4>Hybrid helped some more than others</h4><p>Moving to hybrid work was especially good for the well-being of minority men and less-educated men, but not for white women.</p></div>
+      </div>
+
+      <p class="st-sub">Read the papers</p>
+      <ul class="st-papers">
+        <li><a href="https://doi.org/10.1093/sf/soaf035" target="_blank" rel="noopener">Remote/Hybrid Work in Flux: Work-Place/Preference Mismatch and Adaptations</a><span class="v"><em>Social Forces</em>, 2025</span></li>
+        <li><a href="https://doi.org/10.1177/07308884231203668" target="_blank" rel="noopener">The Future(s) of Work? Disparities around Changing Job Conditions when Remote/Hybrid or Returning to Working at Work</a><span class="v"><em>Work and Occupations</em>, 2025</span></li>
+        <li><a href="https://doi.org/10.1177/00221465221150283" target="_blank" rel="noopener">Ongoing Remote Work, Returning to Working at Work, or In Between during COVID-19: What Promotes Subjective Well-being?</a><span class="v"><em>Journal of Health and Social Behavior</em>, 2023</span></li>
+        <li><a href="https://doi.org/10.1177/07308884211047208" target="_blank" rel="noopener">Working More, Less or the Same During COVID-19? A Mixed Method, Intersectional Analysis of Remote Workers</a><span class="v"><em>Work and Occupations</em>, 2022</span></li>
+      </ul>
+
+      <p class="st-sub">In the news</p>
+      <p class="st-press"><a href="https://www.marketplace.org/story/2025/07/16/why-are-more-men-returning-to-office-work-than-women" target="_blank" rel="noopener">NPR Marketplace</a> · <a href="https://www.bloomberg.com/news/articles/2021-12-02/return-to-the-office-january-set-to-bring-clashes-for-workers-and-bosses" target="_blank" rel="noopener">Bloomberg</a></p>
+    </section>
+
+    <div class="st-next">
+      <p class="eyebrow">Up next</p>
+      <h3>What happens when the workweek shrinks to four days?</h3>
+      <p>Trials in 141 organizations across six countries, with nearly 2,900 employees—and what changed for their burnout, sleep, and health.</p>
+    </div>
+  </article>
+</div>
+
+<script>
+(function(){
+  var svg=document.getElementById('mm'), tip=document.getElementById('mmtip'); if(!svg) return;
+  var waves=['Oct 2020','Apr 2021','Oct 2021','Apr 2022'];
+  var A=[9.6,12.5,17.1,18.4], B=[15.4,10.6,6.5,5.1];
+  var W=640,H=260,L=44,R=150,T=12,Bm=34, max=20;
+  var x=function(i){return L+i*(W-L-R)/3}, y=function(v){return T+(H-T-Bm)*(1-v/max)};
+  var ns='http://www.w3.org/2000/svg', s='';
+  [0,5,10,15,20].forEach(function(t){ s+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+y(t)+'" y2="'+y(t)+'" stroke="var(--line)" stroke-width="1"/>'+
+    '<text x="'+(L-8)+'" y="'+(y(t)+4)+'" text-anchor="end" font-size="12" fill="var(--muted)">'+t+'%</text>'; });
+  waves.forEach(function(w,i){ s+='<text x="'+x(i)+'" y="'+(H-10)+'" text-anchor="middle" font-size="12" fill="var(--muted)">'+w+'</text>'; });
+  var path=function(d){return d.map(function(v,i){return (i?'L':'M')+x(i)+' '+y(v)}).join(' ')};
+  s+='<path d="'+path(A)+'" fill="none" stroke="var(--s1)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>';
+  s+='<path d="'+path(B)+'" fill="none" stroke="var(--s2)" stroke-width="2.5" stroke-dasharray="6 5" stroke-linecap="round"/>';
+  A.forEach(function(v,i){ s+='<circle cx="'+x(i)+'" cy="'+y(v)+'" r="4.5" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>'; });
+  B.forEach(function(v,i){ s+='<circle cx="'+x(i)+'" cy="'+y(v)+'" r="4.5" fill="var(--s2)" stroke="var(--surface)" stroke-width="2"/>'; });
+  s+='<text x="'+(x(3)+12)+'" y="'+(y(18.4)+4)+'" font-size="13" font-weight="600" fill="var(--ink)">18.4%</text>';
+  s+='<text x="'+(x(3)+12)+'" y="'+(y(5.1)+4)+'" font-size="13" font-weight="600" fill="var(--ink)">5.1%</text>';
+  s+='<text x="'+(x(0)-10)+'" y="'+(y(9.6)+18)+'" font-size="12" fill="var(--muted)" text-anchor="start">9.6%</text>';
+  s+='<text x="'+(x(0)-10)+'" y="'+(y(15.4)-10)+'" font-size="12" fill="var(--muted)" text-anchor="start">15.4%</text>';
+  s+='<line id="mmx" x1="0" x2="0" y1="'+T+'" y2="'+(H-Bm)+'" stroke="var(--muted)" stroke-width="1" stroke-dasharray="3 3" opacity="0"/>';
+  s+='<rect id="mmhit" x="'+L+'" y="'+T+'" width="'+(W-L-R)+'" height="'+(H-T-Bm)+'" fill="transparent"/>';
+  svg.innerHTML=s;
+  var hit=svg.querySelector('#mmhit'), xl=svg.querySelector('#mmx');
+  function show(ev){
+    var r=svg.getBoundingClientRect(), sx=(ev.clientX-r.left)*W/r.width;
+    var i=Math.max(0,Math.min(3,Math.round((sx-L)/((W-L-R)/3))));
+    xl.setAttribute('x1',x(i)); xl.setAttribute('x2',x(i)); xl.setAttribute('opacity',1);
+    tip.innerHTML='<b>'+waves[i]+'</b><div class="row"><span>On-site, prefer remote</span><span>'+A[i]+'%</span></div><div class="row"><span>Remote, prefer on-site</span><span>'+B[i]+'%</span></div>';
+    var fr=svg.parentNode.getBoundingClientRect();
+    var px=r.left-fr.left+x(i)*r.width/W, py=r.top-fr.top+y(Math.max(A[i],B[i]))*r.height/H;
+    tip.style.left=Math.min(px+12, fr.width-tip.offsetWidth-8)+'px'; tip.style.top=(py-10)+'px'; tip.style.opacity=1;
+  }
+  hit.addEventListener('mousemove',show);
+  hit.addEventListener('mouseleave',function(){tip.style.opacity=0; xl.setAttribute('opacity',0)});
+})();
+</script>
+{{ end }}
