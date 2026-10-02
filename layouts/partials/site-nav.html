@@ -1,7 +1,7 @@
 {{ $cur := .RelPermalink }}
 <nav>
   <div class="nav-in">
-    <div class="brand"><a href="{{ "" | relURL }}">Wen&nbsp;Fan</a></div>
+    <div class="brand"><a href="{{ "" | relURL }}">Wen&nbsp;Fan <span class="zh" lang="zh-Hans">范雯</span></a></div>
     <div class="nav-links">
       <a class="{{ if eq $cur "/" }}active{{ end }}" href="{{ "" | relURL }}">About</a>
       <a class="{{ if hasPrefix $cur "/research" }}active{{ end }}" href="{{ "research/" | relURL }}">Research</a>
