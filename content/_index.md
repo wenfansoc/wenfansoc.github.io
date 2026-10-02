@@ -2,7 +2,7 @@
 title: "Wen Fan"
 ---
 
-I am an Associate Professor in the [Department of Sociology](https://www.bc.edu/bc-web/schools/morrissey/departments/sociology.html) at Boston College, and am affiliated with the Sloan Research Network on Aging & Work. My research interests include the future of work, sociology of health, life course, social change, and quantitative methods.
+I am an Associate Professor in the [Department of Sociology](https://www.bc.edu/bc-web/schools/morrissey/departments/sociology.html) at Boston College. My research interests include the future of work, sociology of health, life course, social change, and quantitative methods.
 
 My overarching goal is to understand how social change, work environments, and family dynamics intersect to shape health and well-being over the life course and across different social contexts. I received my Ph.D. in Sociology (2015) and M.S. in Statistics (2014), both from the University of Minnesota.
 
@@ -40,8 +40,3 @@ I am currently working on three projects: an NSF-funded project on **remote and 
 
 See the [Publications](/publications/) page for the full list, organized by theme.
 
-## Awards
-
-- **Winner**, Rosabeth Moss Kanter International Award for Research Excellence in Work and Family (2015)
-- **Nominee**, Rosabeth Moss Kanter International Award (2020)
-- **Winner**, Frank Mott Award, Department of Sociology, Ohio State University
