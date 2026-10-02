@@ -4,7 +4,7 @@ title: "Wen Fan"
 
 I am an Associate Professor in the [Department of Sociology](https://www.bc.edu/bc-web/schools/morrissey/departments/sociology.html) at Boston College. My research interests include the future of work, sociology of health, life course, social change, and quantitative methods.
 
-My overarching goal is to understand how social change, work environments, and family dynamics intersect to shape health and well-being over the life course and across different social contexts. I received my Ph.D. in Sociology (2015) and M.S. in Statistics (2014), both from the University of Minnesota.
+What do people want from their work, and what does work do to them in return? My research takes up these questions as work changes—where we do it, how long we spend on it, and what we expect from it—and traces the consequences for health, well-being, and family life in the United States, China, and beyond. I received my Ph.D. in Sociology (2015) and M.S. in Statistics (2014), both from the University of Minnesota.
 
 I am currently working on three projects: an NSF-funded project on **remote and hybrid work** during the COVID-19 pandemic (with Phyllis Moen); a project on the employee, organizational, and societal impacts of **four-day workweeks** (with Juliet Schor, Orla Kelly, and Phyllis Moen; funded by NSF and the Russell Sage Foundation); and a study of how young people in China understand the **meaning of work**, drawing on in-depth interviews.
 
