@@ -17,7 +17,10 @@
   authors: "Fan, W., J. Schor, O. Kelly, and G. Gu"
   title: "Work Time Reduction Via a Four-day Workweek Finds Improvements in Workers' Well-being"
   venue: "Nature Human Behaviour"
+  details: "9: 2153–2168"
   selected: true
+  links:
+    doi: "https://doi.org/10.1038/s41562-025-02259-6"
 
 - year: "2025"
   authors: "Fan, W., and P. Moen"
@@ -131,6 +134,8 @@
   title: "Stigma, Perceived Discrimination, and Mental Health during China's COVID-19 Outbreak: A Mixed-Methods Investigation"
   venue: "Journal of Health and Social Behavior"
   details: "62(4): 562–581"
+  links:
+    doi: "https://doi.org/10.1177/00221465211040550"
 
 - year: "2021"
   authors: "Fan, W., and J. Lam"
@@ -139,11 +144,13 @@
   details: "43: 403–415"
 
 - year: "2020"
-  authors: "Fan, W., and Q. Luo"
+  authors: "Fan, W., and L. Luo"
   title: "Understanding Trends in the Concentration of Infant Mortality among Disadvantaged White and Black Mothers"
   venue: "Demography"
   details: "57: 979–1005"
   selected: true
+  links:
+    doi: "https://doi.org/10.1007/s13524-020-00878-4"
 
 - year: "2020"
   authors: "Fan, W., and S. Han"

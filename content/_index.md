@@ -33,7 +33,7 @@ I am currently working on three projects: an NSF-funded project on **remote and 
 
 <div class="pub">
   <span class="pub__title">Understanding Trends in the Concentration of Infant Mortality among Disadvantaged White and Black Mothers.</span>
-  <span class="pub__venue">Demography</span> (2020), with Q. Luo.
+  <span class="pub__venue">Demography</span> (2020), with L. Luo.
   <div class="pub__note">We document how infant deaths have become increasingly concentrated among the most disadvantaged mothers, and what this reveals about widening health inequality.</div>
   <div class="pub__links"><a href="#">Journal</a><a href="#">PDF</a></div>
 </div>
