@@ -4,12 +4,6 @@
 #         any of {journal, pdf, doi, code, arxiv} — buttons render only when a link is present.
 
 - year: "Forthcoming"
-  authors: "Fan, W., and P. Moen"
-  title: "Remote/Hybrid Work in Flux: Work-Place/Preference Mismatch and Adaptations"
-  venue: "Social Forces"
-  selected: true
-
-- year: "Forthcoming"
   authors: "Qian, Y., and W. Fan"
   title: "Working from Home and Affective Well-Being"
   venue: "ILR Review"
@@ -24,6 +18,15 @@
   title: "Work Time Reduction Via a Four-day Workweek Finds Improvements in Workers' Well-being"
   venue: "Nature Human Behaviour"
   selected: true
+
+- year: "2025"
+  authors: "Fan, W., and P. Moen"
+  title: "Remote/Hybrid Work in Flux: Work-Place/Preference Mismatch and Adaptations"
+  venue: "Social Forces"
+  details: "104(2): 752–775"
+  selected: true
+  links:
+    doi: "https://doi.org/10.1093/sf/soaf035"
 
 - year: "2025"
   authors: "Fan, W., and Y. Qian"
