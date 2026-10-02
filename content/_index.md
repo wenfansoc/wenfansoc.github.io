@@ -6,7 +6,7 @@ I am an Associate Professor in the [Department of Sociology](https://www.bc.edu/
 
 My overarching goal is to understand how social change, work environments, and family dynamics intersect to shape health and well-being over the life course and across different social contexts. I received my Ph.D. in Sociology (2015) and M.S. in Statistics (2014), both from the University of Minnesota.
 
-I am currently working on three projects: an NSF-funded project on **remote and hybrid work** during the COVID-19 pandemic (with Phyllis Moen); a project on the employee, organizational, and societal impacts of **four-day workweeks** (with Juliet Schor, Orla Kelly, and Phyllis Moen); and a study of how young people in China understand the **meaning of work**, drawing on in-depth interviews.
+I am currently working on three projects: an NSF-funded project on **remote and hybrid work** during the COVID-19 pandemic (with Phyllis Moen); a project on the employee, organizational, and societal impacts of **four-day workweeks** (with Juliet Schor, Orla Kelly, and Phyllis Moen; funded by NSF and the Russell Sage Foundation); and a study of how young people in China understand the **meaning of work**, drawing on in-depth interviews.
 
 ## Selected work
 
