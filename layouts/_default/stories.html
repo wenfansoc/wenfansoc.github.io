@@ -1,20 +1,46 @@
 {{ define "main" }}
 <style>
   .st-intro{font-size:1.15rem; line-height:1.6; color:var(--muted); margin:0 0 22px}
-  .st-index{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 8px}
-  .st-index a,.st-index span{font-size:13px; font-weight:600; padding:6px 12px; border-radius:999px; border:1px solid var(--line); text-decoration:none; color:var(--muted); background:var(--surface)}
+  .st-index{display:flex; flex-wrap:wrap; gap:6px; margin:0 0 8px}
+  @media (min-width:760px){ .st-index{flex-wrap:nowrap} .st-index a,.st-index span{white-space:nowrap} }
+  .st-index a,.st-index span{font-size:13px; font-weight:600; padding:6px 11px; border-radius:999px; border:1px solid var(--line); text-decoration:none; color:var(--muted); background:var(--surface)}
   .st-index a.on{color:var(--accent); border-color:var(--ring); background:var(--accent-soft)}
   .st-index span{opacity:.6}
 
   .story{padding:34px 0 10px; margin-top:6px}
   .story .eyebrow{margin-bottom:10px}
   .page h2.st-q{border:none; padding:0; font-family:var(--serif); font-weight:600; font-size:clamp(1.7rem,4.6vw,2.3rem); line-height:1.15; letter-spacing:-.01em; margin:0 0 14px; text-wrap:balance}
-  .st-meta{font-size:13.5px; color:var(--muted); margin:0 0 18px}
+  .st-meta{display:grid; grid-template-columns:auto 1fr; gap:4px 14px; font-size:14px; color:var(--muted); margin:0 0 20px}
+  .st-meta dt{font-size:11.5px; text-transform:uppercase; letter-spacing:.12em; font-weight:700; color:var(--accent); padding-top:2px}
+  .st-meta dd{margin:0}
+  .st-meta a{color:inherit; text-decoration:none; border-bottom:1px solid transparent}
+  .st-meta a:hover{color:var(--accent); border-bottom-color:var(--ring)}
   .st-lead{margin:0 0 26px}
 
-  .st-hero{display:flex; gap:22px; align-items:center; padding:20px 22px; border-radius:14px; background:var(--accent-soft); border:1px solid var(--ring); margin:0 0 30px}
-  .st-num{font-family:var(--serif); font-weight:600; font-size:clamp(2.6rem,8vw,3.6rem); line-height:1; color:var(--accent); white-space:nowrap}
-  .st-hero p{margin:0; font-size:1.02rem; line-height:1.5}
+  .st-rows{margin:0 0 30px}
+  .st-row{display:grid; grid-template-columns:7.5rem 1fr; gap:6px 22px; padding:18px 0; border-top:1px solid var(--line)}
+  .st-row:first-child{border-top:none; padding-top:4px}
+  .st-row h3{font-family:var(--serif); font-weight:600; font-size:1.3rem; line-height:1.3; color:var(--accent); margin:0}
+  .st-row p{margin:0; line-height:1.6}
+  .st-row .from{display:block; font-size:13px; color:var(--muted); margin-top:6px}
+  .st-row .st-fig{grid-column:2; margin:14px 0 0}
+  .st-row .st-fig h3{color:var(--ink); font-size:1.15rem}
+  .st-row.side{grid-template-columns:1fr 17.5rem; gap:10px 28px; align-items:start}
+  .st-row.side h3{margin:0 0 8px}
+  .st-mini{margin:4px 0 0; padding:14px 14px 10px; border:1px solid var(--line); border-radius:12px; background:var(--surface)}
+  .st-mini h4{font-family:var(--serif); font-weight:600; font-size:1.05rem; margin:0 0 3px; color:var(--ink)}
+  .st-mini .sub{font-size:12.5px; line-height:1.4; color:var(--muted); margin:0 0 10px}
+  .st-mini svg{display:block; width:100%; height:auto}
+  .st-mini .src{font-size:11.5px; color:var(--muted); margin:8px 0 0}
+  .st-mini [hidden]{display:none !important}
+  .st-mini .legend{flex-direction:column; gap:2px; font-size:12px; margin:0 0 6px}
+  .mini-tabs{display:flex; flex-wrap:wrap; gap:4px; margin:0 0 10px}
+  .mini-tabs button{font:inherit; white-space:nowrap; font-size:11.5px; font-weight:600; padding:4px 9px; border-radius:999px; border:1px solid var(--line); background:transparent; color:var(--muted); cursor:pointer}
+  .mini-tabs button.on{color:var(--accent); border-color:var(--ring); background:var(--accent-soft)}
+  .from a,.src a,.st-papers .v a{color:inherit; font-weight:inherit; text-decoration:none; border-bottom:1px solid transparent}
+  .from a:hover,.src a:hover,.st-papers .v a:hover{color:var(--accent); border-bottom-color:var(--ring)}
+  @media (max-width:620px){ .st-row.side{grid-template-columns:1fr} }
+  @media (max-width:620px){ .st-row{grid-template-columns:1fr} .st-row .st-fig{grid-column:1} }
 
   .st-fig{border:1px solid var(--line); border-radius:14px; background:var(--surface); padding:20px 20px 14px; margin:0 0 30px}
   .st-fig h3{font-family:var(--serif); font-weight:600; font-size:1.25rem; margin:0 0 4px}
@@ -43,6 +69,7 @@
   .st-papers a:hover{color:var(--accent); border-bottom-color:var(--ring)}
   .st-papers .v{display:block; font-size:14px; color:var(--muted); margin-top:2px}
   .st-papers .v em{font-family:var(--serif)}
+  .page .st-papers .v em{color:inherit}
   .st-press{font-family:var(--serif); color:var(--muted); line-height:1.8; margin:0}
   .st-press a{color:inherit; text-decoration:none; border-bottom:1px solid transparent}
   .st-press a:hover{color:var(--accent); border-bottom-color:var(--ring)}
@@ -57,106 +84,426 @@
   :root{--s1:#A8323F; --s2:#B88424}
   @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){--s1:#CF5868; --s2:#B5892A} }
   :root[data-theme="dark"]{--s1:#CF5868; --s2:#B5892A}
-  @media (max-width:620px){ .st-hero{flex-direction:column; align-items:flex-start; gap:10px} }
 </style>
 
 <div class="wrap">
   <article class="page">
     <p class="mock-note">样稿（只在本地预览）：先做"远程和混合办公"一条主线，其他主线等方向定了再写。</p>
     <h1 class="page-title">Research</h1>
-    <p class="st-intro">My research follows a few questions about work: where it happens, how long it lasts, what people want from it, and what it gives back or takes away. Each section below starts with a question and then turns to what we found.</p>
+    <p class="st-intro">My research follows a few questions about work: where it happens, how long it lasts, what people want from it, and what it gives back or takes away—day to day and over a lifetime.</p>
     <nav class="st-index" aria-label="Research areas">
       <a class="on" href="#remote">Remote &amp; hybrid work</a>
       <span>Four-day workweeks</span>
       <span>The meaning of work</span>
-      <span>Work, family &amp; health</span>
+      <span>Gender, health &amp; the life course</span>
     </nav>
 
     <section class="story" id="remote">
       <p class="eyebrow">Remote &amp; hybrid work</p>
-      <h2 class="st-q">Where do people want to work—and who gets to choose?</h2>
-      <p class="st-meta">With Phyllis Moen · Funded by the National Science Foundation · National panel survey, October 2020–April 2022</p>
-      <p class="st-lead">The pandemic sent millions of office workers home almost overnight. Then employers began calling them back. Where work happens turned into a running negotiation between what workers want and what their jobs allow. We followed the same workers for 18 months to see how their preferences and their actual work locations moved apart, who could close the gap, and what the gap did to their working lives and well-being.</p>
+      <h2 class="st-q">What changes when work leaves the office—and for whom?</h2>
+      <dl class="st-meta">
+        <dt>Data</dt><dd>Remote Work Dynamics Panel Study, October 2020–April 2022 (with Phyllis Moen)</dd>
+        <dt>Funding</dt><dd>National Science Foundation (<a href="https://www.nsf.gov/awardsearch/show-award/?AWD_ID=2032639" target="_blank" rel="noopener">2032639</a>, <a href="https://www.nsf.gov/awardsearch/show-award/?AWD_ID=2049125" target="_blank" rel="noopener">2049125</a>)</dd>
+      </dl>
+      <p class="st-lead">The pandemic sent millions of workers home almost overnight. Then employers began calling them back. We followed the same workers for 18 months, through both moves, to see what changed—where they worked and wanted to work, their hours, their job conditions, their family lives, and their well-being—and how those changes differed by gender, race, education, and caregiving.</p>
 
-      <div class="st-hero">
-        <div class="st-num">1 in 2</div>
-        <p>As many as half of the workers we followed were, at some point during those 18 months, not working where they wanted to work.</p>
-      </div>
-
-      <figure class="st-fig" style="position:relative">
-        <h3>The mismatch didn't go away—it flipped</h3>
-        <p class="sub">Share of workers whose work location did not match where they wanted to work, by survey wave</p>
-        <div class="legend">
-          <span><i style="border-color:var(--s1)"></i>Working on-site, would rather be remote</span>
-          <span><i class="dash" style="border-color:var(--s2)"></i>Working remotely, would rather be on-site</span>
+      <div class="st-rows">
+        <div class="st-row side">
+          <div>
+            <h3>Where</h3>
+            <p>As work moved home and then back again, many people found themselves working in a place they had not chosen. A mismatch like this is common and often temporary: people change jobs, change where they work, or change their minds. The trouble starts when they cannot do any of those things. Workers with the least bargaining power were the most likely to get stuck, and being stuck, more than the mismatch itself, is what took a toll on how they felt about their work and their lives.</p>
+            <span class="from"><a href="https://doi.org/10.1093/sf/soaf035" target="_blank" rel="noopener"><em>Social Forces</em> 2025</a> · <a href="https://doi.org/10.1177/01902725261418326" target="_blank" rel="noopener"><em>Social Psychology Quarterly</em> 2026</a> · <a href="https://doi.org/10.1177/21568693251344326" target="_blank" rel="noopener"><em>Society and Mental Health</em> forthcoming</a></span>
+          </div>
+          <figure class="st-mini">
+            <div class="mini-tabs" role="tablist">
+              <button type="button" class="on" data-v="time">Trend</button>
+              <button type="button" data-v="stuck">Who&rsquo;s stuck</button>
+              <button type="button" data-v="wb">Well-being</button>
+            </div>
+            <div class="mv-head" data-v="time">
+              <h4>The mismatch didn't go away—it flipped</h4>
+              <p class="sub">Share of workers whose work location (on-site or remote/hybrid) did not match the one they wanted, by survey wave</p>
+              <div class="legend">
+                <span><i style="border-color:var(--s1)"></i>On-site, would rather be remote</span>
+                <span><i class="dash" style="border-color:var(--s2)"></i>Remote, would rather be on-site</span>
+              </div>
+            </div>
+            <div class="mv-head" data-v="stuck" hidden>
+              <h4>On-site and Hispanic workers were most likely to get stuck</h4>
+              <p class="sub">Change in the chance (percentage points) of ever being stuck, compared with remote or hybrid workers, white workers, and workers without a college degree</p>
+            </div>
+            <div class="mv-head" data-v="wb" hidden>
+              <h4>Getting stuck lowered job satisfaction</h4>
+              <p class="sub">Change in job satisfaction (1–5 scale), compared with workers who were never stuck</p>
+            </div>
+            <svg class="mv" data-v="time" viewBox="0 0 260 168" role="img" aria-label="Line chart. Working on-site but wanting to work remotely rose from 9.6% in October 2020 to 18.4% in April 2022. Working remotely but wanting to work on-site fell from 15.4% to 5.1%.">
+              <line x1="34" x2="226" y1="140" y2="140" stroke="var(--line)"/><text x="28" y="144" text-anchor="end" font-size="11" fill="var(--muted)">0%</text>
+              <line x1="34" x2="226" y1="80" y2="80" stroke="var(--line)"/><text x="28" y="84" text-anchor="end" font-size="11" fill="var(--muted)">10%</text>
+              <line x1="34" x2="226" y1="20" y2="20" stroke="var(--line)"/><text x="28" y="24" text-anchor="end" font-size="11" fill="var(--muted)">20%</text>
+              <text x="40" y="160" text-anchor="middle" font-size="11" fill="var(--muted)">Oct 2020</text>
+              <text x="100" y="160" text-anchor="middle" font-size="11" fill="var(--muted)">Apr 2021</text>
+              <text x="160" y="160" text-anchor="middle" font-size="11" fill="var(--muted)">Oct 2021</text>
+              <text x="220" y="160" text-anchor="middle" font-size="11" fill="var(--muted)">Apr 2022</text>
+              <path d="M40 82 L100 65 L160 37 L220 30" fill="none" stroke="var(--s1)" stroke-width="2.5" stroke-linejoin="round"/>
+              <path d="M40 48 L100 76 L160 101 L220 109" fill="none" stroke="var(--s2)" stroke-width="2.5" stroke-dasharray="5 4" stroke-linejoin="round"/>
+              <circle cx="40" cy="82" r="3" fill="var(--s1)"/><circle cx="100" cy="65" r="3" fill="var(--s1)"/><circle cx="160" cy="37" r="3" fill="var(--s1)"/><circle cx="220" cy="30" r="3" fill="var(--s1)"/>
+              <circle cx="40" cy="48" r="3" fill="var(--s2)"/><circle cx="100" cy="76" r="3" fill="var(--s2)"/><circle cx="160" cy="101" r="3" fill="var(--s2)"/><circle cx="220" cy="109" r="3" fill="var(--s2)"/>
+              <text x="40" y="97" text-anchor="middle" font-size="11" fill="var(--muted)">10%</text>
+              <text x="40" y="40" text-anchor="middle" font-size="11" fill="var(--muted)">15%</text>
+              <text x="228" y="34" font-size="11.5" font-weight="600" fill="var(--ink)">18%</text>
+              <text x="228" y="113" font-size="11.5" font-weight="600" fill="var(--ink)">5%</text>
+            </svg>
+            <svg class="mv" data-v="stuck" hidden viewBox="0 0 260 56" role="img" aria-label="Change in the chance of ever being stuck, in percentage points: working on-site versus remote or hybrid +34; Hispanic versus white workers +11; college degree versus none -6.">
+              <text x="8" y="11" font-size="12" fill="var(--muted)">Working on-site</text>
+              <rect x="120" y="1" width="101" height="12" rx="2" fill="var(--s1)"/>
+              <text x="258" y="11" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)">+34</text>
+              <text x="8" y="29" font-size="12" fill="var(--muted)">Hispanic</text>
+              <rect x="120" y="19" width="32" height="12" rx="2" fill="var(--s1)"/>
+              <text x="258" y="29" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)">+11</text>
+              <text x="8" y="47" font-size="12" fill="var(--muted)">College degree</text>
+              <rect x="102" y="37" width="18" height="12" rx="2" fill="var(--s2)"/>
+              <text x="258" y="47" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)">−6</text>
+              <line x1="120" x2="120" y1="0" y2="54" stroke="var(--muted)" stroke-width="1" opacity=".5"/>
+            </svg>
+            <svg class="mv" data-v="wb" hidden viewBox="0 0 260 56" role="img" aria-label="Change in job satisfaction on a 1 to 5 scale, compared with never being stuck: becoming stuck -0.28, staying stuck -0.44, getting unstuck -0.01 (not significant).">
+              <text x="8" y="11" font-size="12" fill="var(--muted)">Becoming stuck</text>
+              <rect x="149" y="1" width="61" height="12" rx="2" fill="var(--s1)"/>
+              <text x="258" y="11" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)">−0.28</text>
+              <text x="8" y="29" font-size="12" fill="var(--muted)">Staying stuck</text>
+              <rect x="114" y="19" width="96" height="12" rx="2" fill="var(--s1)"/>
+              <text x="258" y="29" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)">−0.44</text>
+              <text x="8" y="47" font-size="12" fill="var(--muted)">Getting unstuck</text>
+              <rect x="208" y="37" width="2" height="12" rx="2" fill="var(--s1)" opacity=".35"/>
+              <text x="258" y="47" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)" opacity=".35">−0.01</text>
+              <line x1="210" x2="210" y1="0" y2="54" stroke="var(--muted)" stroke-width="1" opacity=".5"/>
+            </svg>
+            <p class="src mv-src" data-v="time">Source: Fan and Moen (2025), <a href="https://doi.org/10.1093/sf/soaf035" target="_blank" rel="noopener"><em>Social Forces</em></a>, Figure 2.</p>
+            <p class="src mv-src" data-v="stuck" hidden>“Stuck”: working on-site while preferring remote or hybrid work (or the reverse) and feeling unable to change it.<br>Source: Fan and Moen (2026), <a href="https://doi.org/10.1177/01902725261418326" target="_blank" rel="noopener"><em>Social Psychology Quarterly</em></a>, Table 4.</p>
+            <p class="src mv-src" data-v="wb" hidden>Faded bar: not statistically significant.<br>Source: Fan and Moen (2026), <a href="https://doi.org/10.1177/01902725261418326" target="_blank" rel="noopener"><em>Social Psychology Quarterly</em></a>, Table 5.</p>
+          </figure>
         </div>
-        <svg id="mm" viewBox="0 0 640 260" role="img" aria-label="Line chart. Working on-site but preferring remote rose from 9.6% in October 2020 to 18.4% in April 2022. Working remotely but preferring on-site fell from 15.4% to 5.1%."></svg>
-        <div class="tip" id="mmtip"></div>
-        <p class="src">Source: Fan and Moen (2025), <em>Social Forces</em>, Figure 2.</p>
-        <table hidden><caption>Work-place mismatch by wave (%)</caption><tr><th>Wave</th><th>On-site, prefer remote</th><th>Remote, prefer on-site</th></tr><tr><td>Oct 2020</td><td>9.6</td><td>15.4</td></tr><tr><td>Apr 2021</td><td>12.5</td><td>10.6</td></tr><tr><td>Oct 2021</td><td>17.1</td><td>6.5</td></tr><tr><td>Apr 2022</td><td>18.4</td><td>5.1</td></tr></table>
-      </figure>
-
-      <div class="st-find">
-        <div><h4>The gap is unequal</h4><p>Hispanic workers, Black men, and workers without a college degree who prefer remote work are the most likely to be stuck on-site—and the least able to change where they work or to quit.</p></div>
-        <div><h4>Going back raised the pressure</h4><p>Compared with staying remote or moving to hybrid, returning to the workplace raised psychological job demands, and for women it cut decision latitude and schedule control—most of all for Black and Hispanic women.</p></div>
-        <div><h4>Hybrid helped some more than others</h4><p>Moving to hybrid work was especially good for the well-being of minority men and less-educated men, but not for white women.</p></div>
+        <div class="st-row side">
+          <div>
+            <h3>Hours</h3>
+            <p>Working from home is often pictured as a way to gain control over one's time. When we surveyed remote workers in October 2020, about half said their hours were about the same as before the pandemic. Averages, though, hide what happened to women: their hours were more likely to swing, sharply down for some and sharply up for others. Which way they went depended on care. Women with the heaviest care loads, such as those looking after both children and aging parents, put their jobs on the back burner. Women with lighter care duties often worked longer, possibly to make up for interruptions at home or to show they were still committed.</p>
+            <span class="from"><a href="https://doi.org/10.1177/07308884211047208" target="_blank" rel="noopener"><em>Work and Occupations</em> 2022</a></span>
+          </div>
+          <figure class="st-mini">
+            <div class="mini-tabs" role="tablist">
+              <button type="button" class="on" data-v="gender">By gender</button>
+              <button type="button" data-v="care">By caregiving</button>
+            </div>
+            <div class="mv-head" data-v="gender">
+              <h4>Women's hours swung more</h4>
+              <p class="sub">Share of remote workers whose hours changed “by a significant amount,” October 2020</p>
+            </div>
+            <div class="mv-head" data-v="care" hidden>
+              <h4>Caregiving women swung the most</h4>
+              <p class="sub">Predicted chance (%) that hours fell or rose “by a significant amount,” adjusting for other factors, October 2020</p>
+            </div>
+            <svg class="mv" data-v="gender" viewBox="0 0 250 132" role="img" aria-label="Hours fell sharply: women 10%, men 6%. Hours rose sharply: women 8%, men 5%.">
+              <text x="0" y="12" font-size="12.5" font-weight="600" fill="var(--ink)">Hours fell sharply</text>
+              <text x="0" y="31" font-size="12" fill="var(--muted)">Women</text>
+              <rect x="52" y="20" width="150" height="15" rx="3" fill="var(--s1)"/>
+              <text x="208" y="32" font-size="12" font-weight="600" fill="var(--ink)">10%</text>
+              <text x="0" y="52" font-size="12" fill="var(--muted)">Men</text>
+              <rect x="52" y="41" width="90" height="15" rx="3" fill="var(--s2)"/>
+              <text x="148" y="53" font-size="12" font-weight="600" fill="var(--ink)">6%</text>
+              <text x="0" y="86" font-size="12.5" font-weight="600" fill="var(--ink)">Hours rose sharply</text>
+              <text x="0" y="105" font-size="12" fill="var(--muted)">Women</text>
+              <rect x="52" y="94" width="120" height="15" rx="3" fill="var(--s1)"/>
+              <text x="178" y="106" font-size="12" font-weight="600" fill="var(--ink)">8%</text>
+              <text x="0" y="126" font-size="12" fill="var(--muted)">Men</text>
+              <rect x="52" y="115" width="75" height="15" rx="3" fill="var(--s2)"/>
+              <text x="133" y="127" font-size="12" font-weight="600" fill="var(--ink)">5%</text>
+            </svg>
+            <svg class="mv" data-v="care" hidden viewBox="0 0 260 226" role="img" aria-label="Predicted percent whose hours fell or rose sharply. Women in the sandwich generation: fell 14, rose 10. Women with school-age kids or adult care: fell 10, rose 11. Women with no care duties under 35: fell 6, rose 5. Men with no care duties under 35: fell 7, rose 2.">
+              <text x="0" y="12" font-size="12.5" font-weight="600" fill="var(--ink)">Women, sandwich generation</text>
+              <text x="0" y="31" font-size="12" fill="var(--muted)">Fell</text>
+              <rect x="40" y="20" width="140" height="14" rx="3" fill="var(--s1)"/>
+              <text x="186" y="31" font-size="12" font-weight="600" fill="var(--ink)">14%</text>
+              <text x="0" y="48" font-size="12" fill="var(--muted)">Rose</text>
+              <rect x="40" y="37" width="100" height="14" rx="3" fill="var(--s1)"/>
+              <text x="146" y="48" font-size="12" font-weight="600" fill="var(--ink)">10%</text>
+              <text x="0" y="69" font-size="12.5" font-weight="600" fill="var(--ink)">Women, school-age kids or adult care</text>
+              <text x="0" y="88" font-size="12" fill="var(--muted)">Fell</text>
+              <rect x="40" y="77" width="100" height="14" rx="3" fill="var(--s1)"/>
+              <text x="146" y="88" font-size="12" font-weight="600" fill="var(--ink)">10%</text>
+              <text x="0" y="105" font-size="12" fill="var(--muted)">Rose</text>
+              <rect x="40" y="94" width="110" height="14" rx="3" fill="var(--s1)"/>
+              <text x="156" y="105" font-size="12" font-weight="600" fill="var(--ink)">11%</text>
+              <text x="0" y="126" font-size="12.5" font-weight="600" fill="var(--ink)">Women, no care duties, under 35</text>
+              <text x="0" y="145" font-size="12" fill="var(--muted)">Fell</text>
+              <rect x="40" y="134" width="60" height="14" rx="3" fill="var(--s1)"/>
+              <text x="106" y="145" font-size="12" font-weight="600" fill="var(--ink)">6%</text>
+              <text x="0" y="162" font-size="12" fill="var(--muted)">Rose</text>
+              <rect x="40" y="151" width="50" height="14" rx="3" fill="var(--s1)"/>
+              <text x="96" y="162" font-size="12" font-weight="600" fill="var(--ink)">5%</text>
+              <text x="0" y="183" font-size="12.5" font-weight="600" fill="var(--ink)">Men, no care duties, under 35</text>
+              <text x="0" y="202" font-size="12" fill="var(--muted)">Fell</text>
+              <rect x="40" y="191" width="70" height="14" rx="3" fill="var(--s2)"/>
+              <text x="116" y="202" font-size="12" font-weight="600" fill="var(--ink)">7%</text>
+              <text x="0" y="219" font-size="12" fill="var(--muted)">Rose</text>
+              <rect x="40" y="208" width="20" height="14" rx="3" fill="var(--s2)"/>
+              <text x="66" y="219" font-size="12" font-weight="600" fill="var(--ink)">2%</text>
+            </svg>
+            <p class="src mv-src" data-v="gender">Source: Fan and Moen (2022), <a href="https://doi.org/10.1177/07308884211047208" target="_blank" rel="noopener"><em>Work and Occupations</em></a>, Table 1.</p>
+            <p class="src mv-src" data-v="care" hidden>Source: Fan and Moen (2022), <a href="https://doi.org/10.1177/07308884211047208" target="_blank" rel="noopener"><em>Work and Occupations</em></a>, Figure 2.</p>
+          </figure>
+        </div>
+        <div class="st-row side">
+          <div>
+            <h3>The job</h3>
+            <p>Offices have long run on face time and on an image of the ideal worker who is always present. Compared with going back, staying remote or hybrid eased job pressure and gave many workers more say over their work. Returning meant returning to the old rules, and the costs were not shared equally: Black and Hispanic women lost the most control over their schedules. The office did bring more support from coworkers, but mainly for white workers; Black men who returned got less.</p>
+            <span class="from"><a href="https://doi.org/10.1177/07308884231203668" target="_blank" rel="noopener"><em>Work and Occupations</em> 2025</a></span>
+          </div>
+          <figure class="st-mini">
+            <div class="mini-tabs" role="tablist">
+              <button type="button" class="on" data-v="sched">Schedule control</button>
+              <button type="button" data-v="support">Coworker support</button>
+            </div>
+            <div class="mv-head" data-v="sched">
+              <h4>Going back cost Black and Hispanic women the most control</h4>
+              <p class="sub">Change in schedule control (1–5 scale) after returning to the office, compared with staying remote or hybrid</p>
+            </div>
+            <div class="mv-head" data-v="support" hidden>
+              <h4>Going back brought more support—mainly for white workers</h4>
+              <p class="sub">Change in support from coworkers (1–5 scale) among workers who returned to the office</p>
+            </div>
+            <svg class="mv" data-v="sched" viewBox="0 0 260 186" role="img" aria-label="Change in schedule control from returning to the office, compared with staying remote or hybrid. Women: white -0.12, Black -0.39, Hispanic -0.35, other races -0.32 (not significant). Men: white -0.06, Black -0.14, Hispanic +0.11, other races -0.04 (none significant).">
+              <text x="0" y="12" font-size="12.5" font-weight="600" fill="var(--ink)">Women</text>
+              <text x="8" y="28" font-size="12" fill="var(--muted)">White</text>
+              <rect x="126" y="18" width="24" height="12" rx="2" fill="var(--s1)"/>
+              <text x="258" y="28" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)">−0.12</text>
+              <text x="8" y="46" font-size="12" fill="var(--muted)">Black</text>
+              <rect x="72" y="36" width="78" height="12" rx="2" fill="var(--s1)"/>
+              <text x="258" y="46" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)">−0.39</text>
+              <text x="8" y="64" font-size="12" fill="var(--muted)">Hispanic</text>
+              <rect x="80" y="54" width="70" height="12" rx="2" fill="var(--s1)"/>
+              <text x="258" y="64" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)">−0.35</text>
+              <text x="8" y="82" font-size="12" fill="var(--muted)">Other races</text>
+              <rect x="86" y="72" width="64" height="12" rx="2" fill="var(--s1)" opacity=".35"/>
+              <text x="258" y="82" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)" opacity=".35">−0.32</text>
+              <text x="0" y="107" font-size="12.5" font-weight="600" fill="var(--ink)">Men</text>
+              <text x="8" y="123" font-size="12" fill="var(--muted)">White</text>
+              <rect x="138" y="113" width="12" height="12" rx="2" fill="var(--s2)" opacity=".35"/>
+              <text x="258" y="123" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)" opacity=".35">−0.06</text>
+              <text x="8" y="141" font-size="12" fill="var(--muted)">Black</text>
+              <rect x="122" y="131" width="28" height="12" rx="2" fill="var(--s2)" opacity=".35"/>
+              <text x="258" y="141" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)" opacity=".35">−0.14</text>
+              <text x="8" y="159" font-size="12" fill="var(--muted)">Hispanic</text>
+              <rect x="150" y="149" width="22" height="12" rx="2" fill="var(--s2)" opacity=".35"/>
+              <text x="258" y="159" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)" opacity=".35">+0.11</text>
+              <text x="8" y="177" font-size="12" fill="var(--muted)">Other races</text>
+              <rect x="142" y="167" width="8" height="12" rx="2" fill="var(--s2)" opacity=".35"/>
+              <text x="258" y="177" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)" opacity=".35">−0.04</text>
+              <line x1="150" x2="150" y1="14" y2="184" stroke="var(--muted)" stroke-width="1" opacity=".5"/>
+            </svg>
+            <svg class="mv" data-v="support" hidden viewBox="0 0 260 186" role="img" aria-label="Change in coworker support among workers who returned to the office. Women: white +0.22, Black -0.09, Hispanic 0.00, other races +0.32 (only white women significant). Men: white +0.12, Black -0.32, Hispanic -0.13, other races +0.07 (white and Black men significant).">
+              <text x="0" y="12" font-size="12.5" font-weight="600" fill="var(--ink)">Women</text>
+              <text x="8" y="28" font-size="12" fill="var(--muted)">White</text>
+              <rect x="150" y="18" width="44" height="12" rx="2" fill="var(--s1)"/>
+              <text x="258" y="28" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)">+0.22</text>
+              <text x="8" y="46" font-size="12" fill="var(--muted)">Black</text>
+              <rect x="132" y="36" width="18" height="12" rx="2" fill="var(--s1)" opacity=".35"/>
+              <text x="258" y="46" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)" opacity=".35">−0.09</text>
+              <text x="8" y="64" font-size="12" fill="var(--muted)">Hispanic</text>
+              <rect x="150" y="54" width="1" height="12" rx="2" fill="var(--s1)" opacity=".35"/>
+              <text x="258" y="64" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)" opacity=".35">0.00</text>
+              <text x="8" y="82" font-size="12" fill="var(--muted)">Other races</text>
+              <rect x="150" y="72" width="64" height="12" rx="2" fill="var(--s1)" opacity=".35"/>
+              <text x="258" y="82" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)" opacity=".35">+0.32</text>
+              <text x="0" y="107" font-size="12.5" font-weight="600" fill="var(--ink)">Men</text>
+              <text x="8" y="123" font-size="12" fill="var(--muted)">White</text>
+              <rect x="150" y="113" width="24" height="12" rx="2" fill="var(--s2)"/>
+              <text x="258" y="123" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)">+0.12</text>
+              <text x="8" y="141" font-size="12" fill="var(--muted)">Black</text>
+              <rect x="86" y="131" width="64" height="12" rx="2" fill="var(--s2)"/>
+              <text x="258" y="141" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)">−0.32</text>
+              <text x="8" y="159" font-size="12" fill="var(--muted)">Hispanic</text>
+              <rect x="124" y="149" width="26" height="12" rx="2" fill="var(--s2)" opacity=".35"/>
+              <text x="258" y="159" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)" opacity=".35">−0.13</text>
+              <text x="8" y="177" font-size="12" fill="var(--muted)">Other races</text>
+              <rect x="150" y="167" width="14" height="12" rx="2" fill="var(--s2)" opacity=".35"/>
+              <text x="258" y="177" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)" opacity=".35">+0.07</text>
+              <line x1="150" x2="150" y1="14" y2="184" stroke="var(--muted)" stroke-width="1" opacity=".5"/>
+            </svg>
+            <p class="src">Faded bars: not statistically significant.<br>Source: Fan and Moen (2025), <a href="https://doi.org/10.1177/07308884231203668" target="_blank" rel="noopener"><em>Work and Occupations</em></a>, Figure 1.</p>
+          </figure>
+        </div>
+        <div class="st-row side">
+          <div>
+            <h3>Home</h3>
+            <p>Working from home has long been seen as a way to fit work and family together. The pandemic tested that idea under hard conditions. When schools stayed open, working from home eased mothers' stress; when schools were ordered to close, it added to it. Parents who worked remotely in jobs that were rarely done from home before COVID-19 had the hardest time. How people drew the line between work and home mattered too: those who set up physical boundaries fared best, while caregivers were the most likely to say they could not keep the two apart.</p>
+            <span class="from"><a href="https://doi.org/10.3390/socsci13010036" target="_blank" rel="noopener"><em>Social Sciences</em> 2024</a> · <a href="https://doi.org/10.1177/00197939251390748" target="_blank" rel="noopener"><em>ILR Review</em> 2026</a> · <a href="https://doi.org/10.1080/13668803.2026.2659080" target="_blank" rel="noopener"><em>Community, Work &amp; Family</em> forthcoming</a></span>
+          </div>
+          <figure class="st-mini">
+            <div class="mini-tabs" role="tablist">
+              <button type="button" class="on" data-v="school">Schools</button>
+              <button type="button" data-v="parents">Parents</button>
+              <button type="button" data-v="bound">Boundaries</button>
+            </div>
+            <div class="mv-head" data-v="school">
+              <h4>Remote work helped mothers—until schools closed</h4>
+              <p class="sub">Mothers' predicted work–life tensions, by where they worked and whether their state required schools to close</p>
+            </div>
+            <div class="mv-head" data-v="parents" hidden>
+              <h4>Home got harder for parents in jobs rarely done from home</h4>
+              <p class="sub">Parents' predicted negative feelings before and during the pandemic, in jobs that few people did from home before COVID-19</p>
+            </div>
+            <div class="mv-head" data-v="bound" hidden>
+              <h4>Physical boundaries worked best</h4>
+              <p class="sub">Predicted psychological distress (logged; lower is better), by how workers managed the line between work and home</p>
+            </div>
+            <svg class="mv" data-v="school" viewBox="0 0 260 114" role="img" aria-label="Mothers' predicted work-life tensions. Schools open: remote or hybrid 0.27, at the workplace 0.51. Schools required to close: remote or hybrid 0.42, at the workplace 0.08.">
+              <text x="0" y="12" font-size="12.5" font-weight="600" fill="var(--ink)">Schools open</text>
+              <text x="6" y="28" font-size="12" fill="var(--muted)">Remote/hybrid</text>
+              <rect x="118" y="18" width="59" height="12" rx="2" fill="var(--s1)"/>
+              <text x="182" y="28" font-size="11.5" font-weight="600" fill="var(--ink)">0.27</text>
+              <text x="6" y="46" font-size="12" fill="var(--muted)">At the workplace</text>
+              <rect x="118" y="36" width="112" height="12" rx="2" fill="var(--s2)"/>
+              <text x="235" y="46" font-size="11.5" font-weight="600" fill="var(--ink)">0.51</text>
+              <text x="0" y="71" font-size="12.5" font-weight="600" fill="var(--ink)">Schools required to close</text>
+              <text x="6" y="87" font-size="12" fill="var(--muted)">Remote/hybrid</text>
+              <rect x="118" y="77" width="92" height="12" rx="2" fill="var(--s1)"/>
+              <text x="215" y="87" font-size="11.5" font-weight="600" fill="var(--ink)">0.42</text>
+              <text x="6" y="105" font-size="12" fill="var(--muted)">At the workplace</text>
+              <rect x="118" y="95" width="18" height="12" rx="2" fill="var(--s2)"/>
+              <text x="141" y="105" font-size="11.5" font-weight="600" fill="var(--ink)">0.08</text>
+            </svg>
+            <svg class="mv" data-v="parents" hidden viewBox="0 0 260 114" role="img" aria-label="Parents' predicted negative affect in jobs rarely done from home before COVID-19. Working from home: 1.20 before the pandemic, 2.01 in 2021. Working away from home: 1.66 before, 1.70 in 2021 (no significant change).">
+              <text x="0" y="12" font-size="12.5" font-weight="600" fill="var(--ink)">Parents working from home</text>
+              <text x="6" y="28" font-size="12" fill="var(--muted)">2010–13</text>
+              <rect x="100" y="18" width="72" height="12" rx="2" fill="var(--s2)"/>
+              <text x="177" y="28" font-size="11.5" font-weight="600" fill="var(--ink)">1.20</text>
+              <text x="6" y="46" font-size="12" fill="var(--muted)">2021</text>
+              <rect x="100" y="36" width="121" height="12" rx="2" fill="var(--s1)"/>
+              <text x="226" y="46" font-size="11.5" font-weight="600" fill="var(--ink)">2.01</text>
+              <text x="0" y="71" font-size="12.5" font-weight="600" fill="var(--ink)">Parents working away from home</text>
+              <text x="6" y="87" font-size="12" fill="var(--muted)">2010–13</text>
+              <rect x="100" y="77" width="100" height="12" rx="2" fill="var(--s2)" opacity=".35"/>
+              <text x="205" y="87" font-size="11.5" font-weight="600" fill="var(--ink)" opacity=".35">1.66</text>
+              <text x="6" y="105" font-size="12" fill="var(--muted)">2021</text>
+              <rect x="100" y="95" width="102" height="12" rx="2" fill="var(--s1)" opacity=".35"/>
+              <text x="207" y="105" font-size="11.5" font-weight="600" fill="var(--ink)" opacity=".35">1.70</text>
+            </svg>
+            <svg class="mv" data-v="bound" hidden viewBox="0 0 260 128" role="img" aria-label="Predicted psychological distress (logged) by boundary strategy, lower is better: physical 0.77, no conflict 0.78, no strategy 0.93, communicative 0.93, temporal 0.99, behavioral 1.05, struggling to manage 1.23.">
+              <text x="6" y="11" font-size="12" fill="var(--muted)">Physical</text>
+              <rect x="100" y="1" width="77" height="12" rx="2" fill="var(--s1)"/>
+              <text x="182" y="11" font-size="11.5" font-weight="600" fill="var(--ink)">0.77</text>
+              <text x="6" y="29" font-size="12" fill="var(--muted)">No conflict</text>
+              <rect x="100" y="19" width="78" height="12" rx="2" fill="var(--muted)" opacity=".5"/>
+              <text x="183" y="29" font-size="11.5" font-weight="600" fill="var(--ink)">0.78</text>
+              <text x="6" y="47" font-size="12" fill="var(--muted)">No strategy</text>
+              <rect x="100" y="37" width="93" height="12" rx="2" fill="var(--muted)" opacity=".5"/>
+              <text x="198" y="47" font-size="11.5" font-weight="600" fill="var(--ink)">0.93</text>
+              <text x="6" y="65" font-size="12" fill="var(--muted)">Communicative</text>
+              <rect x="100" y="55" width="93" height="12" rx="2" fill="var(--muted)" opacity=".5"/>
+              <text x="198" y="65" font-size="11.5" font-weight="600" fill="var(--ink)">0.93</text>
+              <text x="6" y="83" font-size="12" fill="var(--muted)">Temporal</text>
+              <rect x="100" y="73" width="99" height="12" rx="2" fill="var(--muted)" opacity=".5"/>
+              <text x="204" y="83" font-size="11.5" font-weight="600" fill="var(--ink)">0.99</text>
+              <text x="6" y="101" font-size="12" fill="var(--muted)">Behavioral</text>
+              <rect x="100" y="91" width="105" height="12" rx="2" fill="var(--muted)" opacity=".5"/>
+              <text x="210" y="101" font-size="11.5" font-weight="600" fill="var(--ink)">1.05</text>
+              <text x="6" y="119" font-size="12" fill="var(--muted)">Struggling</text>
+              <rect x="100" y="109" width="123" height="12" rx="2" fill="var(--s2)"/>
+              <text x="228" y="119" font-size="11.5" font-weight="600" fill="var(--ink)">1.23</text>
+            </svg>
+            <p class="src mv-src" data-v="school">Source: Fan and Moen (2024), <a href="https://doi.org/10.3390/socsci13010036" target="_blank" rel="noopener"><em>Social Sciences</em></a>, Figure 1.</p>
+            <p class="src mv-src" data-v="parents" hidden>Faded bars: no significant change.<br>Source: Qian and Fan (2026), <a href="https://doi.org/10.1177/00197939251390748" target="_blank" rel="noopener"><em>ILR Review</em></a>, Figure 3.</p>
+            <p class="src mv-src" data-v="bound" hidden>“Struggling”: workers who said they had trouble keeping work and home apart.<br>Source: Fan, Moen, and Ji (forthcoming), <a href="https://doi.org/10.1080/13668803.2026.2659080" target="_blank" rel="noopener"><em>Community, Work &amp; Family</em></a>, Figure 2.</p>
+          </figure>
+        </div>
+        <div class="st-row side">
+          <div>
+            <h3>Well-being</h3>
+            <p>Remote work was often called a silver lining of the pandemic. Our findings partly bear that out: a full return to the office was generally more stressful than staying remote. Hybrid work, the middle ground, worked out differently for different people. It was especially good for minority men and men without a college degree, but worse for white women.</p>
+            <span class="from"><a href="https://doi.org/10.1177/00221465221150283" target="_blank" rel="noopener"><em>Journal of Health and Social Behavior</em> 2023</a></span>
+          </div>
+          <figure class="st-mini">
+            <div class="mini-tabs" role="tablist">
+              <button type="button" class="on" data-v="back">By gender</button>
+              <button type="button" data-v="hyb">By gender and race</button>
+            </div>
+            <div class="mv-head" data-v="back">
+              <h4>Returning to the office lowered the odds of doing well</h4>
+              <p class="sub">Change in the chance (percentage points) of being in the best well-being group—low stress, high satisfaction—compared with staying remote</p>
+            </div>
+            <div class="mv-head" data-v="hyb" hidden>
+              <h4>Hybrid helped minority men and hurt white women</h4>
+              <p class="sub">Change in the chance (percentage points) of being in the worst well-being group—high stress, low satisfaction—after moving to hybrid, compared with staying remote</p>
+            </div>
+            <svg class="mv" data-v="back" viewBox="0 0 260 114" role="img" aria-label="Change in the chance of being in the best well-being group (low stress, high satisfaction), compared with staying remote, in percentage points. Back to the office: women -4.9, men -9.4 (both significant). Moving to hybrid: women -4.4, men -4.5 (not significant).">
+              <text x="0" y="12" font-size="12.5" font-weight="600" fill="var(--ink)">Back to the office</text>
+              <text x="8" y="28" font-size="12" fill="var(--muted)">Women</text>
+              <rect x="146" y="18" width="44" height="12" rx="2" fill="var(--s1)"/>
+              <text x="258" y="28" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)">−4.9</text>
+              <text x="8" y="46" font-size="12" fill="var(--muted)">Men</text>
+              <rect x="105" y="36" width="85" height="12" rx="2" fill="var(--s2)"/>
+              <text x="258" y="46" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)">−9.4</text>
+              <text x="0" y="71" font-size="12.5" font-weight="600" fill="var(--ink)">Moving to hybrid</text>
+              <text x="8" y="87" font-size="12" fill="var(--muted)">Women</text>
+              <rect x="150" y="77" width="40" height="12" rx="2" fill="var(--s1)" opacity=".35"/>
+              <text x="258" y="87" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)" opacity=".35">−4.4</text>
+              <text x="8" y="105" font-size="12" fill="var(--muted)">Men</text>
+              <rect x="149" y="95" width="41" height="12" rx="2" fill="var(--s2)" opacity=".35"/>
+              <text x="258" y="105" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)" opacity=".35">−4.5</text>
+              <line x1="190" x2="190" y1="14" y2="112" stroke="var(--muted)" stroke-width="1" opacity=".5"/>
+            </svg>
+            <svg class="mv" data-v="hyb" hidden viewBox="0 0 260 114" role="img" aria-label="Change in the chance of being in the low well-being group (high stress, low satisfaction) after moving to hybrid, compared with staying remote, in percentage points. Women: minority -4 (not significant), white +13. Men: minority -12, white +3 (not significant).">
+              <text x="0" y="12" font-size="12.5" font-weight="600" fill="var(--ink)">Women</text>
+              <text x="8" y="28" font-size="12" fill="var(--muted)">Minority</text>
+              <rect x="132" y="18" width="18" height="12" rx="2" fill="var(--s1)" opacity=".35"/>
+              <text x="258" y="28" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)" opacity=".35">−4</text>
+              <text x="8" y="46" font-size="12" fill="var(--muted)">White</text>
+              <rect x="150" y="36" width="63" height="12" rx="2" fill="var(--s1)"/>
+              <text x="258" y="46" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)">+13</text>
+              <text x="0" y="71" font-size="12.5" font-weight="600" fill="var(--ink)">Men</text>
+              <text x="8" y="87" font-size="12" fill="var(--muted)">Minority</text>
+              <rect x="89" y="77" width="61" height="12" rx="2" fill="var(--s2)"/>
+              <text x="258" y="87" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)">−12</text>
+              <text x="8" y="105" font-size="12" fill="var(--muted)">White</text>
+              <rect x="150" y="95" width="17" height="12" rx="2" fill="var(--s2)" opacity=".35"/>
+              <text x="258" y="105" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)" opacity=".35">+3</text>
+              <line x1="150" x2="150" y1="14" y2="112" stroke="var(--muted)" stroke-width="1" opacity=".5"/>
+            </svg>
+            <p class="src mv-src" data-v="back">Faded bars: not statistically significant.<br>Source: Fan and Moen (2023), <a href="https://doi.org/10.1177/00221465221150283" target="_blank" rel="noopener"><em>Journal of Health and Social Behavior</em></a>, Table 2.</p>
+            <p class="src mv-src" data-v="hyb" hidden>Faded bars: not statistically significant.<br>Source: Fan and Moen (2023), <a href="https://doi.org/10.1177/00221465221150283" target="_blank" rel="noopener"><em>Journal of Health and Social Behavior</em></a>, Figure 3b.</p>
+          </figure>
+        </div>
       </div>
+
 
       <p class="st-sub">Read the papers</p>
       <ul class="st-papers">
-        <li><a href="https://doi.org/10.1093/sf/soaf035" target="_blank" rel="noopener">Remote/Hybrid Work in Flux: Work-Place/Preference Mismatch and Adaptations</a><span class="v"><em>Social Forces</em>, 2025</span></li>
-        <li><a href="https://doi.org/10.1177/07308884231203668" target="_blank" rel="noopener">The Future(s) of Work? Disparities around Changing Job Conditions when Remote/Hybrid or Returning to Working at Work</a><span class="v"><em>Work and Occupations</em>, 2025</span></li>
-        <li><a href="https://doi.org/10.1177/00221465221150283" target="_blank" rel="noopener">Ongoing Remote Work, Returning to Working at Work, or In Between during COVID-19: What Promotes Subjective Well-being?</a><span class="v"><em>Journal of Health and Social Behavior</em>, 2023</span></li>
-        <li><a href="https://doi.org/10.1177/07308884211047208" target="_blank" rel="noopener">Working More, Less or the Same During COVID-19? A Mixed Method, Intersectional Analysis of Remote Workers</a><span class="v"><em>Work and Occupations</em>, 2022</span></li>
+        <li><a href="https://doi.org/10.1080/13668803.2026.2659080" target="_blank" rel="noopener">Work–Nonwork Boundary Management Strategies, Boundary Control, and Subjective Well-being</a><span class="v">Wen Fan, Phyllis Moen, and Siyu Ji · <a href="https://doi.org/10.1080/13668803.2026.2659080" target="_blank" rel="noopener"><em>Community, Work &amp; Family</em></a>, forthcoming</span></li>
+        <li><a href="https://doi.org/10.1177/21568693251344326" target="_blank" rel="noopener">Work-Place Mismatch, Work-Family Conflict, and Psychological Well-Being among Parents</a><span class="v">Richard Petts, Daniel L. Carlson, and Wen Fan · <a href="https://doi.org/10.1177/21568693251344326" target="_blank" rel="noopener"><em>Society and Mental Health</em></a>, forthcoming</span></li>
+        <li><a href="https://doi.org/10.1177/01902725261418326" target="_blank" rel="noopener">Human Meanings of Evolving Employment Geographies: Work-Place Captivity and Well-Being Dynamics</a><span class="v">Wen Fan and Phyllis Moen · <a href="https://doi.org/10.1177/01902725261418326" target="_blank" rel="noopener"><em>Social Psychology Quarterly</em></a>, 2026</span></li>
+        <li><a href="https://doi.org/10.1177/00197939251390748" target="_blank" rel="noopener">Did the COVID-19 Pandemic Make It Worse? Working from Home and Affective Well-being at the Intersections of Parental Status and Occupation</a><span class="v">Yue Qian and Wen Fan · <a href="https://doi.org/10.1177/00197939251390748" target="_blank" rel="noopener"><em>ILR Review</em></a>, 2026</span></li>
+        <li><a href="https://doi.org/10.1093/sf/soaf035" target="_blank" rel="noopener">Remote/Hybrid Work in Flux: Work-Place/Preference Mismatch and Adaptations</a><span class="v">Wen Fan and Phyllis Moen · <a href="https://doi.org/10.1093/sf/soaf035" target="_blank" rel="noopener"><em>Social Forces</em></a>, 2025</span></li>
+        <li><a href="https://doi.org/10.1177/07308884231203668" target="_blank" rel="noopener">The Future(s) of Work? Disparities around Changing Job Conditions when Remote/Hybrid or Returning to Working at Work</a><span class="v">Wen Fan and Phyllis Moen · <a href="https://doi.org/10.1177/07308884231203668" target="_blank" rel="noopener"><em>Work and Occupations</em></a>, 2025</span></li>
+        <li><a href="https://doi.org/10.3390/socsci13010036" target="_blank" rel="noopener">The Shifting Stress of Working Parents: An Examination of Dual Pandemic Disruptions—Remote Work and Remote Schooling</a><span class="v">Wen Fan and Phyllis Moen · <a href="https://doi.org/10.3390/socsci13010036" target="_blank" rel="noopener"><em>Social Sciences</em></a>, 2024</span></li>
+        <li><a href="https://doi.org/10.1177/00221465221150283" target="_blank" rel="noopener">Ongoing Remote Work, Returning to Working at Work, or In Between during COVID-19: What Promotes Subjective Well-being?</a><span class="v">Wen Fan and Phyllis Moen · <a href="https://doi.org/10.1177/00221465221150283" target="_blank" rel="noopener"><em>Journal of Health and Social Behavior</em></a>, 2023</span></li>
+        <li><a href="https://doi.org/10.1177/07308884211047208" target="_blank" rel="noopener">Working More, Less or the Same During COVID-19? A Mixed Method, Intersectional Analysis of Remote Workers</a><span class="v">Wen Fan and Phyllis Moen · <a href="https://doi.org/10.1177/07308884211047208" target="_blank" rel="noopener"><em>Work and Occupations</em></a>, 2022</span></li>
       </ul>
 
       <p class="st-sub">In the news</p>
       <p class="st-press"><a href="https://www.marketplace.org/story/2025/07/16/why-are-more-men-returning-to-office-work-than-women" target="_blank" rel="noopener">NPR Marketplace</a> · <a href="https://www.bloomberg.com/news/articles/2021-12-02/return-to-the-office-january-set-to-bring-clashes-for-workers-and-bosses" target="_blank" rel="noopener">Bloomberg</a></p>
     </section>
 
-    <div class="st-next">
-      <p class="eyebrow">Up next</p>
-      <h3>What happens when the workweek shrinks to four days?</h3>
-      <p>Trials in 141 organizations across six countries, with nearly 2,900 employees—and what changed for their burnout, sleep, and health.</p>
-    </div>
   </article>
 </div>
 
 <script>
-(function(){
-  var svg=document.getElementById('mm'), tip=document.getElementById('mmtip'); if(!svg) return;
-  var waves=['Oct 2020','Apr 2021','Oct 2021','Apr 2022'];
-  var A=[9.6,12.5,17.1,18.4], B=[15.4,10.6,6.5,5.1];
-  var W=640,H=260,L=44,R=150,T=12,Bm=34, max=20;
-  var x=function(i){return L+i*(W-L-R)/3}, y=function(v){return T+(H-T-Bm)*(1-v/max)};
-  var ns='http://www.w3.org/2000/svg', s='';
-  [0,5,10,15,20].forEach(function(t){ s+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+y(t)+'" y2="'+y(t)+'" stroke="var(--line)" stroke-width="1"/>'+
-    '<text x="'+(L-8)+'" y="'+(y(t)+4)+'" text-anchor="end" font-size="12" fill="var(--muted)">'+t+'%</text>'; });
-  waves.forEach(function(w,i){ s+='<text x="'+x(i)+'" y="'+(H-10)+'" text-anchor="middle" font-size="12" fill="var(--muted)">'+w+'</text>'; });
-  var path=function(d){return d.map(function(v,i){return (i?'L':'M')+x(i)+' '+y(v)}).join(' ')};
-  s+='<path d="'+path(A)+'" fill="none" stroke="var(--s1)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>';
-  s+='<path d="'+path(B)+'" fill="none" stroke="var(--s2)" stroke-width="2.5" stroke-dasharray="6 5" stroke-linecap="round"/>';
-  A.forEach(function(v,i){ s+='<circle cx="'+x(i)+'" cy="'+y(v)+'" r="4.5" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>'; });
-  B.forEach(function(v,i){ s+='<circle cx="'+x(i)+'" cy="'+y(v)+'" r="4.5" fill="var(--s2)" stroke="var(--surface)" stroke-width="2"/>'; });
-  s+='<text x="'+(x(3)+12)+'" y="'+(y(18.4)+4)+'" font-size="13" font-weight="600" fill="var(--ink)">18.4%</text>';
-  s+='<text x="'+(x(3)+12)+'" y="'+(y(5.1)+4)+'" font-size="13" font-weight="600" fill="var(--ink)">5.1%</text>';
-  s+='<text x="'+(x(0)-10)+'" y="'+(y(9.6)+18)+'" font-size="12" fill="var(--muted)" text-anchor="start">9.6%</text>';
-  s+='<text x="'+(x(0)-10)+'" y="'+(y(15.4)-10)+'" font-size="12" fill="var(--muted)" text-anchor="start">15.4%</text>';
-  s+='<line id="mmx" x1="0" x2="0" y1="'+T+'" y2="'+(H-Bm)+'" stroke="var(--muted)" stroke-width="1" stroke-dasharray="3 3" opacity="0"/>';
-  s+='<rect id="mmhit" x="'+L+'" y="'+T+'" width="'+(W-L-R)+'" height="'+(H-T-Bm)+'" fill="transparent"/>';
-  svg.innerHTML=s;
-  var hit=svg.querySelector('#mmhit'), xl=svg.querySelector('#mmx');
-  function show(ev){
-    var r=svg.getBoundingClientRect(), sx=(ev.clientX-r.left)*W/r.width;
-    var i=Math.max(0,Math.min(3,Math.round((sx-L)/((W-L-R)/3))));
-    xl.setAttribute('x1',x(i)); xl.setAttribute('x2',x(i)); xl.setAttribute('opacity',1);
-    tip.innerHTML='<b>'+waves[i]+'</b><div class="row"><span>On-site, prefer remote</span><span>'+A[i]+'%</span></div><div class="row"><span>Remote, prefer on-site</span><span>'+B[i]+'%</span></div>';
-    var fr=svg.parentNode.getBoundingClientRect();
-    var px=r.left-fr.left+x(i)*r.width/W, py=r.top-fr.top+y(Math.max(A[i],B[i]))*r.height/H;
-    tip.style.left=Math.min(px+12, fr.width-tip.offsetWidth-8)+'px'; tip.style.top=(py-10)+'px'; tip.style.opacity=1;
-  }
-  hit.addEventListener('mousemove',show);
-  hit.addEventListener('mouseleave',function(){tip.style.opacity=0; xl.setAttribute('opacity',0)});
-})();
+document.querySelectorAll(".st-mini").forEach(function(fig){
+  fig.querySelectorAll(".mini-tabs button").forEach(function(b){
+    b.addEventListener("click",function(){
+      var v=b.dataset.v;
+      fig.querySelectorAll(".mini-tabs button").forEach(function(x){x.classList.toggle("on",x===b)});
+      fig.querySelectorAll("[data-v]:not(button)").forEach(function(el){el.toggleAttribute("hidden",el.dataset.v!==v)});
+    });
+  });
+});
 </script>
 {{ end }}
