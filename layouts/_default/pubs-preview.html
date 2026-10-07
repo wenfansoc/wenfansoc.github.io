@@ -1,0 +1,160 @@
+{{ define "main" }}
+<style>
+  .pb-lead{color:var(--muted); line-height:1.6; margin:0 0 20px}
+  .pb-bar{display:flex; flex-wrap:wrap; align-items:center; gap:10px 18px; margin:0 0 6px; padding:0 0 16px; border-bottom:1px solid var(--line)}
+  .pb-seg{display:inline-flex; border:1px solid var(--line); border-radius:999px; padding:3px; background:var(--surface)}
+  .pb-seg button{font:inherit; font-size:13px; font-weight:600; padding:5px 13px; border:0; border-radius:999px; background:transparent; color:var(--muted); cursor:pointer}
+  .pb-seg button.on{background:var(--accent-soft); color:var(--accent)}
+  .pb-free{display:inline-flex; align-items:center; gap:7px; font-size:13.5px; color:var(--muted); cursor:pointer; user-select:none}
+  .pb-free input{accent-color:var(--accent); width:15px; height:15px; margin:0}
+  .pb-count{font-size:13px; color:var(--muted); margin-left:auto}
+
+  .pb-view[hidden],.pb-item[hidden],.pb-group[hidden]{display:none !important}
+  .pb-group{margin:0}
+  .page h2.pb-gh{border:none; padding:0; margin:30px 0 2px; font-size:1.35rem; color:var(--accent)}
+  .page .pb-view .pb-group:first-child h2.pb-gh{margin-top:14px}
+  .page .pb-list li.pb-item{padding-left:0; font-size:15.5px}
+  .page a.pb-t{color:var(--ink); border-bottom:1px solid transparent}
+  .page a.pb-t:hover{color:var(--accent); border-bottom-color:var(--ring)}
+  .page a.pb-fr{border-bottom:1px solid var(--ring)}
+  .page .pb-lead span.pb-fr{vertical-align:1px}
+  .pb-gh{font-family:var(--serif); font-weight:600; font-size:1.35rem; color:var(--accent); margin:28px 0 4px; border:0; padding:0}
+  .pb-gh .n{font-family:var(--sans,inherit); font-size:13px; font-weight:500; color:var(--muted); margin-left:8px}
+  .pb-list{list-style:none; padding:0; margin:0}
+  .page .pb-list li{margin:0; max-width:none}
+  .page .pb-list li::before{display:none}
+  .pb-item{padding:12px 0; border-top:1px solid var(--line)}
+  .pb-item:first-child{border-top:none}
+  .pb-t{color:var(--ink); font-weight:650; line-height:1.4; text-decoration:none; border-bottom:1px solid transparent}
+  a.pb-t:hover{color:var(--accent); border-bottom-color:var(--ring)}
+  .pb-a{display:block; font-size:14px; color:var(--muted); margin-top:3px; line-height:1.5}
+  .pb-a b{color:var(--ink); font-weight:600}
+  .pb-v{display:block; font-size:14px; color:var(--muted); margin-top:1px}
+  .pb-v em{font-family:var(--serif)}
+  .pb-tag{display:inline-block; font-size:11.5px; font-weight:600; padding:1px 8px; border-radius:999px; border:1px solid var(--line); color:var(--muted); margin-left:6px; vertical-align:1px}
+  .pb-fr{display:inline-block; font-size:11.5px; font-weight:700; letter-spacing:.04em; padding:2px 9px; border-radius:999px; background:var(--accent-soft); color:var(--accent); text-decoration:none; margin-left:8px; vertical-align:1px; border:1px solid var(--ring)}
+  .pb-fr:hover{background:var(--accent); color:#fff}
+  .pb-aw{display:block; font-size:13px; color:var(--gold, #B88424); margin-top:2px}
+  .pb-empty{color:var(--muted); padding:20px 0}
+
+  /* Variation B: compact, year in a side column */
+  .vB .pb-item{display:grid; grid-template-columns:1fr; padding:9px 0}
+  .vB .pb-a{display:none}
+  .vB .pb-t{font-weight:600}
+  .vB .pb-gh{font-size:1.15rem; margin-top:22px}
+  /* Variation C: year shown as a left column, no year headings */
+  .vC .pb-item{display:grid; grid-template-columns:4.2rem 1fr; gap:0 16px; padding:13px 0}
+  .vC .pb-yr{font-family:var(--serif); font-size:1.05rem; color:var(--accent); font-weight:600; padding-top:1px}
+  .pb-yr{display:none}
+  .vC .pb-view[data-view="year"] .pb-gh{display:none}
+  .vC .pb-view[data-view="year"] .pb-group:first-child .pb-item:first-child{border-top:none}
+  .vC .pb-view[data-view="year"] .pb-group + .pb-group .pb-item:first-child{border-top:1px solid var(--line)}
+  .vC .pb-yr{display:block}
+  @media (max-width:560px){ .vC .pb-item{grid-template-columns:1fr} .vC .pb-yr{font-size:.95rem} .pb-count{margin-left:0; width:100%} }
+
+  .mock-note{font-size:13px; background:var(--accent-soft); border:1px solid var(--ring); color:var(--accent); padding:8px 12px; border-radius:8px; margin:0 0 20px}
+  .mock-note button{font:inherit; font-weight:700; margin-left:6px; padding:2px 9px; border-radius:6px; border:1px solid var(--ring); background:var(--surface); color:var(--accent); cursor:pointer}
+  .mock-note button.on{background:var(--accent); color:#fff}
+</style>
+
+{{ $extra := hugo.Data.pub_extra }}
+{{ $topics := slice (dict "k" "flex" "name" "Flexibility & remote work") (dict "k" "fourday" "name" "Four-day workweeks") (dict "k" "family" "name" "Work, family & gender") (dict "k" "health" "name" "Health & inequality") (dict "k" "china" "name" "China") }}
+{{ $tname := dict "flex" "Flexibility & remote work" "fourday" "Four-day workweeks" "family" "Work, family & gender" "health" "Health & inequality" "china" "China" }}
+
+
+<div class="wrap">
+  <article class="page" id="pb">
+    <p class="mock-note">样稿（只在本地预览）· 版式：<button type="button" data-var="A" class="on">A 标准</button><button type="button" data-var="B">B 紧凑</button><button type="button" data-var="C">C 年份在左</button></p>
+    <h1 class="page-title">Publications</h1>
+    <p class="pb-lead">All my published papers, by year or by topic. Each title links to the journal; <span class="pb-fr" style="margin:0">Free</span> marks papers you can read in full without a subscription.</p>
+
+    <div class="pb-bar">
+      <div class="pb-seg" role="tablist" aria-label="Arrange by">
+        <button type="button" class="on" data-view="year">By year</button>
+        <button type="button" data-view="topic">By topic</button>
+      </div>
+      <label class="pb-free"><input type="checkbox" id="pb-freeonly"> Free to read only</label>
+      <span class="pb-count" id="pb-count"></span>
+    </div>
+
+    {{/* ---------- BY YEAR ---------- */}}
+    <div class="pb-view" data-view="year">
+      {{ $last := "" }}{{ $open := false }}
+      {{ range hugo.Data.publications }}
+        {{ $doi := "" }}{{ with .links }}{{ with .doi }}{{ $doi = replace . "https://doi.org/" "" }}{{ end }}{{ end }}
+        {{ $x := index $extra (cond (ne $doi "") $doi .title) }}
+        {{ if ne .year $last }}
+          {{ if $open }}</ul></section>{{ end }}
+          <section class="pb-group"><h2 class="pb-gh">{{ .year }}</h2><ul class="pb-list">
+          {{ $last = .year }}{{ $open = true }}
+        {{ end }}
+        <li class="pb-item" data-free="{{ if and $x $x.free }}1{{ else }}0{{ end }}">
+          <span class="pb-yr">{{ if eq .year "Forthcoming" }}Forth.{{ else }}{{ .year }}{{ end }}</span>
+          <div>
+            {{ if $doi }}<a class="pb-t" href="https://doi.org/{{ $doi }}" target="_blank" rel="noopener">{{ .title }}</a>{{ else }}<span class="pb-t">{{ .title }}</span>{{ end }}{{ if and $x $x.free }}<a class="pb-fr" href="{{ $x.free }}" target="_blank" rel="noopener">Free</a>{{ end }}
+            <span class="pb-a">{{ .authors | replaceRE "(Wen Fan|Fan, Wen)" "<b>$1</b>" | safeHTML }}</span>
+            <span class="pb-v"><em>{{ .venue }}</em>{{ with .details }} {{ . }}{{ end }}{{ with $x }}<span class="pb-tag">{{ index $tname .topic }}</span>{{ end }}</span>
+            {{ with .award }}<span class="pb-aw">{{ . }}</span>{{ end }}
+          </div>
+        </li>
+      {{ end }}
+      {{ if $open }}</ul></section>{{ end }}
+    </div>
+
+    {{/* ---------- BY TOPIC ---------- */}}
+    <div class="pb-view" data-view="topic" hidden>
+      {{ range $topics }}
+        {{ $k := .k }}
+        <section class="pb-group"><h2 class="pb-gh">{{ .name }}</h2><ul class="pb-list">
+        {{ range hugo.Data.publications }}
+          {{ $doi := "" }}{{ with .links }}{{ with .doi }}{{ $doi = replace . "https://doi.org/" "" }}{{ end }}{{ end }}
+          {{ $x := index $extra (cond (ne $doi "") $doi .title) }}
+          {{ if and $x (eq $x.topic $k) }}
+          <li class="pb-item" data-free="{{ if $x.free }}1{{ else }}0{{ end }}">
+            <span class="pb-yr">{{ if eq .year "Forthcoming" }}Forth.{{ else }}{{ .year }}{{ end }}</span>
+            <div>
+              {{ if $doi }}<a class="pb-t" href="https://doi.org/{{ $doi }}" target="_blank" rel="noopener">{{ .title }}</a>{{ else }}<span class="pb-t">{{ .title }}</span>{{ end }}{{ with $x.free }}<a class="pb-fr" href="{{ . }}" target="_blank" rel="noopener">Free</a>{{ end }}
+              <span class="pb-a">{{ .authors | replaceRE "(Wen Fan|Fan, Wen)" "<b>$1</b>" | safeHTML }}</span>
+              <span class="pb-v"><em>{{ .venue }}</em>{{ with .details }} {{ . }}{{ end }}, {{ .year }}</span>
+              {{ with .award }}<span class="pb-aw">{{ . }}</span>{{ end }}
+            </div>
+          </li>
+          {{ end }}
+        {{ end }}
+        </ul></section>
+      {{ end }}
+    </div>
+    <p class="pb-empty" id="pb-empty" hidden>No papers match.</p>
+  </article>
+</div>
+
+<script>
+(function(){
+  var root=document.getElementById("pb"), view="year", freeOnly=false;
+  try{ var v=localStorage.getItem("pbVar"); if(v) setVar(v); }catch(e){}
+  function setVar(v){
+    root.classList.remove("vA","vB","vC"); root.classList.add("v"+v);
+    root.querySelectorAll(".mock-note button").forEach(function(b){b.classList.toggle("on",b.dataset.var===v)});
+    try{localStorage.setItem("pbVar",v)}catch(e){}
+  }
+  function render(){
+    root.querySelectorAll(".pb-view").forEach(function(el){el.hidden=el.dataset.view!==view});
+    root.querySelectorAll(".pb-seg button").forEach(function(b){b.classList.toggle("on",b.dataset.view===view)});
+    var cur=root.querySelector('.pb-view[data-view="'+view+'"]'), shown=0;
+    cur.querySelectorAll(".pb-group").forEach(function(g){
+      var n=0;
+      g.querySelectorAll(".pb-item").forEach(function(it){var ok=!freeOnly||it.dataset.free==="1"; it.hidden=!ok; if(ok) n++;});
+      g.hidden=n===0; shown+=n;
+      if(view==="topic"){ var h=g.querySelector(".pb-gh"); var s=h.querySelector(".n"); if(!s){s=document.createElement("span"); s.className="n"; h.appendChild(s);} s.textContent=n; }
+    });
+    document.getElementById("pb-count").textContent=shown+(freeOnly?" free to read":" publications");
+    document.getElementById("pb-empty").hidden=shown>0;
+  }
+  root.querySelectorAll(".pb-seg button").forEach(function(b){b.addEventListener("click",function(){view=b.dataset.view; render();})});
+  document.getElementById("pb-freeonly").addEventListener("change",function(e){freeOnly=e.target.checked; render();});
+  root.querySelectorAll(".mock-note button").forEach(function(b){b.addEventListener("click",function(){setVar(b.dataset.var)})});
+  if(!/v[ABC]/.test(root.className)) setVar("A");
+  render();
+})();
+</script>
+{{ end }}

@@ -1,0 +1,139 @@
+# Per-paper extras for the Publications page, keyed by DOI (or by title when there is no DOI).
+# topic: flex | fourday | family | health | china   free: link to an existing free copy (NSF PAR, open access, PMC). Checked 2026-10-07.
+"10.1177/07308884261476223":
+  topic: china
+  free: "https://doi.org/10.1177/07308884261476223"
+"10.1080/13668803.2026.2659080":
+  topic: flex
+"10.1177/21568693251344326":
+  topic: flex
+"10.1177/01902725261418326":
+  topic: flex
+"10.1177/18681026251392281":
+  topic: china
+  free: "https://doi.org/10.1177/18681026251392281"
+"10.1016/j.landusepol.2026.107959":
+  topic: china
+"10.1177/00197939251390748":
+  topic: flex
+  free: "https://doi.org/10.1177/00197939251390748"
+"10.1038/s41562-025-02259-6":
+  topic: fourday
+  free: "https://par.nsf.gov/biblio/10636509"
+"10.1093/sf/soaf035":
+  topic: flex
+  free: "https://par.nsf.gov/biblio/10574277"
+"10.1215/00703370-12159081":
+  topic: family
+  free: "https://doi.org/10.1215/00703370-12159081"
+"10.1177/07308884231203668":
+  topic: flex
+  free: "https://par.nsf.gov/biblio/10499343"
+"10.1016/j.rssm.2024.101008":
+  topic: china
+"10.4337/9781035317622.00017":
+  topic: flex
+"10.1016/j.alcr.2024.100611":
+  topic: family
+"10.3390/socsci13010036":
+  topic: flex
+  free: "https://www.mdpi.com/2076-0760/13/1/36/pdf?version=1704359373"
+"10.1111/1468-4446.13067":
+  topic: health
+  free: "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/1468-4446.13067"
+"10.1177/21568693221131819":
+  topic: china
+  free: "https://doi.org/10.1177/21568693221131819"
+"10.1080/07448481.2021.1909046":
+  topic: health
+"10.1007/s10902-023-00669-9":
+  topic: health
+"10.1007/s11482-023-10164-1":
+  topic: flex
+  free: "https://link.springer.com/content/pdf/10.1007/s11482-023-10164-1.pdf"
+"10.1177/00221465221150283":
+  topic: flex
+  free: "https://par.nsf.gov/biblio/10402057"
+"10.3389/ijph.2022.1604806":
+  topic: health
+  free: "https://www.ssph-journal.org/articles/10.3389/ijph.2022.1604806/pdf"
+"10.1177/08912432221128541":
+  topic: family
+"10.1177/07308884211047208":
+  topic: flex
+  free: "https://par.nsf.gov/biblio/10319072"
+"10.1080/17441730.2021.1932067":
+  topic: family
+"10.1142/9781800612143_0020":
+  topic: china
+"10.1177/00943061221090766a":
+  topic: flex
+"10.1177/00221465211040550":
+  topic: china
+  free: "https://doi.org/10.1177/00221465211040550"
+"10.1177/0164027520966758":
+  topic: health
+"10.1093/esr/jcaa033":
+  topic: health
+"10.1007/s13524-020-00878-4":
+  topic: health
+  free: "https://read.dukeupress.edu/demography/article-pdf/57/3/979/845148/979fan.pdf"
+"10.1016/j.rssm.2020.100522":
+  topic: china
+  free: "https://doi.org/10.1016/j.rssm.2020.100522"
+"10.1002/ajcp.12371":
+  topic: health
+"10.2307/j.ctv128fqjw.11":
+  topic: family
+"10.1007/s10902-018-0039-3":
+  topic: family
+"10.1177/0192513X19862847":
+  topic: family
+"10.1177/0022146519870535":
+  topic: family
+"10.1016/j.socscimed.2019.112365":
+  topic: health
+"10.1016/j.ssmph.2019.100378":
+  topic: health
+  free: "https://www.sciencedirect.com/science/article/pii/S2352827318302362/pdf"
+"10.1016/j.jvb.2018.10.017":
+  topic: flex
+  free: "https://www.ncbi.nlm.nih.gov/pmc/articles/6788792"
+"10.1016/j.alcr.2018.01.006":
+  topic: china
+"10.1016/j.alcr.2016.09.004":
+  topic: china
+"10.1016/j.socscimed.2017.04.029":
+  topic: health
+"10.1093/socpro/spw033":
+  topic: flex
+  free: "https://academic.oup.com/socpro/article-pdf/64/1/53/11114679/spw033.pdf"
+"10.1016/j.socscimed.2016.03.044":
+  topic: china
+"10.1177/0003122415622391":
+  topic: flex
+  free: "https://spire.sciencespo.fr/hdl:/2441/4j7i6sbh3698bqhougfvot5uq6/resources/2016-kelly-does-a-flexibility-support-organizational-initiative-improve-high-tech-employees-well-being.pdf"
+"10.1016/j.socscimed.2014.12.015":
+  topic: flex
+  free: "https://www.ncbi.nlm.nih.gov/pmc/articles/4297715"
+"10.1177/0081175015587277":
+  topic: family
+  free: "https://journals.sagepub.com/doi/pdf/10.1177/0081175015587277?download=true"
+"10.1016/j.ssresearch.2014.07.007":
+  topic: china
+"10.1111/tsq.12092":
+  topic: flex
+  free: "https://www.ncbi.nlm.nih.gov/pmc/articles/4504681"
+"10.1177/0003122414531435":
+  topic: flex
+  free: "https://journals.sagepub.com/doi/pdf/10.1177/0003122414531435?download=true"
+"10.1177/2156869313507288":
+  topic: health
+  free: "https://www.ncbi.nlm.nih.gov/pmc/articles/4244885"
+"10.1016/j.socscimed.2013.02.011":
+  topic: flex
+  free: "https://www.ncbi.nlm.nih.gov/pmc/articles/3666105"
+"When Do Companies Abandon Workplace Flexibility Interventions? The Case of the Four-day Week":
+  topic: fourday
+"Workplace Flexibility":
+  topic: flex
