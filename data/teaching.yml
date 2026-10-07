@@ -1,22 +1,57 @@
-# Courses, rendered as cards by layouts/_default/teaching.html
-# Fields: title, level, terms, and optional description + syllabus (PDF link).
+# Teaching page data (rendered by layouts/_default/teaching.html).
+# Each course: group (graduate | undergraduate), code, title, short (label in the
+# teaching-record grid), question (may contain <em> for the maroon phrase),
+# description, terms (every semester taught, "Fall 2015" style), optional note.
+record_start: "Fall 2015"
+record_end: "Fall 2026"
+sabbaticals: ["Fall 2017", "Fall 2022", "Fall 2026"]
 
-- title: "Introductory Sociology for Healthcare Professions"
-  level: "Undergraduate"
-  terms: "Fall 2015–2021, Fall 2023, Fall 2024"
+courses:
+  - group: graduate
+    code: "SOCY 7703"
+    title: "Multivariate Statistics"
+    short: "Multivariate Statistics"
+    question: "What can a regression line tell us, and <em>when does it mislead?</em>"
+    description: "Ordinary least squares from the ground up: how it works, what it assumes, and how to check. Then linear probability and quantile models, missing data, survey weights, mediation, and a first look at panel data."
+    terms: ["Spring 2021", "Spring 2022", "Fall 2023", "Fall 2024"]
 
-- title: "Medical Sociology"
-  level: "Graduate"
-  terms: "Spring 2017"
+  - group: graduate
+    code: "SOCY 7704"
+    title: "Regression Models for Categorical Data"
+    short: "Categorical Data"
+    question: "What if the outcome is <em>yes or no</em>, one of several choices, or a count?"
+    description: "Logit and probit, multinomial and ordered logit, count models, and survival analysis, with maximum likelihood, missing data, and complex survey design along the way."
+    terms: ["Fall 2015", "Fall 2016", "Spring 2018", "Fall 2018", "Fall 2019", "Fall 2020", "Fall 2021", "Spring 2023", "Spring 2024", "Spring 2025"]
 
-- title: "Regression Models for Categorical Data"
-  level: "Graduate"
-  terms: "Fall 2015–2021, Spring 2018, Spring 2023, Spring 2024"
+  - group: graduate
+    code: "SOCY 7706"
+    title: "Longitudinal Data Analysis"
+    short: "Longitudinal Data Analysis"
+    question: "What do we learn by following <em>the same people</em> over time?"
+    description: "Fixed-effects and mixed-effects models, duration models, sequence analysis, and time series, each read alongside published studies."
+    terms: ["Fall 2025"]
 
-- title: "Event History Analysis and Sequence Analysis"
-  level: "Graduate"
-  terms: "Spring 2019"
+  - group: graduate
+    code: "SOCY 7717"
+    title: "Event History Analysis and Sequence Analysis"
+    short: "Event History & Sequence"
+    question: "Will it happen, and <em>when?</em>"
+    description: "Life tables, hazard models, competing risks, and time-varying covariates; then sequence analysis, for when the whole path matters. Students use the course to move their own projects forward."
+    terms: ["Spring 2019"]
 
-- title: "Multivariate Statistics"
-  level: "Graduate"
-  terms: "Spring 2021, Spring 2022, Fall 2023, Fall 2024"
+  - group: graduate
+    code: ""
+    title: "Medical Sociology"
+    short: "Medical Sociology"
+    question: "Why do some problems come to be seen as <em>medical?</em>"
+    description: "The meanings of illness, who gets sick, how people seek help, and how doctors, nurses, and patients interact."
+    terms: ["Spring 2017"]
+
+  - group: undergraduate
+    code: "SOCY 1002"
+    title: "Introductory Sociology for Healthcare Professions"
+    short: "Intro Sociology"
+    note: "Core course"
+    question: "Is it a personal trouble, or <em>a public issue?</em>"
+    description: "C. Wright Mills’s sociological imagination, taught through cases from health and medicine, with an eye to the MCAT. It covers the same core as Introductory Sociology."
+    terms: ["Fall 2015", "Spring 2016", "Fall 2016", "Spring 2017", "Spring 2018", "Fall 2018", "Spring 2019", "Fall 2019", "Spring 2020", "Fall 2020", "Spring 2021", "Fall 2021", "Fall 2023", "Fall 2024", "Fall 2025", "Spring 2026"]
