@@ -9,9 +9,11 @@
   .pb-free input{accent-color:var(--accent); width:15px; height:15px; margin:0}
   .pb-count{font-size:13px; color:var(--muted); margin-left:auto}
 
+  .pb-yr{display:none}
   .pb-view[hidden],.pb-item[hidden],.pb-group[hidden]{display:none !important}
-  .pb-group{margin:0}
-  .page h2.pb-gh{border:none; padding:0; margin:30px 0 2px; font-size:1.35rem; color:var(--accent)}
+  .page section.pb-group{margin:0; padding:0}
+  .page ul.pb-list{margin:0}
+  .page h2.pb-gh{border:none; padding:0; margin:16px 0 0; font-size:1.3rem; color:var(--accent)}
   .page .pb-view .pb-group:first-child h2.pb-gh{margin-top:14px}
   .page .pb-list li.pb-item{padding-left:0; font-size:15.5px}
   .page a.pb-t{color:var(--ink); border-bottom:1px solid transparent}
@@ -23,7 +25,7 @@
   .pb-list{list-style:none; padding:0; margin:0}
   .page .pb-list li{margin:0; max-width:none}
   .page .pb-list li::before{display:none}
-  .pb-item{padding:12px 0; border-top:1px solid var(--line)}
+  .pb-item{padding:10px 0; border-top:1px solid var(--line)}
   .pb-item:first-child{border-top:none}
   .pb-t{color:var(--ink); font-weight:650; line-height:1.4; text-decoration:none; border-bottom:1px solid transparent}
   a.pb-t:hover{color:var(--accent); border-bottom-color:var(--ring)}
@@ -37,21 +39,6 @@
   .pb-aw{display:block; font-size:13px; color:var(--gold, #B88424); margin-top:2px}
   .pb-empty{color:var(--muted); padding:20px 0}
 
-  /* Variation B: compact, year in a side column */
-  .vB .pb-item{display:grid; grid-template-columns:1fr; padding:9px 0}
-  .vB .pb-a{display:none}
-  .vB .pb-t{font-weight:600}
-  .vB .pb-gh{font-size:1.15rem; margin-top:22px}
-  /* Variation C: year shown as a left column, no year headings */
-  .vC .pb-item{display:grid; grid-template-columns:4.2rem 1fr; gap:0 16px; padding:13px 0}
-  .vC .pb-yr{font-family:var(--serif); font-size:1.05rem; color:var(--accent); font-weight:600; padding-top:1px}
-  .pb-yr{display:none}
-  .vC .pb-view[data-view="year"] .pb-gh{display:none}
-  .vC .pb-view[data-view="year"] .pb-group:first-child .pb-item:first-child{border-top:none}
-  .vC .pb-view[data-view="year"] .pb-group + .pb-group .pb-item:first-child{border-top:1px solid var(--line)}
-  .vC .pb-yr{display:block}
-  @media (max-width:560px){ .vC .pb-item{grid-template-columns:1fr} .vC .pb-yr{font-size:.95rem} .pb-count{margin-left:0; width:100%} }
-
   .mock-note{font-size:13px; background:var(--accent-soft); border:1px solid var(--ring); color:var(--accent); padding:8px 12px; border-radius:8px; margin:0 0 20px}
   .mock-note button{font:inherit; font-weight:700; margin-left:6px; padding:2px 9px; border-radius:6px; border:1px solid var(--ring); background:var(--surface); color:var(--accent); cursor:pointer}
   .mock-note button.on{background:var(--accent); color:#fff}
@@ -64,7 +51,7 @@
 
 <div class="wrap">
   <article class="page" id="pb">
-    <p class="mock-note">样稿（只在本地预览）· 版式：<button type="button" data-var="A" class="on">A 标准</button><button type="button" data-var="B">B 紧凑</button><button type="button" data-var="C">C 年份在左</button></p>
+    <p class="mock-note">样稿（只在本地预览）</p>
     <h1 class="page-title">Publications</h1>
     <p class="pb-lead">All my published papers, by year or by topic. Each title links to the journal; <span class="pb-fr" style="margin:0">Free</span> marks papers you can read in full without a subscription.</p>
 
@@ -74,7 +61,6 @@
         <button type="button" data-view="topic">By topic</button>
       </div>
       <label class="pb-free"><input type="checkbox" id="pb-freeonly"> Free to read only</label>
-      <span class="pb-count" id="pb-count"></span>
     </div>
 
     {{/* ---------- BY YEAR ---------- */}}
@@ -131,12 +117,6 @@
 <script>
 (function(){
   var root=document.getElementById("pb"), view="year", freeOnly=false;
-  try{ var v=localStorage.getItem("pbVar"); if(v) setVar(v); }catch(e){}
-  function setVar(v){
-    root.classList.remove("vA","vB","vC"); root.classList.add("v"+v);
-    root.querySelectorAll(".mock-note button").forEach(function(b){b.classList.toggle("on",b.dataset.var===v)});
-    try{localStorage.setItem("pbVar",v)}catch(e){}
-  }
   function render(){
     root.querySelectorAll(".pb-view").forEach(function(el){el.hidden=el.dataset.view!==view});
     root.querySelectorAll(".pb-seg button").forEach(function(b){b.classList.toggle("on",b.dataset.view===view)});
@@ -147,13 +127,10 @@
       g.hidden=n===0; shown+=n;
       if(view==="topic"){ var h=g.querySelector(".pb-gh"); var s=h.querySelector(".n"); if(!s){s=document.createElement("span"); s.className="n"; h.appendChild(s);} s.textContent=n; }
     });
-    document.getElementById("pb-count").textContent=shown+(freeOnly?" free to read":" publications");
     document.getElementById("pb-empty").hidden=shown>0;
   }
   root.querySelectorAll(".pb-seg button").forEach(function(b){b.addEventListener("click",function(){view=b.dataset.view; render();})});
   document.getElementById("pb-freeonly").addEventListener("change",function(e){freeOnly=e.target.checked; render();});
-  root.querySelectorAll(".mock-note button").forEach(function(b){b.addEventListener("click",function(){setVar(b.dataset.var)})});
-  if(!/v[ABC]/.test(root.className)) setVar("A");
   render();
 })();
 </script>
