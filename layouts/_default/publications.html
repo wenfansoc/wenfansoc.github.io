@@ -1,33 +1,158 @@
 {{ define "main" }}
+<style>
+  .pb-lead{color:var(--muted); line-height:1.6; margin:0 0 20px}
+  .pb-bar{display:flex; flex-wrap:wrap; align-items:center; gap:10px 18px; margin:0 0 6px; padding:0 0 16px; border-bottom:1px solid var(--line)}
+  .pb-seg{display:inline-flex; border:1px solid var(--line); border-radius:999px; padding:3px; background:var(--surface)}
+  .pb-seg button{font:inherit; font-size:13px; font-weight:600; padding:5px 13px; border:0; border-radius:999px; background:transparent; color:var(--muted); cursor:pointer}
+  .pb-seg button.on{background:var(--accent-soft); color:var(--accent)}
+  .pb-free{display:inline-flex; align-items:center; gap:7px; font-size:13.5px; color:var(--muted); cursor:pointer; user-select:none}
+  .pb-free input{accent-color:var(--accent); width:15px; height:15px; margin:0}
+  .pb-count{font-size:13px; color:var(--muted); margin-left:auto}
+
+  .pb-yr{display:none}
+  .pb-view[hidden],.pb-item[hidden],.pb-group[hidden]{display:none !important}
+  .page section.pb-group{margin:0; padding:0}
+  .page ul.pb-list{margin:0}
+  .page h2.pb-gh{border:none; padding:0; margin:16px 0 0; font-size:1.3rem; color:var(--accent)}
+  .page .pb-view .pb-group:first-child h2.pb-gh{margin-top:14px}
+  .page .pb-list li.pb-item{padding-left:0; font-size:15.5px}
+  .page a.pb-t{color:var(--ink); border-bottom:1px solid transparent}
+  .page a.pb-t:hover{color:var(--accent); border-bottom-color:var(--ring)}
+  .page a.pb-fr{border-bottom:1px solid var(--ring)}
+  .page .pb-lead span.pb-fr{vertical-align:1px}
+  .pb-gh{font-family:var(--serif); font-weight:600; font-size:1.35rem; color:var(--accent); margin:28px 0 4px; border:0; padding:0}
+  .pb-gh .n{font-family:var(--sans,inherit); font-size:13px; font-weight:500; color:var(--muted); margin-left:8px}
+  .pb-list{list-style:none; padding:0; margin:0}
+  .page .pb-list li{margin:0; max-width:none}
+  .page .pb-list li::before{display:none}
+  .pb-item{padding:10px 0; border-top:1px solid var(--line)}
+  .pb-item:first-child{border-top:none}
+  .pb-t{color:var(--ink); font-weight:650; line-height:1.4; text-decoration:none; border-bottom:1px solid transparent}
+  a.pb-t:hover{color:var(--accent); border-bottom-color:var(--ring)}
+  .pb-a{display:block; font-size:14px; color:var(--muted); margin-top:3px; line-height:1.5}
+  .pb-a b{color:var(--ink); font-weight:600}
+  .pb-v{display:block; font-size:14px; color:var(--muted); margin-top:1px}
+  .pb-v em{font-family:var(--serif)}
+  .pb-tag{display:inline-block; font-size:11.5px; font-weight:600; padding:1px 8px; border-radius:999px; border:1px solid var(--line); color:var(--muted); margin-left:6px; vertical-align:1px}
+  .pb-fr{display:inline-block; font-size:11.5px; font-weight:700; letter-spacing:.04em; padding:2px 9px; border-radius:999px; background:var(--accent-soft); color:var(--accent); text-decoration:none; margin-left:8px; vertical-align:1px; border:1px solid var(--ring)}
+  .pb-fr:hover{background:var(--accent); color:#fff}
+  .pb-aw{display:block; font-size:13px; color:var(--gold, #B88424); margin-top:2px}
+  .pb-empty{color:var(--muted); padding:20px 0}
+
+</style>
+
+{{ $extra := hugo.Data.pub_extra }}
+{{ $topics := slice (dict "k" "flex" "name" "Remote work & flexibility") (dict "k" "fourday" "name" "Four-day workweeks") (dict "k" "family" "name" "Work, family & gender") (dict "k" "health" "name" "Health & inequality") (dict "k" "change" "name" "Social change & the life course") }}
+{{ $tname := dict "flex" "Remote work & flexibility" "fourday" "Four-day workweeks" "family" "Work, family & gender" "health" "Health & inequality" "change" "Social change & the life course" }}
+{{ $places := slice (dict "k" "us" "name" "United States") (dict "k" "china" "name" "China") (dict "k" "other" "name" "Other countries & cross-national") (dict "k" "none" "name" "Not specific to one country") }}
+
+
 <div class="wrap">
-  <article class="page">
-    <h1 class="page-title">{{ .Title }}</h1>
-    {{ .Content }}
-    <div class="biblio">
-      {{ $last := "" }}
+  <article class="page" id="pb">
+    <h1 class="page-title">Publications</h1>
+    <p class="pb-lead">All my published papers, by year, topic, or place. Each title links to the journal; <span class="pb-fr" style="margin:0">Free</span> marks papers you can read in full without a subscription.</p>
+
+    <div class="pb-bar">
+      <div class="pb-seg" role="tablist" aria-label="Arrange by">
+        <button type="button" class="on" data-view="year">By year</button>
+        <button type="button" data-view="topic">By topic</button>
+        <button type="button" data-view="place">By place</button>
+      </div>
+      <label class="pb-free"><input type="checkbox" id="pb-freeonly"> Free to read only</label>
+    </div>
+
+    {{/* ---------- BY YEAR ---------- */}}
+    <div class="pb-view" data-view="year">
+      {{ $last := "" }}{{ $open := false }}
       {{ range hugo.Data.publications }}
+        {{ $doi := "" }}{{ with .links }}{{ with .doi }}{{ $doi = replace . "https://doi.org/" "" }}{{ end }}{{ end }}
+        {{ $x := index $extra (cond (ne $doi "") $doi .title) }}
         {{ if ne .year $last }}
-          <h2 class="bib-year">{{ .year }}</h2>
-          {{ $last = .year }}
+          {{ if $open }}</ul></section>{{ end }}
+          <section class="pb-group"><h2 class="pb-gh">{{ .year }}</h2><ul class="pb-list">
+          {{ $last = .year }}{{ $open = true }}
         {{ end }}
-        <div class="bib-entry{{ if .selected }} selected{{ end }}">
-          <div class="bib-title">{{ .title }}</div>
-          <div class="bib-authors">{{ .authors | replaceRE "(Wen Fan|Fan, Wen)" "<b>$1</b>" | safeHTML }}</div>
-          <div class="bib-venue"><em>{{ .venue }}</em>{{ with .details }} {{ . }}{{ end }}</div>
-          {{ with .award }}<div class="bib-award">{{ . }}</div>{{ end }}
-          <div class="bib-links">
-            <a class="bib-btn" href="https://scholar.google.com/scholar?q={{ .title | urlquery }}" target="_blank" rel="noopener">Scholar</a>
-            {{ with .links }}
-              {{ with .journal }}<a class="bib-btn" href="{{ . }}">Journal</a>{{ end }}
-              {{ with .pdf }}<a class="bib-btn" href="{{ . }}">PDF</a>{{ end }}
-              {{ with .doi }}<a class="bib-btn" href="{{ . }}">DOI</a>{{ end }}
-              {{ with .code }}<a class="bib-btn" href="{{ . }}">Code</a>{{ end }}
-              {{ with .arxiv }}<a class="bib-btn" href="{{ . }}">arXiv</a>{{ end }}
-            {{ end }}
+        <li class="pb-item" data-free="{{ if and $x $x.free }}1{{ else }}0{{ end }}">
+          <span class="pb-yr">{{ if eq .year "Forthcoming" }}Forth.{{ else }}{{ .year }}{{ end }}</span>
+          <div>
+            {{ if $doi }}<a class="pb-t" href="https://doi.org/{{ $doi }}" target="_blank" rel="noopener">{{ .title }}</a>{{ else }}<span class="pb-t">{{ .title }}</span>{{ end }}{{ if and $x $x.free }}<a class="pb-fr" href="{{ $x.free }}" target="_blank" rel="noopener">Free</a>{{ end }}
+            <span class="pb-a">{{ .authors | replaceRE "^([^,]+), ([^,]+)" "$2 $1" | replaceRE "^([^,]+), and ([^,]+)$" "$1 and $2" | replaceRE "(Wen Fan)" "<b>$1</b>" | safeHTML }}</span>
+            <span class="pb-v"><em>{{ .venue }}</em>{{ with .details }} {{ . }}{{ end }}{{ with $x }}<span class="pb-tag">{{ index $tname .topic }}</span>{{ end }}</span>
+            {{ with .award }}<span class="pb-aw">{{ . }}</span>{{ end }}
           </div>
-        </div>
+        </li>
+      {{ end }}
+      {{ if $open }}</ul></section>{{ end }}
+    </div>
+
+    {{/* ---------- BY TOPIC ---------- */}}
+    <div class="pb-view" data-view="topic" hidden>
+      {{ range $topics }}
+        {{ $k := .k }}
+        <section class="pb-group"><h2 class="pb-gh">{{ .name }}</h2><ul class="pb-list">
+        {{ range hugo.Data.publications }}
+          {{ $doi := "" }}{{ with .links }}{{ with .doi }}{{ $doi = replace . "https://doi.org/" "" }}{{ end }}{{ end }}
+          {{ $x := index $extra (cond (ne $doi "") $doi .title) }}
+          {{ if and $x (eq $x.topic $k) }}
+          <li class="pb-item" data-free="{{ if $x.free }}1{{ else }}0{{ end }}">
+            <span class="pb-yr">{{ if eq .year "Forthcoming" }}Forth.{{ else }}{{ .year }}{{ end }}</span>
+            <div>
+              {{ if $doi }}<a class="pb-t" href="https://doi.org/{{ $doi }}" target="_blank" rel="noopener">{{ .title }}</a>{{ else }}<span class="pb-t">{{ .title }}</span>{{ end }}{{ with $x.free }}<a class="pb-fr" href="{{ . }}" target="_blank" rel="noopener">Free</a>{{ end }}
+              <span class="pb-a">{{ .authors | replaceRE "^([^,]+), ([^,]+)" "$2 $1" | replaceRE "^([^,]+), and ([^,]+)$" "$1 and $2" | replaceRE "(Wen Fan)" "<b>$1</b>" | safeHTML }}</span>
+              <span class="pb-v"><em>{{ .venue }}</em>{{ with .details }} {{ . }}{{ end }}, {{ .year }}</span>
+              {{ with .award }}<span class="pb-aw">{{ . }}</span>{{ end }}
+            </div>
+          </li>
+          {{ end }}
+        {{ end }}
+        </ul></section>
       {{ end }}
     </div>
+
+    {{/* ---------- BY PLACE ---------- */}}
+    <div class="pb-view" data-view="place" hidden>
+      {{ range $places }}
+        {{ $k := .k }}
+        <section class="pb-group"><h2 class="pb-gh">{{ .name }}</h2><ul class="pb-list">
+        {{ range hugo.Data.publications }}
+          {{ $doi := "" }}{{ with .links }}{{ with .doi }}{{ $doi = replace . "https://doi.org/" "" }}{{ end }}{{ end }}
+          {{ $x := index $extra (cond (ne $doi "") $doi .title) }}
+          {{ if and $x (eq $x.place $k) }}
+          <li class="pb-item" data-free="{{ if $x.free }}1{{ else }}0{{ end }}">
+            <div>
+              {{ if $doi }}<a class="pb-t" href="https://doi.org/{{ $doi }}" target="_blank" rel="noopener">{{ .title }}</a>{{ else }}<span class="pb-t">{{ .title }}</span>{{ end }}{{ with $x.free }}<a class="pb-fr" href="{{ . }}" target="_blank" rel="noopener">Free</a>{{ end }}
+              <span class="pb-a">{{ .authors | replaceRE "^([^,]+), ([^,]+)" "$2 $1" | replaceRE "^([^,]+), and ([^,]+)$" "$1 and $2" | replaceRE "(Wen Fan)" "<b>$1</b>" | safeHTML }}</span>
+              <span class="pb-v"><em>{{ .venue }}</em>{{ with .details }} {{ . }}{{ end }}, {{ .year }}<span class="pb-tag">{{ index $tname $x.topic }}</span></span>
+              {{ with .award }}<span class="pb-aw">{{ . }}</span>{{ end }}
+            </div>
+          </li>
+          {{ end }}
+        {{ end }}
+        </ul></section>
+      {{ end }}
+    </div>
+    <p class="pb-empty" id="pb-empty" hidden>No papers match.</p>
   </article>
 </div>
+
+<script>
+(function(){
+  var root=document.getElementById("pb"), view="year", freeOnly=false;
+  function render(){
+    root.querySelectorAll(".pb-view").forEach(function(el){el.hidden=el.dataset.view!==view});
+    root.querySelectorAll(".pb-seg button").forEach(function(b){b.classList.toggle("on",b.dataset.view===view)});
+    var cur=root.querySelector('.pb-view[data-view="'+view+'"]'), shown=0;
+    cur.querySelectorAll(".pb-group").forEach(function(g){
+      var n=0;
+      g.querySelectorAll(".pb-item").forEach(function(it){var ok=!freeOnly||it.dataset.free==="1"; it.hidden=!ok; if(ok) n++;});
+      g.hidden=n===0; shown+=n;
+      if(view!=="year"){ var h=g.querySelector(".pb-gh"); var s=h.querySelector(".n"); if(!s){s=document.createElement("span"); s.className="n"; h.appendChild(s);} s.textContent=n; }
+    });
+    document.getElementById("pb-empty").hidden=shown>0;
+  }
+  root.querySelectorAll(".pb-seg button").forEach(function(b){b.addEventListener("click",function(){view=b.dataset.view; render();})});
+  document.getElementById("pb-freeonly").addEventListener("change",function(e){freeOnly=e.target.checked; render();});
+  render();
+})();
+</script>
 {{ end }}
