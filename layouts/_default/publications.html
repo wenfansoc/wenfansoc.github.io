@@ -10,6 +10,10 @@
   .pb-count{font-size:13px; color:var(--muted); margin-left:auto}
 
   .pb-yr{display:none}
+  .pb-chips{display:flex; flex-wrap:wrap; gap:6px; margin:12px 0 4px}
+  .pb-chips button{font:inherit; font-size:12.5px; font-weight:600; padding:4px 11px; border-radius:999px; border:1px solid var(--line); background:var(--surface); color:var(--muted); cursor:pointer; white-space:nowrap}
+  .pb-chips button.on{color:var(--accent); border-color:var(--ring); background:var(--accent-soft)}
+  .pb-chips button:disabled{opacity:.4; cursor:default}
   .pb-view[hidden],.pb-item[hidden],.pb-group[hidden]{display:none !important}
   .page section.pb-group{margin:0; padding:0}
   .page ul.pb-list{margin:0}
@@ -60,6 +64,7 @@
       </div>
       <label class="pb-free"><input type="checkbox" id="pb-freeonly"> Free to read only</label>
     </div>
+    <div class="pb-chips" id="pb-chips" aria-label="Jump to"></div>
 
     {{/* ---------- BY YEAR ---------- */}}
     <div class="pb-view" data-view="year">
@@ -138,19 +143,36 @@
 <script>
 (function(){
   var root=document.getElementById("pb"), view="year", freeOnly=false;
+  var pick=-1;
+  function chips(cur){
+    var box=document.getElementById("pb-chips"); box.innerHTML="";
+    var groups=cur.querySelectorAll(".pb-group");
+    function mk(label,idx,count){
+      var b=document.createElement("button"); b.type="button"; b.textContent=label;
+      b.className=(pick===idx)?"on":""; if(idx>=0&&count===0) b.disabled=true;
+      b.addEventListener("click",function(){pick=idx; render();}); box.appendChild(b);
+    }
+    mk("All",-1,1);
+    groups.forEach(function(g,i){
+      var name=g.querySelector(".pb-gh").firstChild.textContent.trim();
+      var c=[].filter.call(g.querySelectorAll(".pb-item"),function(it){return !freeOnly||it.dataset.free==="1"}).length;
+      mk(name,i,c);
+    });
+  }
   function render(){
     root.querySelectorAll(".pb-view").forEach(function(el){el.hidden=el.dataset.view!==view});
     root.querySelectorAll(".pb-seg button").forEach(function(b){b.classList.toggle("on",b.dataset.view===view)});
     var cur=root.querySelector('.pb-view[data-view="'+view+'"]'), shown=0;
-    cur.querySelectorAll(".pb-group").forEach(function(g){
+    cur.querySelectorAll(".pb-group").forEach(function(g,gi){
       var n=0;
       g.querySelectorAll(".pb-item").forEach(function(it){var ok=!freeOnly||it.dataset.free==="1"; it.hidden=!ok; if(ok) n++;});
-      g.hidden=n===0; shown+=n;
+      g.hidden=n===0||(pick>=0&&gi!==pick); if(!g.hidden) shown+=n;
       if(view!=="year"){ var h=g.querySelector(".pb-gh"); var s=h.querySelector(".n"); if(!s){s=document.createElement("span"); s.className="n"; h.appendChild(s);} s.textContent=n; }
     });
+    chips(cur);
     document.getElementById("pb-empty").hidden=shown>0;
   }
-  root.querySelectorAll(".pb-seg button").forEach(function(b){b.addEventListener("click",function(){view=b.dataset.view; render();})});
+  root.querySelectorAll(".pb-seg button").forEach(function(b){b.addEventListener("click",function(){view=b.dataset.view; pick=-1; render();})});
   document.getElementById("pb-freeonly").addEventListener("change",function(e){freeOnly=e.target.checked; render();});
   render();
 })();
