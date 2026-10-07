@@ -93,7 +93,7 @@
     <h1 class="page-title">Research</h1>
     <p class="st-intro">My research follows a few questions about work: where it happens, how long it lasts, what people want from it, and what it gives back or takes away—day to day and over a lifetime.</p>
     <nav class="st-index" aria-label="Research areas">
-      <a class="on" href="#remote">Remote &amp; hybrid work</a>
+      <a href="#remote">Remote &amp; hybrid work</a>
       <a href="#fourday">Four-day workweeks</a>
       <span>The meaning of work</span>
       <span>Gender, health &amp; the life course</span>
@@ -674,6 +674,22 @@
 </div>
 
 <script>
+(function(){
+  var pills=document.querySelectorAll('.st-index a[href^="#"]');
+  var ids=[].map.call(pills,function(a){return a.getAttribute("href").slice(1)});
+  function show(){
+    var id=location.hash.slice(1);
+    if(ids.indexOf(id)<0) id=ids[0];
+    ids.forEach(function(x){var s=document.getElementById(x); if(s) s.hidden=(x!==id)});
+    pills.forEach(function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+id)});
+  }
+  pills.forEach(function(a){a.addEventListener("click",function(e){
+    e.preventDefault(); history.replaceState(null,"",a.getAttribute("href")); show();
+    document.querySelector(".st-index").scrollIntoView({block:"start"});
+  })});
+  window.addEventListener("hashchange",show);
+  show();
+})();
 document.querySelectorAll(".st-mini").forEach(function(fig){
   fig.querySelectorAll(".mini-tabs button").forEach(function(b){
     b.addEventListener("click",function(){
