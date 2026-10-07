@@ -78,7 +78,7 @@
           <span class="pb-yr">{{ if eq .year "Forthcoming" }}Forth.{{ else }}{{ .year }}{{ end }}</span>
           <div>
             {{ if $doi }}<a class="pb-t" href="https://doi.org/{{ $doi }}" target="_blank" rel="noopener">{{ .title }}</a>{{ else }}<span class="pb-t">{{ .title }}</span>{{ end }}{{ if and $x $x.free }}<a class="pb-fr" href="{{ $x.free }}" target="_blank" rel="noopener">Free</a>{{ end }}
-            <span class="pb-a">{{ .authors | replaceRE "(Wen Fan|Fan, Wen)" "<b>$1</b>" | safeHTML }}</span>
+            <span class="pb-a">{{ .authors | replaceRE "^([^,]+), ([^,]+)" "$2 $1" | replaceRE "^([^,]+), and ([^,]+)$" "$1 and $2" | replaceRE "(Wen Fan)" "<b>$1</b>" | safeHTML }}</span>
             <span class="pb-v"><em>{{ .venue }}</em>{{ with .details }} {{ . }}{{ end }}{{ with $x }}<span class="pb-tag">{{ index $tname .topic }}</span>{{ end }}</span>
             {{ with .award }}<span class="pb-aw">{{ . }}</span>{{ end }}
           </div>
@@ -100,7 +100,7 @@
             <span class="pb-yr">{{ if eq .year "Forthcoming" }}Forth.{{ else }}{{ .year }}{{ end }}</span>
             <div>
               {{ if $doi }}<a class="pb-t" href="https://doi.org/{{ $doi }}" target="_blank" rel="noopener">{{ .title }}</a>{{ else }}<span class="pb-t">{{ .title }}</span>{{ end }}{{ with $x.free }}<a class="pb-fr" href="{{ . }}" target="_blank" rel="noopener">Free</a>{{ end }}
-              <span class="pb-a">{{ .authors | replaceRE "(Wen Fan|Fan, Wen)" "<b>$1</b>" | safeHTML }}</span>
+              <span class="pb-a">{{ .authors | replaceRE "^([^,]+), ([^,]+)" "$2 $1" | replaceRE "^([^,]+), and ([^,]+)$" "$1 and $2" | replaceRE "(Wen Fan)" "<b>$1</b>" | safeHTML }}</span>
               <span class="pb-v"><em>{{ .venue }}</em>{{ with .details }} {{ . }}{{ end }}, {{ .year }}</span>
               {{ with .award }}<span class="pb-aw">{{ . }}</span>{{ end }}
             </div>
