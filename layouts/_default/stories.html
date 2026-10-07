@@ -1,7 +1,7 @@
 {{ define "main" }}
 <style>
   .st-intro{font-size:1.15rem; line-height:1.6; color:var(--muted); margin:0 0 22px}
-  .st-index{display:flex; flex-wrap:wrap; gap:6px; margin:0 0 8px; position:static; border:0; background:none; backdrop-filter:none; -webkit-backdrop-filter:none}
+  .st-index{display:flex; flex-wrap:wrap; gap:6px; margin:0 0 8px; position:sticky; top:var(--navh,53px); z-index:9; padding:8px 0; border:0; background:color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px)}
   .st-label{margin:6px 0 10px}
   .page .eyebrow::after{display:none}
   @media (min-width:760px){ .st-index{flex-wrap:nowrap} .st-index a,.st-index span{white-space:nowrap} }
