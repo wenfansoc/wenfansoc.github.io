@@ -1,7 +1,9 @@
 {{ define "main" }}
 <style>
   .st-intro{font-size:1.15rem; line-height:1.6; color:var(--muted); margin:0 0 22px}
-  .st-index{display:flex; flex-wrap:wrap; gap:6px; margin:0 0 8px}
+  .st-index{display:flex; flex-wrap:wrap; gap:6px; margin:0 0 8px; position:static; border:0; background:none; backdrop-filter:none; -webkit-backdrop-filter:none}
+  .st-label{margin:6px 0 10px}
+  .st-label::after{display:none}
   @media (min-width:760px){ .st-index{flex-wrap:nowrap} .st-index a,.st-index span{white-space:nowrap} }
   .st-index a,.st-index span{font-size:13px; font-weight:600; padding:6px 11px; border-radius:999px; border:1px solid var(--line); text-decoration:none; color:var(--muted); background:var(--surface)}
   .st-index a.on{color:var(--accent); border-color:var(--ring); background:var(--accent-soft)}
@@ -92,7 +94,7 @@
     <p class="mock-note">样稿（只在本地预览）：远程和四天工作制两节已写；意义感一节待写。</p>
     <h1 class="page-title">Research</h1>
     <p class="st-intro">My research follows a few questions about work: where it happens, how long it lasts, what people want from it, and what it gives back or takes away—day to day and over a lifetime.</p>
-    <p class="eyebrow" style="margin:0 0 8px">Current projects</p>
+    <p class="eyebrow st-label">Current projects</p>
     <nav class="st-index" aria-label="Current projects">
       <a href="#remote">Remote &amp; hybrid work</a>
       <a href="#fourday">Four-day workweeks</a>
