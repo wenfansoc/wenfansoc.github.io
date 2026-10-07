@@ -67,6 +67,7 @@
   .st-papers li:first-child{border-top:none}
   .st-papers a{color:var(--ink); font-weight:650; text-decoration:none; border-bottom:1px solid transparent}
   .st-papers a:hover{color:var(--accent); border-bottom-color:var(--ring)}
+  .st-papers .t{color:var(--ink); font-weight:650}
   .st-papers .v{display:block; font-size:14px; color:var(--muted); margin-top:2px}
   .st-papers .v em{font-family:var(--serif)}
   .page .st-papers .v em{color:inherit}
@@ -88,12 +89,12 @@
 
 <div class="wrap">
   <article class="page">
-    <p class="mock-note">样稿（只在本地预览）：先做"远程和混合办公"一条主线，其他主线等方向定了再写。</p>
+    <p class="mock-note">样稿（只在本地预览）：远程和四天工作制两节已写；意义感和性别健康两节待写。</p>
     <h1 class="page-title">Research</h1>
     <p class="st-intro">My research follows a few questions about work: where it happens, how long it lasts, what people want from it, and what it gives back or takes away—day to day and over a lifetime.</p>
     <nav class="st-index" aria-label="Research areas">
       <a class="on" href="#remote">Remote &amp; hybrid work</a>
-      <span>Four-day workweeks</span>
+      <a href="#fourday">Four-day workweeks</a>
       <span>The meaning of work</span>
       <span>Gender, health &amp; the life course</span>
     </nav>
@@ -497,6 +498,176 @@
 
       <p class="st-sub">In the news</p>
       <p class="st-press"><a href="https://www.marketplace.org/story/2025/07/16/why-are-more-men-returning-to-office-work-than-women" target="_blank" rel="noopener">NPR Marketplace</a> · <a href="https://www.bloomberg.com/news/articles/2021-12-02/return-to-the-office-january-set-to-bring-clashes-for-workers-and-bosses" target="_blank" rel="noopener">Bloomberg</a></p>
+    </section>
+
+    <section class="story" id="fourday">
+      <p class="eyebrow">Four-day workweeks</p>
+      <h2 class="st-q">What happens when the workweek gets shorter but the paycheck doesn't?</h2>
+      <dl class="st-meta">
+        <dt>Data</dt><dd>Four-day workweek trials organized by 4 Day Week Global, 2022–ongoing: more than 10,000 employees in more than 270 organizations in North America, Europe, Australia and New Zealand, and South Africa (with Juliet Schor, Phyllis Moen, and Orla Kelly)</dd>
+        <dt>Funding</dt><dd>National Science Foundation (<a href="https://www.nsf.gov/awardsearch/show-award/?AWD_ID=2241840" target="_blank" rel="noopener">2241840</a>); Russell Sage Foundation (2205-38631)</dd>
+      </dl>
+      <p class="st-lead">Since 2022, hundreds of organizations have moved to a four-day, 32-hour week for six months while keeping pay the same. We survey their employees before, during, and after each trial, and we keep in touch with the organizations afterward. We ask what shorter hours do for workers' health and well-being, and whether employers keep the new schedule once the trial is over.</p>
+
+      <div class="st-rows">
+        <div class="st-row side">
+          <div>
+            <h3>Well-being</h3>
+            <p>Long hours are tied to burnout and poor health, yet workplace responses to overwork have often asked individual workers to cope better on their own. The four-day week changes the schedule for everyone at once. Workers in the trials reported less burnout and better job satisfaction, mental health, and physical health; workers in comparison companies that kept their usual schedule saw no such change. The bigger the cut in hours, the bigger the gains, and the gains held a year later. Much of the improvement came through workers feeling better able to do their jobs, sleeping better, and being less tired.</p>
+            <span class="from"><a href="https://doi.org/10.1038/s41562-025-02259-6" target="_blank" rel="noopener"><em>Nature Human Behaviour</em> 2025</a></span>
+          </div>
+          <figure class="st-mini">
+            <div class="mini-tabs" role="tablist">
+              <button type="button" class="on" data-v="wb4">Well-being</button>
+              <button type="button" data-v="hrs4">Hours</button>
+            </div>
+            <div class="mv-head" data-v="wb4">
+              <h4>Trial workers did better; comparison workers didn't change</h4>
+              <p class="sub">Change from before the trial to the end of the six-month trial (burnout and health on 1–5 scales; job satisfaction 0–10)</p>
+              <div class="legend">
+                <span><i style="border-color:var(--s1)"></i>Trial companies</span>
+                <span><i style="border-color:var(--s2)"></i>Comparison companies</span>
+              </div>
+            </div>
+            <div class="mv-head" data-v="hrs4" hidden>
+              <h4>Hours fell in trial companies only</h4>
+              <p class="sub">Average hours worked per week, before the trial and at the end of the six-month trial</p>
+            </div>
+            <svg class="mv" data-v="wb4" viewBox="0 0 260 230" role="img" aria-label="Change from before to the end of the trial. Burnout: trial -0.44, comparison +0.04 (not significant). Job satisfaction: trial +0.52, comparison -0.19 (not significant). Mental health: trial +0.39, comparison +0.03 (not significant). Physical health: trial +0.28, comparison +0.04 (not significant).">
+              <text x="0" y="12" font-size="12.5" font-weight="600" fill="var(--ink)">Burnout (lower is better)</text>
+              <text x="8" y="28" font-size="12" fill="var(--muted)">Trial</text>
+              <rect x="97" y="18" width="53" height="12" rx="2" fill="var(--s1)"/>
+              <text x="258" y="28" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)">−0.44</text>
+              <text x="8" y="46" font-size="12" fill="var(--muted)">Comparison</text>
+              <rect x="150" y="36" width="5" height="12" rx="2" fill="var(--s2)" opacity=".35"/>
+              <text x="258" y="46" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)" opacity=".35">+0.04</text>
+              <text x="0" y="71" font-size="12.5" font-weight="600" fill="var(--ink)">Job satisfaction</text>
+              <text x="8" y="87" font-size="12" fill="var(--muted)">Trial</text>
+              <rect x="150" y="77" width="62" height="12" rx="2" fill="var(--s1)"/>
+              <text x="258" y="87" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)">+0.52</text>
+              <text x="8" y="105" font-size="12" fill="var(--muted)">Comparison</text>
+              <rect x="127" y="95" width="23" height="12" rx="2" fill="var(--s2)" opacity=".35"/>
+              <text x="258" y="105" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)" opacity=".35">−0.19</text>
+              <text x="0" y="130" font-size="12.5" font-weight="600" fill="var(--ink)">Mental health</text>
+              <text x="8" y="146" font-size="12" fill="var(--muted)">Trial</text>
+              <rect x="150" y="136" width="47" height="12" rx="2" fill="var(--s1)"/>
+              <text x="258" y="146" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)">+0.39</text>
+              <text x="8" y="164" font-size="12" fill="var(--muted)">Comparison</text>
+              <rect x="150" y="154" width="4" height="12" rx="2" fill="var(--s2)" opacity=".35"/>
+              <text x="258" y="164" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)" opacity=".35">+0.03</text>
+              <text x="0" y="189" font-size="12.5" font-weight="600" fill="var(--ink)">Physical health</text>
+              <text x="8" y="205" font-size="12" fill="var(--muted)">Trial</text>
+              <rect x="150" y="195" width="34" height="12" rx="2" fill="var(--s1)"/>
+              <text x="258" y="205" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)">+0.28</text>
+              <text x="8" y="223" font-size="12" fill="var(--muted)">Comparison</text>
+              <rect x="150" y="213" width="5" height="12" rx="2" fill="var(--s2)" opacity=".35"/>
+              <text x="258" y="223" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)" opacity=".35">+0.04</text>
+              <line x1="150" x2="150" y1="14" y2="228" stroke="var(--muted)" stroke-width="1" opacity=".5"/>
+            </svg>
+            <svg class="mv" data-v="hrs4" hidden viewBox="0 0 260 114" role="img" aria-label="Average weekly hours. Trial companies: 39.0 before, 34.3 at the end of the trial. Comparison companies: 39.9 before, 40.0 at the end.">
+              <text x="0" y="12" font-size="12.5" font-weight="600" fill="var(--ink)">Trial companies</text>
+              <text x="8" y="28" font-size="12" fill="var(--muted)">Before</text>
+              <rect x="70" y="18" width="136" height="12" rx="2" fill="var(--s1)"/>
+              <text x="211" y="28" font-size="11.5" font-weight="600" fill="var(--ink)">39.0</text>
+              <text x="8" y="46" font-size="12" fill="var(--muted)">After</text>
+              <rect x="70" y="36" width="120" height="12" rx="2" fill="var(--s1)"/>
+              <text x="195" y="46" font-size="11.5" font-weight="600" fill="var(--ink)">34.3</text>
+              <text x="0" y="71" font-size="12.5" font-weight="600" fill="var(--ink)">Comparison companies</text>
+              <text x="8" y="87" font-size="12" fill="var(--muted)">Before</text>
+              <rect x="70" y="77" width="140" height="12" rx="2" fill="var(--s2)"/>
+              <text x="215" y="87" font-size="11.5" font-weight="600" fill="var(--ink)">39.9</text>
+              <text x="8" y="105" font-size="12" fill="var(--muted)">After</text>
+              <rect x="70" y="95" width="140" height="12" rx="2" fill="var(--s2)"/>
+              <text x="215" y="105" font-size="11.5" font-weight="600" fill="var(--ink)">40.0</text>
+            </svg>
+            <p class="src mv-src" data-v="wb4">Faded bars: not statistically significant. Trial: 2,896 employees in 141 companies; comparison: 285 employees in 12 companies.<br>Source: Fan, Schor, Kelly, and Gu (2025), <a href="https://doi.org/10.1038/s41562-025-02259-6" target="_blank" rel="noopener"><em>Nature Human Behaviour</em></a>, Table 2.</p>
+            <p class="src mv-src" data-v="hrs4" hidden>Source: Fan, Schor, Kelly, and Gu (2025), <a href="https://doi.org/10.1038/s41562-025-02259-6" target="_blank" rel="noopener"><em>Nature Human Behaviour</em></a>, Table 2.</p>
+          </figure>
+        </div>
+        <div class="st-row side">
+          <div>
+            <h3>Keeping it</h3>
+            <p>A trial is easy to start. The harder question is whether employers keep the new schedule after the trial ends, and most did. The companies that went back to five days tell us what makes the change last. Companies where work stress rose rather than fell were more likely to stop. So were companies whose workers reported working more efficiently by the end of the trial, which means efficiency gains alone did not secure the shorter week. Companies with more white men on staff were also more likely to go back. Industry, country, company size, and remote work made little difference, so the four-day week can work across many kinds of organizations.</p>
+            <span class="from"><em>ILR Review</em> forthcoming</span>
+          </div>
+          <figure class="st-mini">
+            <div class="mini-tabs" role="tablist">
+              <button type="button" class="on" data-v="kept">Who kept it</button>
+              <button type="button" data-v="diff">What differed</button>
+            </div>
+            <div class="mv-head" data-v="kept">
+              <h4>Nine in ten companies kept the four-day week</h4>
+              <p class="sub">197 companies that began trials between February 2022 and June 2023, followed for 12 to 28 months</p>
+            </div>
+            <div class="mv-head" data-v="diff" hidden>
+              <h4>Companies that went back looked different</h4>
+              <p class="sub">Company averages, companies that kept the four-day week versus those that went back to five days</p>
+              <div class="legend">
+                <span><i style="border-color:var(--s1)"></i>Kept it</span>
+                <span><i style="border-color:var(--s2)"></i>Went back</span>
+              </div>
+            </div>
+            <svg class="mv" data-v="kept" viewBox="0 0 260 128" role="img" aria-label="Of 197 companies, 177 (90%) kept the four-day week and 20 (10%) went back to five days. Of the 20: 10 stopped before the six-month trial ended, 5 at the end of the trial, and 5 within the next six months.">
+              <rect x="0" y="4" width="231" height="18" rx="3" fill="var(--s1)"/>
+              <rect x="233" y="4" width="25" height="18" rx="3" fill="var(--s2)"/>
+              <text x="0" y="40" font-size="12" font-weight="600" fill="var(--ink)">Kept it: 177 (90%)</text>
+              <text x="258" y="40" text-anchor="end" font-size="12" font-weight="600" fill="var(--ink)">Went back: 20</text>
+              <text x="0" y="70" font-size="12.5" font-weight="600" fill="var(--ink)">When the 20 went back</text>
+              <text x="8" y="87" font-size="12" fill="var(--muted)">During the trial</text>
+              <rect x="130" y="77" width="100" height="12" rx="2" fill="var(--s2)"/>
+              <text x="235" y="87" font-size="11.5" font-weight="600" fill="var(--ink)">10</text>
+              <text x="8" y="105" font-size="12" fill="var(--muted)">At the end</text>
+              <rect x="130" y="95" width="50" height="12" rx="2" fill="var(--s2)"/>
+              <text x="185" y="105" font-size="11.5" font-weight="600" fill="var(--ink)">5</text>
+              <text x="8" y="123" font-size="12" fill="var(--muted)">In the next 6 months</text>
+              <rect x="130" y="113" width="50" height="12" rx="2" fill="var(--s2)"/>
+              <text x="185" y="123" font-size="11.5" font-weight="600" fill="var(--ink)">5</text>
+            </svg>
+            <svg class="mv" data-v="diff" hidden viewBox="0 0 260 172" role="img" aria-label="Company averages, kept versus went back. Change in work stress (1-5): kept -0.27, went back +0.02. Working efficiently at the end of the trial (1-5): kept 3.78, went back 4.03. Share of white men on staff: kept 26.5%, went back 40.0%.">
+              <text x="0" y="12" font-size="12.5" font-weight="600" fill="var(--ink)">Change in work stress (1–5)</text>
+              <rect x="110" y="18" width="40" height="12" rx="2" fill="var(--s1)"/>
+              <text x="258" y="28" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)">−0.27</text>
+              <rect x="150" y="36" width="3" height="12" rx="2" fill="var(--s2)"/>
+              <text x="258" y="46" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)">+0.02</text>
+              <line x1="150" x2="150" y1="15" y2="51" stroke="var(--muted)" stroke-width="1" opacity=".5"/>
+              <text x="0" y="71" font-size="12.5" font-weight="600" fill="var(--ink)">Working efficiently, end of trial (1–5)</text>
+              <rect x="0" y="77" width="139" height="12" rx="2" fill="var(--s1)"/>
+              <text x="258" y="87" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)">3.78</text>
+              <rect x="0" y="95" width="152" height="12" rx="2" fill="var(--s2)"/>
+              <text x="258" y="105" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)">4.03</text>
+              <text x="0" y="130" font-size="12.5" font-weight="600" fill="var(--ink)">Share of white men on staff</text>
+              <rect x="0" y="136" width="53" height="12" rx="2" fill="var(--s1)"/>
+              <text x="258" y="146" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)">26.5%</text>
+              <rect x="0" y="154" width="80" height="12" rx="2" fill="var(--s2)"/>
+              <text x="258" y="164" text-anchor="end" font-size="11.5" font-weight="600" fill="var(--ink)">40.0%</text>
+            </svg>
+            <p class="src mv-src" data-v="kept">Source: Schor, Fan, Gu, and Fitzgerald (forthcoming), <em>ILR Review</em>.</p>
+            <p class="src mv-src" data-v="diff" hidden>170 companies with complete data, 9 of which went back. “Working efficiently”: how often workers found more efficient ways to work and put the most critical tasks first.<br>Source: Schor, Fan, Gu, and Fitzgerald (forthcoming), <em>ILR Review</em>, Table 2.</p>
+          </figure>
+        </div>
+      </div>
+
+      <p class="st-sub">Read the papers</p>
+      <ul class="st-papers">
+        <li><span class="t">When Do Companies Abandon Workplace Flexibility Interventions? The Case of the Four-day Week</span><span class="v">Juliet Schor, Wen Fan, Guolin Gu, and Jared Fitzgerald · <em>ILR Review</em>, forthcoming</span></li>
+        <li><a href="https://doi.org/10.1038/s41562-025-02259-6" target="_blank" rel="noopener">Work Time Reduction Via a Four-day Workweek Finds Improvements in Workers' Well-being</a><span class="v">Wen Fan, Juliet Schor, Orla Kelly, and Guolin Gu · <a href="https://doi.org/10.1038/s41562-025-02259-6" target="_blank" rel="noopener"><em>Nature Human Behaviour</em></a>, 2025</span></li>
+      </ul>
+
+      <p class="st-sub">Working papers</p>
+      <ul class="st-papers">
+        <li><span class="t">Navigating Life Under a Four-Day Workweek: A Multimethod, Gendered Life Course Examination of Time-Work Boundary Strategies and Work-Life Fit</span><span class="v">Youngmin Chu, Phyllis Moen, Wen Fan, and Juliet Schor · revise and resubmit</span></li>
+        <li><span class="t">A “New” Category of Time? How Temporal Perceptions Shift for Workers in Four-day Week Trials</span><span class="v">Ami Campbell, Wen Fan, Juliet Schor, and Phyllis Moen · revise and resubmit</span></li>
+        <li><span class="t">Un-stalling the Gender Revolution? Worktime Reduction and Time Use at the Intersection of Gender and Parenthood</span><span class="v">Orla Kelly, Juliet Schor, Wen Fan, Niamh Bridson-Hubbard, and Tatiana Bezdenezhnykh · under review</span></li>
+      </ul>
+
+      <p class="st-sub">Writing for the public</p>
+      <ul class="st-papers">
+        <li><a href="https://www.latimes.com/opinion/story/2023-06-06/four-day-workweek-california-congress-research" target="_blank" rel="noopener">Can a Four-day Workweek Really Work? Many Companies Have Already Learned the Answer</a><span class="v">Juliet Schor and Wen Fan · <em>Los Angeles Times</em>, 2023</span></li>
+        <li><a href="https://www.bostonglobe.com/2023/03/06/opinion/us-has-an-overwork-problem-four-day-workweek-can-fix-it" target="_blank" rel="noopener">U.S. Has an Overwork Problem. A Four-day Workweek Can Fix It</a><span class="v">Wen Fan and Juliet Schor · <em>The Boston Globe</em>, 2023</span></li>
+      </ul>
+
+      <p class="st-sub">In the news</p>
+      <p class="st-press"><a href="https://www.nature.com/articles/d41586-025-02295-2" target="_blank" rel="noopener">Nature</a> · <a href="https://www.scientificamerican.com/article/biggest-trial-of-four-day-workweek-finds-workers-are-happier-and-feel-just/" target="_blank" rel="noopener">Scientific American</a> · <a href="https://www.newscientist.com/article/2488976-four-day-working-week-may-boost-our-health-and-performance-at-work/" target="_blank" rel="noopener">New Scientist</a> · <a href="https://www.sciencefocus.com/news/four-day-work-week-benefits" target="_blank" rel="noopener">BBC Science Focus</a> · <a href="https://www.businessinsider.com/workers-try-four-day-workweek-burnout-mental-health-research-productivity-2025-7" target="_blank" rel="noopener">Business Insider</a> · <a href="https://elpais.com/salud-y-bienestar/2025-07-21/ciencia-para-constatar-lo-evidente-trabajar-menos-mejora-la-salud-mental-y-fisica.html" target="_blank" rel="noopener">El País</a> · <a href="https://www.npr.org/2023/09/11/1198394085/uaw-big-3-automakers-4-day-work-week-shawn-fain-detroit" target="_blank" rel="noopener">NPR</a> · <a href="https://www.fastcompany.com/90932623/so-youve-decided-to-implement-a-4-day-workweek-now-what" target="_blank" rel="noopener">Fast Company</a></p>
     </section>
 
   </article>
