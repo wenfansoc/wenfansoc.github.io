@@ -1,19 +1,88 @@
 {{ define "main" }}
+{{- $data := hugo.Data.teaching -}}
+
+{{- /* Semesters are numbered year*2, plus 1 for Fall: Fall 2015 < Spring 2016 < Fall 2016. */ -}}
+{{- $s := split $data.record_start " " -}}
+{{- $e := split $data.record_end " " -}}
+{{- $start := add (mul (int (index $s 1)) 2) (cond (eq (index $s 0) "Fall") 1 0) -}}
+{{- $end := add (mul (int (index $e 1)) 2) (cond (eq (index $e 0) "Fall") 1 0) -}}
+{{- $semesters := slice -}}
+{{- range $i := seq $start $end -}}
+  {{- $semesters = $semesters | append (printf "%s %d" (cond (eq (mod $i 2) 1) "Fall" "Spring") (div $i 2)) -}}
+{{- end -}}
+
 <div class="wrap">
-  <article class="page">
+  <article class="page teaching">
     <h1 class="page-title">{{ .Title }}</h1>
     {{ .Content }}
-    <div class="courses">
-      {{ range hugo.Data.teaching }}
-      <div class="course-card">
-        <span class="course-level">{{ .level }}</span>
-        <div class="course-title">{{ .title }}</div>
-        <div class="course-terms">{{ .terms }}</div>
-        {{ with .description }}<div class="course-desc">{{ . }}</div>{{ end }}
-        {{ with .syllabus }}<div class="course-links"><a href="{{ . }}">Syllabus (PDF)</a></div>{{ end }}
+
+    {{- range $group := slice (slice "graduate" "Graduate") (slice "undergraduate" "Undergraduate") }}
+    {{- with where $data.courses "group" (index $group 0) }}
+    <section class="t-group">
+      <p class="eyebrow">{{ index $group 1 }}</p>
+      {{- range . }}
+      {{- /* First and last semester taught, by semester number. */ -}}
+      {{- $course := . -}}
+      {{- $nums := slice -}}
+      {{- range .terms -}}
+        {{- $p := split . " " -}}
+        {{- $n := add (mul (int (index $p 1)) 2) (cond (eq (index $p 0) "Fall") 1 0) -}}
+        {{- if not (in $semesters .) }}{{ warnf "data/teaching.yml: %q lists %q, which is outside record_start..record_end or misspelled" $course.title . }}{{ end -}}
+        {{- $nums = $nums | append $n -}}
+      {{- end -}}
+      {{- $nums = sort $nums -}}
+      {{- $first := index $nums 0 -}}
+      {{- $last := index $nums (sub (len $nums) 1) -}}
+      <div class="t-course">
+        <div class="t-facts">
+          {{- with .code }}<span class="t-code">{{ . }}</span>{{ end -}}
+          {{- with .note }}{{ . }}<br>{{ end -}}
+          {{- printf "%s %d" (cond (eq (mod $first 2) 1) "Fall" "Spring") (div $first 2) -}}
+          {{- if gt (len .terms) 1 }} – {{ printf "%s %d" (cond (eq (mod $last 2) 1) "Fall" "Spring") (div $last 2) }}<br>{{ len .terms }} semesters{{ end -}}
+        </div>
+        <div class="t-text">
+          <h2 class="t-title">{{ .title }}</h2>
+          <p class="t-q">{{ .question | safeHTML }}</p>
+          <p class="t-desc">{{ .description }}</p>
+        </div>
       </div>
-      {{ end }}
-    </div>
+      {{- end }}
+    </section>
+    {{- end }}
+    {{- end }}
+
+    <section class="t-group">
+      <p class="eyebrow">Teaching record</p>
+      <p class="t-record-note">Semesters taught at Boston College, {{ $data.record_start }} to {{ $data.record_end }}.</p>
+      <div class="t-grid-scroll">
+        <div class="t-grid" role="group" aria-label="Courses taught by semester, {{ $data.record_start }} to {{ $data.record_end }}" style="--t-cols:{{ len $semesters }}">
+          {{- range $data.courses }}
+          {{- $course := . }}
+          <span class="t-rl">{{ .short }}</span>
+          {{- range $semesters }}
+            {{- if in $course.terms . }}<span class="t-cell t-on" title="{{ . }} · {{ $course.short }}"></span>
+            {{- else if in $data.sabbaticals . }}<span class="t-cell t-sab" title="{{ . }} · Sabbatical"></span>
+            {{- else }}<span class="t-cell" title="{{ . }}"></span>
+            {{- end }}
+          {{- end }}
+          {{- end }}
+          <span></span>
+          {{- /* Academic-year labels: each Fall starts a two-column label; a lone Spring or Fall at either end gets one column. */ -}}
+          {{- range $i, $name := $semesters }}
+            {{- $p := split $name " " -}}
+            {{- $yy := mod (int (index $p 1)) 100 -}}
+            {{- $isLast := eq $i (sub (len $semesters) 1) -}}
+            {{- if eq (index $p 0) "Fall" }}
+              {{- if $isLast }}<span class="t-yr" style="grid-column:span 1">’{{ printf "%02d" $yy }}</span>
+              {{- else }}<span class="t-yr">’{{ printf "%02d" $yy }}–{{ printf "%02d" (mod (add $yy 1) 100) }}</span>
+              {{- end }}
+            {{- else if eq $i 0 }}<span class="t-yr" style="grid-column:span 1">’{{ printf "%02d" $yy }}</span>
+            {{- end }}
+          {{- end }}
+        </div>
+      </div>
+      <div class="t-legend"><span><i class="t-cell t-on"></i>Taught</span><span><i class="t-cell t-sab"></i>Sabbatical</span></div>
+    </section>
   </article>
 </div>
 {{ end }}
