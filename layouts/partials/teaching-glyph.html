@@ -16,13 +16,14 @@
   {{- partial "teaching-person.html" (dict "x" (index . 0) "y" (index . 1) "acc" false "s" 0.85) }}
   {{- end }}
 {{- else if eq $g "self" }}
-  {{- /* A person and work as an institution, with a question between them. */}}
-  {{- partial "teaching-person.html" (dict "x" 22 "y" 32 "acc" true "s" 1.9) }}
-  <path d="M46 28h16M46 36h16" class="g-line"/>
-  <text x="54" y="20" text-anchor="middle" class="g-qm">?</text>
-  <path d="M76 52V4h18v48M94 52V18h16v34M70 52h46" class="g-line g-brief"/>
-  {{- range $y := seq 9 5 48 }}<path d="M79 {{ $y }}h12" class="g-band"/>{{ end }}
-  {{- range $y := seq 23 5 48 }}<path d="M97 {{ $y }}h10" class="g-band"/>{{ end }}
+  {{- /* An org chart; one of its places is a person. */}}
+  <rect x="48" y="2" width="24" height="12" rx="2" class="g-line g-brief"/>
+  <path d="M60 14v6M22 20h76M22 20v6M60 20v6M98 20v6M60 38v6M44 44h32M44 44v4M76 44v4" class="g-line"/>
+  <rect x="10" y="26" width="24" height="12" rx="2" class="g-line g-brief"/>
+  <rect x="48" y="26" width="24" height="12" rx="2" class="g-line g-brief"/>
+  <rect x="86" y="26" width="24" height="12" rx="2" class="g-line g-brief"/>
+  <rect x="34" y="48" width="20" height="10" rx="2" class="g-line g-brief"/>
+  {{- partial "teaching-person.html" (dict "x" 76 "y" 54 "acc" true "s" 0.8) }}
 {{- else if eq $g "regression" }}
   {{- /* Scatter with a fitted line. */}}
   {{- range slice (slice 10 46) (slice 20 44) (slice 26 36) (slice 36 40) (slice 44 30) (slice 52 34) (slice 60 26) (slice 70 28) (slice 78 20) (slice 88 22) (slice 96 14) (slice 108 12) }}
