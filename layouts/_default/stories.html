@@ -56,6 +56,10 @@
   .mw-dot{fill:var(--accent); fill-opacity:.82; stroke:var(--bg); stroke-width:1.2}
   .mw-lab{font-size:12px; fill:var(--ink); paint-order:stroke; stroke:var(--bg); stroke-width:3px; stroke-linejoin:round}
   .mw-map figcaption, .mw-tools figcaption{font-size:13px; color:var(--muted); margin-top:6px; line-height:1.45}
+  .mw-stats{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px 18px; margin:16px 0 6px; padding:14px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+  .mw-stats b{display:block; font-family:var(--serif); font-size:2rem; font-weight:600; line-height:1.1; color:var(--accent); font-variant-numeric:lining-nums}
+  .mw-stats span{display:block; font-size:13px; color:var(--muted); margin-top:4px; line-height:1.35}
+  @media (max-width:620px){ .mw-stats{grid-template-columns:repeat(2,minmax(0,1fr))} }
   .mw-tools{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px 24px; margin-top:14px}
   .mw-tools figure{margin:0}
   .mw-tools svg{display:block; width:100%; max-width:9rem; height:auto}
@@ -752,6 +756,12 @@
           <h3>How</h3>
           <div>
             <p>Each interview was a long conversation that followed a person&rsquo;s life&mdash;family, school, and work&mdash;and how they felt along the way. Three paper tools helped the conversation along.</p>
+            <div class="mw-stats">
+              <div><b>56</b><span>interviews</span></div>
+              <div><b>12</b><span>cities</span></div>
+              <div><b>116</b><span>hours of conversation</span></div>
+              <div><b>~2</b><span>hours each, up to 3</span></div>
+            </div>
             <div class="mw-tools">
               <figure>
                 <svg viewBox="0 0 120 70" aria-hidden="true">
@@ -778,24 +788,21 @@
                   <text x="60" y="38" text-anchor="middle" class="mw-num">1</text>
                   <text x="89" y="42" text-anchor="middle" class="mw-num" transform="rotate(8 89 37)">3</text>
                 </svg>
-                <figcaption><strong>A card sort.</strong> From a list of things a job can offer, each person picked what mattered most to them.</figcaption>
+                <figcaption><strong>A card sort.</strong> From a list of things a job can offer, each person picked what mattered most to them&mdash;once for their first job, and once for now.</figcaption>
               </figure>
             </div>
           </div>
         </div>
 
-        <div class="st-row">
-          <h3>Some questions</h3>
-          <div>
-          <p>A few of the many questions the conversations covered:</p>
-          <ul class="mw-qs">
-            <li>Growing up, did your parents have hopes for your future?</li>
-            <li>What do you hope to get from work now? What would your ideal job look like?</li>
-            <li>What would you say to your twenty-year-old self?</li>
-          </ul>
-          </div>
-        </div>
       </div>
+
+      <p class="st-sub">Earlier work on work in China</p>
+      <ul class="st-papers">
+        <li><a href="https://doi.org/10.1177/07308884261476223" target="_blank" rel="noopener">The Resurgence of State-Sector Employment? The COVID-19 Pandemic and Chinese Workers&rsquo; Shifting Job Satisfaction</a><span class="v">Yue Qian and Wen Fan · <a href="https://doi.org/10.1177/07308884261476223" target="_blank" rel="noopener"><em>Work and Occupations</em></a>, forthcoming</span></li>
+        <li><a href="https://doi.org/10.1016/j.rssm.2024.101008" target="_blank" rel="noopener">Work-Schedule Instability and Workers&rsquo; Health and Well-being Across Different Socioeconomic Strata in China</a><span class="v">Ya Guo, Wanying Ling, Wen Fan, and Senhu Wang · <a href="https://doi.org/10.1016/j.rssm.2024.101008" target="_blank" rel="noopener"><em>Research in Social Stratification and Mobility</em></a>, 2025</span></li>
+        <li><a href="https://doi.org/10.1142/9781800612143_0020" target="_blank" rel="noopener">Temporal Work Arrangements and Well-being in China</a><span class="v">Wen Fan and Ruilin Chen · <a href="https://doi.org/10.1142/9781800612143_0020" target="_blank" rel="noopener"><em>Social Inequalities in China</em></a>, 2022</span></li>
+        <li><a href="https://doi.org/10.1016/j.alcr.2018.01.006" target="_blank" rel="noopener">Micro-level Experiences of Macro-level Change: A Cohort Perspective on China&rsquo;s Shift Away from State-sector Employment</a><span class="v">Wen Fan, Fangsheng Zhu, and Phyllis Moen · <a href="https://doi.org/10.1016/j.alcr.2018.01.006" target="_blank" rel="noopener"><em>Advances in Life Course Research</em></a>, 2018</span></li>
+      </ul>
     </section>
 
 
