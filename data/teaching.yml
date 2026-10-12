@@ -1,22 +1,95 @@
-# Courses, rendered as cards by layouts/_default/teaching.html
-# Fields: title, level, terms, and optional description + syllabus (PDF link).
+# Teaching page data (rendered by layouts/_default/teaching.html).
+# Each course: group (graduate | mixed | undergraduate), code, title, short (label in the
+# teaching-record grid), question (may contain  for a maroon phrase),
+# description, terms (every semester taught, "Fall 2015" style), optional note.
+record_start: "Fall 2015"
+record_end: "Spring 2027"
+sabbaticals: ["Fall 2017", "Fall 2022", "Fall 2026"]
 
-- title: "Introductory Sociology for Healthcare Professions"
-  level: "Undergraduate"
-  terms: "Fall 2015–2021, Fall 2023, Fall 2024"
+courses:
+  - group: undergraduate
+    code: "SOCY 1002"
+    title: "Introductory Sociology for Healthcare Professions"
+    short: "Intro Sociology"
+    note: "Core course"
+    question: "Is it a personal trouble, or a public issue?"
+    glyph: trouble
+    description: "The course is built around five questions sociologists keep asking: Is it a personal trouble or a public issue? Who gets to define it? Who gains and who loses? What holds people together? How are people shaped, and how do they act? Each class works through one case, often from health and medicine, and students learn to look at the same case through different theoretical lenses."
+    terms: ["Fall 2015", "Spring 2016", "Fall 2016", "Spring 2017", "Spring 2018", "Fall 2018", "Spring 2019", "Fall 2019", "Spring 2020", "Fall 2020", "Spring 2021", "Fall 2021", "Fall 2023", "Fall 2024", "Fall 2025", "Spring 2026"]
+    upcoming: ["Spring 2027"]
 
-- title: "Medical Sociology"
-  level: "Graduate"
-  terms: "Spring 2017"
+  - group: undergraduate
+    code: "SOCY 3072"
+    title: "A Self of One’s Own: Work and Meaning from Weber to Brave New World to AI"
+    short: "A Self of One’s Own"
+    note: "Seminar"
+    question: "How much of who you are comes from the work you do?"
+    glyph: self
+    description: "The self is not simply found within us; it is shaped by markets, organizations, families, and ideas about a worthy life. We trace the call to “find yourself” in work, from Weber’s calling to “follow your passion,” Huxley’s Brave New World, and the question AI forces on us."
+    terms: []
+    upcoming: ["Spring 2027"]
 
-- title: "Regression Models for Categorical Data"
-  level: "Graduate"
-  terms: "Fall 2015–2021, Spring 2018, Spring 2023, Spring 2024"
+  - group: mixed
+    code: "SOCY 5545"
+    title: "Medical Sociology"
+    short: "Medical Sociology"
+    question: "What can we learn about health and illness that biology alone cannot tell us?"
+    glyph: medical
+    description: "Faced with the same symptoms, why does one person see a doctor while another does not? What happens once they get there? And how does a behavior once seen as bad come to be treated as an illness? Students study who gets sick, how people live with illness, how patients, doctors, and nurses deal with one another, and how the reach of medicine grows and shrinks."
+    terms: ["Spring 2017"]
+    syllabus: "/files/SOCY5545_syllabus.pdf"
+    syllabus_term: "Spring 2017"
 
-- title: "Event History Analysis and Sequence Analysis"
-  level: "Graduate"
-  terms: "Spring 2019"
+  - group: graduate
+    code: "SOCY 7703"
+    title: "Multivariate Statistics"
+    short: "Multivariate Statistics"
+    question: "What can a regression line tell us, and when does it mislead?"
+    glyph: regression
+    description: "Much of the quantitative research students will read builds on linear regression. They learn it from the ground up—how ordinary least squares works, what it assumes, and how to check those assumptions in real data—then move on to linear probability and quantile models, missing data, survey weights, mediation, and a first look at panel data."
+    terms: ["Spring 2021", "Spring 2022", "Fall 2023", "Fall 2024"]
+    syllabus: "/files/SOCY7703_syllabus.pdf"
+    syllabus_term: "Fall 2024"
 
-- title: "Multivariate Statistics"
-  level: "Graduate"
-  terms: "Spring 2021, Spring 2022, Fall 2023, Fall 2024"
+  - group: graduate
+    code: "SOCY 7704"
+    title: "Regression Models for Categorical Data"
+    short: "Categorical Data"
+    question: "What if the outcome is yes or no, one of several choices, or a count?"
+    glyph: logit
+    description: "Did someone vote? Which party did they choose? How many times did they see a doctor last year? Many outcomes sociologists care about are not continuous, and ordinary regression handles them poorly. Students work through binary, multinomial, and ordered logit and probit, count models, and an introduction to survival analysis, ending with mediation."
+    terms: ["Fall 2015", "Fall 2016", "Spring 2018", "Fall 2018", "Fall 2019", "Fall 2020", "Fall 2021", "Spring 2023", "Spring 2024", "Spring 2025"]
+    syllabus: "/files/SOCY7704_syllabus.pdf"
+    syllabus_term: "Spring 2024"
+
+  - group: graduate
+    code: "SOCY 7706"
+    title: "Longitudinal Data Analysis"
+    short: "Longitudinal Data Analysis"
+    question: "What do we learn by following the same cases over time?"
+    glyph: panel
+    description: "Following the same people—or households, organizations, or countries—over time lets us ask how things change, not only how groups differ. Students learn fixed-effects and mixed-effects models, duration models, sequence analysis, and time series, reading each method alongside a published study that uses it."
+    terms: ["Fall 2025"]
+    syllabus: "/files/SOCY7706_syllabus.pdf"
+    syllabus_term: "Fall 2025"
+
+  - group: graduate
+    code: "SOCY 7717"
+    title: "Event History Analysis and Sequence Analysis"
+    short: "Event History & Sequence"
+    question: "Will it happen, when, and in what order?"
+    glyph: survival
+    description: "Wars, births, deaths, strikes, job promotions: event history analysis asks whether and when something happens. Students move from nonparametric methods such as life tables and Kaplan–Meier curves, to parametric and semiparametric (Cox) models, to discrete-time models and competing risks. Sequence analysis then follows the whole path: the order and timing of jobs, partnerships, and children across a life."
+    terms: ["Spring 2019"]
+    syllabus: "/files/SOCY7717_syllabus.pdf"
+    syllabus_term: "Spring 2019"
+
+quotes:
+  - text: "This course has made me a better thinker, a better citizen, a better person, and a better future healthcare provider. … Everybody who is going to work as a healthcare provider should take this course to better understand what their patients might be going through."
+    who: "Introductory Sociology for Healthcare Professions"
+  - text: "The class is intellectually stimulating, and it may force you to think about society in a different perspective."
+    who: "Introductory Sociology for Healthcare Professions"
+  - text: "Covered advanced material without being overwhelming. … Gave a lot of really helpful, practical information that we can use immediately in our work."
+    who: "Regression Models for Categorical Data"
+  - text: "My understanding of statistics has grown a lot and I have already seen the effects of this in my work and research."
+    who: "Regression Models for Categorical Data"
