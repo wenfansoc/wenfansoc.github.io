@@ -20,9 +20,9 @@
   {{- partial "teaching-person.html" (dict "x" 22 "y" 32 "acc" true "s" 1.9) }}
   <path d="M46 28h16M46 36h16" class="g-line"/>
   <text x="54" y="20" text-anchor="middle" class="g-qm">?</text>
-  <path d="M78 52V8h28v44M72 52h40" class="g-line g-brief"/>
-  {{- range $r := slice 14 23 32 }}{{ range $c := slice 83 90 97 }}<rect x="{{ $c }}" y="{{ $r }}" width="4" height="5" class="g-win"/>{{ end }}{{ end }}
-  <path d="M88 52v-11h8v11" class="g-line g-brief"/>
+  <path d="M76 52V4h18v48M94 52V18h16v34M70 52h46" class="g-line g-brief"/>
+  {{- range $y := seq 9 5 48 }}<path d="M79 {{ $y }}h12" class="g-band"/>{{ end }}
+  {{- range $y := seq 23 5 48 }}<path d="M97 {{ $y }}h10" class="g-band"/>{{ end }}
 {{- else if eq $g "regression" }}
   {{- /* Scatter with a fitted line. */}}
   {{- range slice (slice 10 46) (slice 20 44) (slice 26 36) (slice 36 40) (slice 44 30) (slice 52 34) (slice 60 26) (slice 70 28) (slice 78 20) (slice 88 22) (slice 96 14) (slice 108 12) }}
