@@ -16,14 +16,13 @@
   {{- partial "teaching-person.html" (dict "x" (index . 0) "y" (index . 1) "acc" false "s" 0.85) }}
   {{- end }}
 {{- else if eq $g "self" }}
-  {{- /* An org chart; one of its places is a person. */}}
-  <rect x="48" y="2" width="24" height="12" rx="2" class="g-line g-brief"/>
-  <path d="M60 14v6M22 20h76M22 20v6M60 20v6M98 20v6M60 38v6M44 44h32M44 44v4M76 44v4" class="g-line"/>
-  <rect x="10" y="26" width="24" height="12" rx="2" class="g-line g-brief"/>
-  <rect x="48" y="26" width="24" height="12" rx="2" class="g-line g-brief"/>
-  <rect x="86" y="26" width="24" height="12" rx="2" class="g-line g-brief"/>
-  <rect x="34" y="48" width="20" height="10" rx="2" class="g-line g-brief"/>
-  {{- partial "teaching-person.html" (dict "x" 76 "y" 54 "acc" true "s" 0.8) }}
+  {{- /* Self and work as two overlapping circles: how much do they share? */}}
+  <defs><clipPath id="g-self-clip"><circle cx="44" cy="30" r="24"/></clipPath></defs>
+  <circle cx="76" cy="30" r="24" clip-path="url(#g-self-clip)" class="g-acc-fill" opacity=".85"/>
+  <circle cx="44" cy="30" r="24" class="g-line g-brief"/>
+  <circle cx="76" cy="30" r="24" class="g-line g-brief"/>
+  <text x="34" y="34" text-anchor="middle" class="g-lab">self</text>
+  <text x="85" y="34" text-anchor="middle" class="g-lab">work</text>
 {{- else if eq $g "regression" }}
   {{- /* Scatter with a fitted line. */}}
   {{- range slice (slice 10 46) (slice 20 44) (slice 26 36) (slice 36 40) (slice 44 30) (slice 52 34) (slice 60 26) (slice 70 28) (slice 78 20) (slice 88 22) (slice 96 14) (slice 108 12) }}
