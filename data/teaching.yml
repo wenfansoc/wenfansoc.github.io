@@ -44,7 +44,7 @@ courses:
     short: "Multivariate Statistics"
     question: "What can a regression line tell us, and when does it mislead?"
     glyph: regression
-    description: "Much of the quantitative research students will read rests on linear regression. They learn it from the ground up—how ordinary least squares works, what it assumes, and how to check those assumptions in real data—then move on to linear probability and quantile models, missing data, survey weights, mediation, and a first look at panel data."
+    description: "Much of the quantitative research students will read builds on linear regression. They learn it from the ground up—how ordinary least squares works, what it assumes, and how to check those assumptions in real data—then move on to linear probability and quantile models, missing data, survey weights, mediation, and a first look at panel data."
     terms: ["Spring 2021", "Spring 2022", "Fall 2023", "Fall 2024"]
 
   - group: graduate
