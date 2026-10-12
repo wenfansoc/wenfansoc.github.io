@@ -53,7 +53,7 @@ courses:
     short: "Categorical Data"
     question: "What if the outcome is yes or no, one of several choices, or a count?"
     glyph: logit
-    description: "Did someone vote? Which party did they choose? How many times did they see a doctor last year? Many outcomes sociologists care about are not continuous, and ordinary regression handles them poorly. Students work through binary, multinomial, and ordered logit and probit, count models, and an introduction to survival analysis, ending with mediation. In class, they interpret coefficients and predicted probabilities out loud and take apart published studies as reviewers and authors."
+    description: "Did someone vote? Which party did they choose? How many times did they see a doctor last year? Many outcomes sociologists care about are not continuous, and ordinary regression handles them poorly. Students work through binary, multinomial, and ordered logit and probit, count models, and an introduction to survival analysis, ending with mediation."
     terms: ["Fall 2015", "Fall 2016", "Spring 2018", "Fall 2018", "Fall 2019", "Fall 2020", "Fall 2021", "Spring 2023", "Spring 2024", "Spring 2025"]
 
   - group: graduate
