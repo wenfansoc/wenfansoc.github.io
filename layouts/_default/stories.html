@@ -56,6 +56,14 @@
   .mw-dot{fill:var(--accent); fill-opacity:.82; stroke:var(--bg); stroke-width:1.2}
   .mw-lab{font-size:12px; fill:var(--ink); paint-order:stroke; stroke:var(--bg); stroke-width:3px; stroke-linejoin:round}
   .mw-map figcaption, .mw-tools figcaption{font-size:13px; color:var(--muted); margin-top:6px; line-height:1.45}
+  .page .mw-time{list-style:none; padding:0; margin:0 0 30px; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:22px 0}
+  .page .mw-time li{position:relative; margin:0; padding:16px 14px 0 0; border-top:2px solid var(--line); font-size:13.5px; line-height:1.45; color:var(--muted)}
+  .page .mw-time li::before{content:""; position:absolute; left:0; top:-6px; width:10px; height:10px; border-radius:50%; background:var(--bg); border:2px solid var(--accent)}
+  .mw-time b{display:block; font-family:var(--serif); font-size:1.35rem; font-weight:600; color:var(--ink); margin-bottom:2px}
+  .page .mw-time li.mw-now{color:var(--ink)}
+  .page .mw-time li.mw-now::before{background:var(--accent)}
+  .mw-time li.mw-now b{color:var(--accent)}
+  @media (max-width:620px){ .page .mw-time{grid-template-columns:repeat(2,minmax(0,1fr))} }
   .mw-stats{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px 18px; margin:16px 0 6px; padding:14px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
   .mw-stats b{display:block; font-family:var(--serif); font-size:2rem; font-weight:600; line-height:1.1; color:var(--accent); font-variant-numeric:lining-nums}
   .mw-stats span{display:block; font-size:13px; color:var(--muted); margin-top:4px; line-height:1.35}
@@ -725,6 +733,18 @@
         <dt>Status</dt><dd>In progress</dd>
       </dl>
       <p class="st-lead">Young people in China are entering work at a time of rapid economic and social change. Talk of &ldquo;involution&rdquo; (<span lang="zh">内卷</span>)&mdash;ever harder competition for the same rewards&mdash;and of &ldquo;lying flat&rdquo; (<span lang="zh">躺平</span>)&mdash;stepping out of that race&mdash;has put their relationship to work at the center of public debate. Drawing on in-depth interviews with young workers and on online discussions, I ask what work means to them and how their families, schooling, workplaces, and the times they grew up in have shaped those meanings.</p>
+
+      <p class="st-sub">The times they grew up in</p>
+      <ol class="mw-time">
+        <li><b>1999</b>Universities begin a rapid expansion of enrollment.</li>
+        <li><b>2014</b>The government calls for &ldquo;mass entrepreneurship and innovation.&rdquo;</li>
+        <li><b>2019</b>Tech workers protest the &ldquo;996&rdquo; schedule&mdash;9 a.m. to 9 p.m., six days a week&mdash;online.</li>
+        <li><b>2020</b>&ldquo;Involution&rdquo; becomes one of the year&rsquo;s top buzzwords.</li>
+        <li><b>2021</b>An online post about &ldquo;lying flat&rdquo; goes viral.</li>
+        <li><b>2022</b>College graduates top 10 million for the first time.</li>
+        <li><b>2023</b>Youth unemployment reaches a record high; the official figures are paused.</li>
+        <li class="mw-now"><b>2024</b>The interviews for this project.</li>
+      </ol>
 
       <div class="st-rows">
         <div class="st-row">
