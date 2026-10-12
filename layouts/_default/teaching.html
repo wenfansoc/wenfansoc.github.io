@@ -42,13 +42,12 @@
             {{- if gt (len .) 1 }} – {{ printf "%s %d" (cond (eq (mod $last 2) 1) "Fall" "Spring") (div $last 2) }}<br>{{ len . }} semesters{{ end -}}
           {{- end -}}
           {{- with .upcoming }}{{ if $nums }}<br>Next: {{ else }}New in {{ end }}{{ delimit . ", " }}{{ end -}}
-          {{- with .syllabus }}<a class="t-syl" href="{{ . }}">Syllabus{{ with $course.syllabus_term }} ({{ . }}){{ end }}</a>{{ end -}}
           {{- with .glyph }}{{ partial "teaching-glyph.html" . }}{{ end }}
         </div>
         <div class="t-text">
           <h2 class="t-title">{{ .title }}</h2>
           <p class="t-q">{{ .question | safeHTML }}</p>
-          <p class="t-desc">{{ .description }}</p>
+          <p class="t-desc">{{ .description }}{{ with .syllabus }} <a class="t-syl" href="{{ . }}">Syllabus{{ with $course.syllabus_term }} ({{ . }}){{ end }}</a>{{ end }}</p>
         </div>
       </div>
       {{- end }}
