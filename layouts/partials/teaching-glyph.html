@@ -16,12 +16,13 @@
   {{- partial "teaching-person.html" (dict "x" (index . 0) "y" (index . 1) "acc" false "s" 0.85) }}
   {{- end }}
 {{- else if eq $g "self" }}
-  {{- /* A person and their work, with a question between them. */}}
+  {{- /* A person and work as an institution, with a question between them. */}}
   {{- partial "teaching-person.html" (dict "x" 22 "y" 32 "acc" true "s" 1.9) }}
   <path d="M46 28h16M46 36h16" class="g-line"/>
   <text x="54" y="20" text-anchor="middle" class="g-qm">?</text>
-  <rect x="76" y="24" width="32" height="22" rx="3" class="g-line g-brief"/>
-  <path d="M86 24v-4h12v4M76 33h32" class="g-line g-brief"/>
+  <path d="M78 52V8h28v44M72 52h40" class="g-line g-brief"/>
+  {{- range $r := slice 14 23 32 }}{{ range $c := slice 83 90 97 }}<rect x="{{ $c }}" y="{{ $r }}" width="4" height="5" class="g-win"/>{{ end }}{{ end }}
+  <path d="M88 52v-11h8v11" class="g-line g-brief"/>
 {{- else if eq $g "regression" }}
   {{- /* Scatter with a fitted line. */}}
   {{- range slice (slice 10 46) (slice 20 44) (slice 26 36) (slice 36 40) (slice 44 30) (slice 52 34) (slice 60 26) (slice 70 28) (slice 78 20) (slice 88 22) (slice 96 14) (slice 108 12) }}
