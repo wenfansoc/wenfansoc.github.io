@@ -31,7 +31,7 @@
         {{- $nums = $nums | append $n -}}
       {{- end -}}
       {{- $nums = sort $nums -}}
-      <div class="t-course">
+      <div class="t-course" id="{{ .short | anchorize }}">
         <div class="t-facts">
           {{- with .code }}<span class="t-code">{{ . }}</span>{{ end -}}
           {{- with .note }}{{ . }}<br>{{ end -}}
@@ -76,7 +76,7 @@
         <div class="t-grid" role="group" aria-label="Courses by semester, {{ $data.record_start }} to {{ $data.record_end }}" style="--t-cols:{{ len $semesters }}">
           {{- range $data.courses }}
           {{- $course := . }}
-          <span class="t-rl">{{ .short }}</span>
+          <a class="t-rl" href="#{{ .short | anchorize }}">{{ .short }}</a>
           {{- range $semesters }}
             {{- if in $course.terms . }}<span class="t-cell t-on" title="{{ . }} · {{ $course.short }}"></span>
             {{- else if in $course.upcoming . }}<span class="t-cell t-next" title="{{ . }} · {{ $course.short }} (upcoming)"></span>
