@@ -3,4 +3,4 @@ title: "Teaching"
 layout: "teaching"
 ---
 
-Every course I teach starts from a question.
+In every course, I hope students leave not only knowing the material but with a way of thinking they can keep using after the course ends.

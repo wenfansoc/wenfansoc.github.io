@@ -256,6 +256,19 @@
     .t-facts{order:3; padding-top:4px}
     .t-code{display:inline; margin-right:8px}
   }
+  .t-glyph{display:block; width:100%; max-width:7.5rem; height:auto; margin-top:14px; overflow:visible}
+  .t-glyph .g-line{fill:none; stroke:var(--muted); stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round; opacity:.7}
+  .t-glyph .g-acc{stroke:var(--accent); opacity:1}
+  .t-glyph .g-mut-fill{fill:var(--muted); opacity:.45}
+  .t-glyph .g-acc-fill{fill:var(--accent)}
+  .t-glyph .g-brief{stroke:var(--ink); opacity:.75}
+  .t-glyph .g-qm{font-family:var(--serif); font-size:15px; font-style:italic; fill:var(--accent)}
+  .t-glyph .g-s1{fill:var(--accent)} .t-glyph .g-s2{fill:var(--gold)} .t-glyph .g-s3{fill:var(--muted); opacity:.5}
+  @media (max-width:640px){.t-glyph{display:none}}
+  .t-quotes{display:grid; grid-template-columns:repeat(auto-fit,minmax(16rem,1fr)); gap:18px 28px; margin-top:6px}
+  .t-quote{margin:0; padding:2px 0 2px 16px; border-left:2px solid var(--accent)}
+  .page .t-quote blockquote{margin:0; padding:0; border:none; font-family:var(--serif); font-size:1.02rem; line-height:1.5; color:var(--ink)}
+  .t-quote figcaption{margin-top:8px; font-size:12.5px; color:var(--muted); letter-spacing:.02em}
   .page p.t-record-note{font-size:14.5px; color:var(--muted); margin:0 0 14px}
   .t-grid-scroll{overflow-x:auto; padding-bottom:4px}
   .t-grid{display:grid; grid-template-columns:minmax(140px,12rem) repeat(var(--t-cols),minmax(11px,1fr));
@@ -263,6 +276,7 @@
   .t-rl{font-size:13px; line-height:1.25; color:var(--ink); padding-right:8px}
   .t-cell{display:inline-block; height:16px; border-radius:2px; background:color-mix(in srgb, var(--line) 55%, var(--bg))}
   .t-cell.t-on{background:var(--accent)}
+  .t-cell.t-next{background:transparent; box-shadow:inset 0 0 0 1.5px var(--accent)}
   .t-cell.t-sab{background:repeating-linear-gradient(135deg,var(--line) 0 2px,transparent 2px 5px)}
   .t-yr{font-size:11px; color:var(--muted); grid-column:span 2; border-left:1px solid var(--line); padding-left:3px; line-height:1.2; white-space:nowrap; font-variant-numeric:tabular-nums}
   .t-legend{display:flex; gap:16px; flex-wrap:wrap; font-size:13px; color:var(--muted); margin-top:10px}

@@ -16,7 +16,7 @@
     <h1 class="page-title">{{ .Title }}</h1>
     {{ .Content }}
 
-    {{- range $group := slice (slice "graduate" "Graduate") (slice "undergraduate" "Undergraduate") }}
+    {{- range $group := slice (slice "undergraduate" "Undergraduate") (slice "mixed" "Undergraduate and graduate") (slice "graduate" "Graduate") }}
     {{- with where $data.courses "group" (index $group 0) }}
     <section class="t-group">
       <p class="eyebrow">{{ index $group 1 }}</p>
@@ -31,14 +31,18 @@
         {{- $nums = $nums | append $n -}}
       {{- end -}}
       {{- $nums = sort $nums -}}
-      {{- $first := index $nums 0 -}}
-      {{- $last := index $nums (sub (len $nums) 1) -}}
       <div class="t-course">
         <div class="t-facts">
           {{- with .code }}<span class="t-code">{{ . }}</span>{{ end -}}
           {{- with .note }}{{ . }}<br>{{ end -}}
-          {{- printf "%s %d" (cond (eq (mod $first 2) 1) "Fall" "Spring") (div $first 2) -}}
-          {{- if gt (len .terms) 1 }} – {{ printf "%s %d" (cond (eq (mod $last 2) 1) "Fall" "Spring") (div $last 2) }}<br>{{ len .terms }} semesters{{ end -}}
+          {{- with $nums }}
+            {{- $first := index . 0 -}}
+            {{- $last := index . (sub (len .) 1) -}}
+            {{- printf "%s %d" (cond (eq (mod $first 2) 1) "Fall" "Spring") (div $first 2) -}}
+            {{- if gt (len .) 1 }} – {{ printf "%s %d" (cond (eq (mod $last 2) 1) "Fall" "Spring") (div $last 2) }}<br>{{ len . }} semesters{{ end -}}
+          {{- end -}}
+          {{- with .upcoming }}{{ if $nums }}<br>Next: {{ else }}New in {{ end }}{{ delimit . ", " }}{{ end -}}
+          {{- with .glyph }}{{ partial "teaching-glyph.html" . }}{{ end }}
         </div>
         <div class="t-text">
           <h2 class="t-title">{{ .title }}</h2>
@@ -51,16 +55,31 @@
     {{- end }}
     {{- end }}
 
+    {{- with $data.quotes }}
+    <section class="t-group">
+      <p class="eyebrow">In students’ words</p>
+      <div class="t-quotes">
+        {{- range . }}
+        <figure class="t-quote">
+          <blockquote>“{{ .text }}”</blockquote>
+          <figcaption>{{ .who }}</figcaption>
+        </figure>
+        {{- end }}
+      </div>
+    </section>
+    {{- end }}
+
     <section class="t-group">
       <p class="eyebrow">Teaching record</p>
-      <p class="t-record-note">Semesters taught at Boston College, {{ $data.record_start }} to {{ $data.record_end }}.</p>
+      <p class="t-record-note">Semesters at Boston College, {{ $data.record_start }} to {{ $data.record_end }}.</p>
       <div class="t-grid-scroll">
-        <div class="t-grid" role="group" aria-label="Courses taught by semester, {{ $data.record_start }} to {{ $data.record_end }}" style="--t-cols:{{ len $semesters }}">
+        <div class="t-grid" role="group" aria-label="Courses by semester, {{ $data.record_start }} to {{ $data.record_end }}" style="--t-cols:{{ len $semesters }}">
           {{- range $data.courses }}
           {{- $course := . }}
           <span class="t-rl">{{ .short }}</span>
           {{- range $semesters }}
             {{- if in $course.terms . }}<span class="t-cell t-on" title="{{ . }} · {{ $course.short }}"></span>
+            {{- else if in $course.upcoming . }}<span class="t-cell t-next" title="{{ . }} · {{ $course.short }} (upcoming)"></span>
             {{- else if in $data.sabbaticals . }}<span class="t-cell t-sab" title="{{ . }} · Sabbatical"></span>
             {{- else }}<span class="t-cell" title="{{ . }}"></span>
             {{- end }}
@@ -81,7 +100,7 @@
           {{- end }}
         </div>
       </div>
-      <div class="t-legend"><span><i class="t-cell t-on"></i>Taught</span><span><i class="t-cell t-sab"></i>Sabbatical</span></div>
+      <div class="t-legend"><span><i class="t-cell t-on"></i>Taught</span><span><i class="t-cell t-next"></i>Upcoming</span><span><i class="t-cell t-sab"></i>Sabbatical</span></div>
     </section>
   </article>
 </div>
