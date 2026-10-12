@@ -61,6 +61,9 @@
   .mw-tl-track::before,.mw-tl-fill{content:""; position:absolute; left:0; top:10px; height:2px; background:var(--line); width:100%}
   .mw-tl-fill{background:var(--accent); width:0; transition:width .9s ease}
   .page .mw-tl-dot{position:absolute; top:4px; width:14px; height:14px; margin-left:-7px; padding:0; border-radius:50%; border:2px solid var(--muted); background:var(--bg); cursor:pointer; transition:border-color .3s, background .3s, transform .3s}
+  .page .mw-tl-dot.mw-tl-span{top:7px; height:8px; margin-left:0; border-radius:4px; border:none; background:color-mix(in srgb, var(--accent) 22%, var(--bg))}
+  .page .mw-tl-dot.mw-tl-span.cur{background:color-mix(in srgb, var(--accent) 55%, var(--bg)); transform:none}
+  .mw-tl-axis span:last-child{transform:translateX(-100%)}
   .page .mw-tl-dot.on{border-color:var(--accent)}
   .page .mw-tl-dot.cur{background:var(--accent); transform:scale(1.25)}
   .page .mw-tl-dot:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
@@ -747,9 +750,11 @@
       <div class="mw-tl" data-tl>
         <div class="mw-tl-track">
           <span class="mw-tl-fill"></span>
-            <button type="button" class="mw-tl-dot" style="left:0.00%" data-label="1990s" aria-label="1990s"><span class="mw-tl-text" hidden>Most of the people I interviewed are born.</span></button>
+            <button type="button" class="mw-tl-dot mw-tl-span" style="left:0%;width:29.41%" data-fill="0%" data-label="1990s" aria-label="1990s"><span class="mw-tl-text" hidden>Most of the people I interviewed are born in this decade.</span></button>
             <button type="button" class="mw-tl-dot" style="left:23.53%" data-label="Late 1990s" aria-label="Late 1990s"><span class="mw-tl-text" hidden>Tens of millions of workers lose their jobs as state-owned enterprises are restructured (<span lang="zh">下岗</span>).</span></button>
             <button type="button" class="mw-tl-dot" style="left:26.47%" data-label="1999" aria-label="1999"><span class="mw-tl-text" hidden>Universities begin a rapid expansion of enrollment.</span></button>
+            <button type="button" class="mw-tl-dot" style="left:32.35%" data-label="2001" aria-label="2001"><span class="mw-tl-text" hidden>China joins the World Trade Organization; factories boom, and millions of young people leave the countryside to work in cities.</span></button>
+            <button type="button" class="mw-tl-dot" style="left:52.94%" data-label="2008" aria-label="2008"><span class="mw-tl-text" hidden>The Labor Contract Law takes effect, setting out workers&rsquo; rights to contracts and protection from dismissal.</span></button>
             <button type="button" class="mw-tl-dot" style="left:70.59%" data-label="2014" aria-label="2014"><span class="mw-tl-text" hidden>The government calls for &ldquo;mass entrepreneurship and innovation.&rdquo;</span></button>
             <button type="button" class="mw-tl-dot" style="left:85.29%" data-label="2019" aria-label="2019"><span class="mw-tl-text" hidden>Tech workers protest the &ldquo;996&rdquo; schedule&mdash;9 a.m. to 9 p.m., six days a week&mdash;online.</span></button>
             <button type="button" class="mw-tl-dot" style="left:88.24%" data-label="2020" aria-label="2020"><span class="mw-tl-text" hidden>&ldquo;Involution&rdquo; becomes one of the year&rsquo;s top buzzwords.</span></button>
@@ -757,8 +762,8 @@
             <button type="button" class="mw-tl-dot" style="left:94.12%" data-label="2022" aria-label="2022"><span class="mw-tl-text" hidden>College graduates top 10 million for the first time.</span></button>
             <button type="button" class="mw-tl-dot" style="left:97.06%" data-label="2023" aria-label="2023"><span class="mw-tl-text" hidden>Youth unemployment reaches a record high; the official figures are paused.</span></button>
             <button type="button" class="mw-tl-dot mw-tl-now" style="left:100.00%" data-label="2024" aria-label="2024"><span class="mw-tl-text" hidden>The interviews for this project.</span></button>        </div>
-        <div class="mw-tl-axis"><span style="left:0%">1990</span><span style="left:29.41%">2000</span><span style="left:58.82%">2010</span><span style="left:88.24%">2020</span></div>
-        <div class="mw-tl-panel" aria-live="polite"><b class="mw-tl-yr">1990s</b><p class="mw-tl-desc">Most of the people I interviewed are born.</p></div>
+        <div class="mw-tl-axis"><span style="left:0%">1990</span><span style="left:29.41%">2000</span><span style="left:58.82%">2010</span><span style="left:88.24%">2020</span><span style="left:100%">2024</span></div>
+        <div class="mw-tl-panel" aria-live="polite"><b class="mw-tl-yr">1990s</b><p class="mw-tl-desc">Most of the people I interviewed are born in this decade.</p></div>
         <button type="button" class="mw-tl-play">Play again</button>
       </div>
       <script>
@@ -768,7 +773,7 @@
             yr=tl.querySelector('.mw-tl-yr'), desc=tl.querySelector('.mw-tl-desc'), play=tl.querySelector('.mw-tl-play'),
             timer=null, i=0, reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
         function show(k){ i=k; dots.forEach(function(d,j){ d.classList.toggle('on',j<=k); d.classList.toggle('cur',j===k); d.setAttribute('aria-pressed',j===k); });
-          fill.style.width=dots[k].style.left; yr.textContent=dots[k].dataset.label; desc.innerHTML=dots[k].querySelector('.mw-tl-text').innerHTML; }
+          fill.style.width=dots[k].dataset.fill||dots[k].style.left; yr.textContent=dots[k].dataset.label; desc.innerHTML=dots[k].querySelector('.mw-tl-text').innerHTML; }
         function stop(){ if(timer){clearInterval(timer); timer=null;} }
         function run(){ stop(); show(0); if(reduce){ show(dots.length-1); return; }
           timer=setInterval(function(){ if(i>=dots.length-1){stop();return;} show(i+1); },2200); }
