@@ -61,7 +61,8 @@
   .mw-tl-track::before,.mw-tl-fill{content:""; position:absolute; left:0; top:10px; height:2px; background:var(--line); width:100%}
   .mw-tl-fill{background:var(--accent); width:0; transition:width .9s ease}
   .page .mw-tl-dot{position:absolute; top:4px; width:14px; height:14px; margin-left:-7px; padding:0; border-radius:50%; border:2px solid var(--muted); background:var(--bg); cursor:pointer; transition:border-color .3s, background .3s, transform .3s}
-  .page .mw-tl-dot.mw-tl-span{top:7px; height:8px; margin-left:0; border-radius:4px; border:none; background:color-mix(in srgb, var(--accent) 22%, var(--bg))}
+  .page .mw-tl-dot{z-index:2}
+  .page .mw-tl-dot.mw-tl-span{top:7px; z-index:1; height:8px; margin-left:0; border-radius:4px; border:none; background:color-mix(in srgb, var(--accent) 22%, var(--bg))}
   .page .mw-tl-dot.mw-tl-span.cur{background:color-mix(in srgb, var(--accent) 55%, var(--bg)); transform:none}
   .mw-tl-axis span:last-child{transform:translateX(-100%)}
   .page .mw-tl-dot.on{border-color:var(--accent)}
@@ -750,6 +751,7 @@
       <div class="mw-tl" data-tl>
         <div class="mw-tl-track">
           <span class="mw-tl-fill"></span>
+            <button type="button" class="mw-tl-dot" style="left:0%" data-label="Since 1980" data-fill="0%" aria-label="Since 1980"><span class="mw-tl-text" hidden>Under the one-child policy, many of this generation grow up as only children.</span></button>
             <button type="button" class="mw-tl-dot mw-tl-span" style="left:0%;width:29.41%" data-fill="0%" data-label="1990s" aria-label="1990s"><span class="mw-tl-text" hidden>Most of the people I interviewed are born in this decade.</span></button>
             <button type="button" class="mw-tl-dot" style="left:23.53%" data-label="Late 1990s" aria-label="Late 1990s"><span class="mw-tl-text" hidden>Tens of millions of workers lose their jobs as state-owned enterprises are restructured (<span lang="zh">下岗</span>).</span></button>
             <button type="button" class="mw-tl-dot" style="left:26.47%" data-label="1999" aria-label="1999"><span class="mw-tl-text" hidden>Universities begin a rapid expansion of enrollment.</span></button>
@@ -763,7 +765,7 @@
             <button type="button" class="mw-tl-dot" style="left:97.06%" data-label="2023" aria-label="2023"><span class="mw-tl-text" hidden>Youth unemployment reaches a record high; the official figures are paused.</span></button>
             <button type="button" class="mw-tl-dot mw-tl-now" style="left:100.00%" data-label="2024" aria-label="2024"><span class="mw-tl-text" hidden>The interviews for this project.</span></button>        </div>
         <div class="mw-tl-axis"><span style="left:0%">1990</span><span style="left:29.41%">2000</span><span style="left:58.82%">2010</span><span style="left:88.24%">2020</span><span style="left:100%">2024</span></div>
-        <div class="mw-tl-panel" aria-live="polite"><b class="mw-tl-yr">1990s</b><p class="mw-tl-desc">Most of the people I interviewed are born in this decade.</p></div>
+        <div class="mw-tl-panel" aria-live="polite"><b class="mw-tl-yr">Since 1980</b><p class="mw-tl-desc">Under the one-child policy, many of this generation grow up as only children.</p></div>
         <button type="button" class="mw-tl-play">Play again</button>
       </div>
       <script>
