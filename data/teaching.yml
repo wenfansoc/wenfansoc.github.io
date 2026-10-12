@@ -37,6 +37,8 @@ courses:
     glyph: medical
     description: "Faced with the same symptoms, why does one person see a doctor while another does not? What happens once they get there? And how does a behavior once seen as bad come to be treated as an illness? Students study who gets sick, how people live with illness, how patients, doctors, and nurses deal with one another, and how the reach of medicine grows and shrinks."
     terms: ["Spring 2017"]
+    syllabus: "/files/SOCY5545_syllabus.pdf"
+    syllabus_term: "Spring 2017"
 
   - group: graduate
     code: "SOCY 7703"
@@ -46,6 +48,8 @@ courses:
     glyph: regression
     description: "Much of the quantitative research students will read builds on linear regression. They learn it from the ground up—how ordinary least squares works, what it assumes, and how to check those assumptions in real data—then move on to linear probability and quantile models, missing data, survey weights, mediation, and a first look at panel data."
     terms: ["Spring 2021", "Spring 2022", "Fall 2023", "Fall 2024"]
+    syllabus: "/files/SOCY7703_syllabus.pdf"
+    syllabus_term: "Fall 2024"
 
   - group: graduate
     code: "SOCY 7704"
@@ -55,6 +59,8 @@ courses:
     glyph: logit
     description: "Did someone vote? Which party did they choose? How many times did they see a doctor last year? Many outcomes sociologists care about are not continuous, and ordinary regression handles them poorly. Students work through binary, multinomial, and ordered logit and probit, count models, and an introduction to survival analysis, ending with mediation."
     terms: ["Fall 2015", "Fall 2016", "Spring 2018", "Fall 2018", "Fall 2019", "Fall 2020", "Fall 2021", "Spring 2023", "Spring 2024", "Spring 2025"]
+    syllabus: "/files/SOCY7704_syllabus.pdf"
+    syllabus_term: "Spring 2024"
 
   - group: graduate
     code: "SOCY 7706"
@@ -64,6 +70,8 @@ courses:
     glyph: panel
     description: "Following the same people—or households, organizations, or countries—over time lets us ask how things change, not only how groups differ. Students learn fixed-effects and mixed-effects models, duration models, sequence analysis, and time series, reading each method alongside a published study that uses it."
     terms: ["Fall 2025"]
+    syllabus: "/files/SOCY7706_syllabus.pdf"
+    syllabus_term: "Fall 2025"
 
   - group: graduate
     code: "SOCY 7717"
@@ -73,6 +81,8 @@ courses:
     glyph: survival
     description: "Wars, births, deaths, strikes, job promotions: event history analysis asks whether and when something happens. Students move from nonparametric methods such as life tables and Kaplan–Meier curves, to parametric and semiparametric (Cox) models, to discrete-time models and competing risks. Sequence analysis then follows the whole path: the order and timing of jobs, partnerships, and children across a life."
     terms: ["Spring 2019"]
+    syllabus: "/files/SOCY7717_syllabus.pdf"
+    syllabus_term: "Spring 2019"
 
 quotes:
   - text: "This course has made me a better thinker, a better citizen, a better person, and a better future healthcare provider. … Everybody who is going to work as a healthcare provider should take this course to better understand what their patients might be going through."
