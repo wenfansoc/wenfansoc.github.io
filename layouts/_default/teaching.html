@@ -58,6 +58,11 @@
     {{- with $data.quotes }}
     <section class="t-group">
       <p class="eyebrow">In students’ words</p>
+      <div class="t-cards" aria-label="Handwritten thank-you cards from students">
+        <img src="{{ "img/student_card_1.jpg" | relURL }}" alt="A student card: Thank you so much for… it was my first time learning about sociology" loading="lazy" width="510" height="373" style="flex:510">
+        <img src="{{ "img/student_card_2.jpg" | relURL }}" alt="A student card: I really enjoyed your class" loading="lazy" width="522" height="373" style="flex:522">
+        <img src="{{ "img/student_card_3.jpg" | relURL }}" alt="Student cards, one thanking you for serving on a dissertation committee" loading="lazy" width="1340" height="373" style="flex:1340">
+      </div>
       <div class="t-quotes">
         {{- range . }}
         <figure class="t-quote">

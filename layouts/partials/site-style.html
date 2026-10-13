@@ -273,6 +273,15 @@
   .page .t-quote blockquote{margin:0; padding:0; border:none; font-family:var(--serif); font-size:1.02rem; line-height:1.5; color:var(--ink)}
   .t-quote figcaption{margin-top:8px; font-size:12.5px; color:var(--muted); letter-spacing:.02em}
   .page p.t-record-note{font-size:14.5px; color:var(--muted); margin:0 0 14px}
+  .t-cards{display:flex; gap:14px; align-items:flex-start; margin:8px 0 26px; padding:10px 4px 6px}
+  .t-cards img{min-width:0; width:100%; height:auto; border-radius:3px; background:#fff; padding:5px; box-shadow:0 1px 2px rgba(0,0,0,.08), 0 10px 22px -12px rgba(0,0,0,.35); transform:rotate(var(--r,0deg)); transition:transform .25s ease}
+  .t-cards img:nth-child(1){--r:-2.2deg}
+  .t-cards img:nth-child(2){--r:1.6deg; margin-top:8px}
+  .t-cards img:nth-child(3){--r:-1deg; margin-top:3px}
+  .t-cards img:hover{transform:rotate(0) scale(1.03); position:relative; z-index:2}
+  :root[data-theme="dark"] .t-cards img{filter:brightness(.88)}
+  @media (max-width:620px){ .t-cards{flex-wrap:wrap} .t-cards img:nth-child(3){flex-basis:100% !important} }
+  @media (prefers-reduced-motion:reduce){ .t-cards img{transition:none} }
   .t-grid-scroll{overflow-x:auto; padding-bottom:4px}
   .t-grid{display:grid; grid-template-columns:minmax(140px,12rem) repeat(var(--t-cols),minmax(11px,1fr));
     gap:4px 3px; align-items:center; min-width:calc(140px + var(--t-cols) * 16px)}
