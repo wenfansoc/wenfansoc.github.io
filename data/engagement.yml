@@ -5,6 +5,7 @@ testimony:
   - {kind: "Briefing", body: "members of the U.S. House Committee on Education and Labor", bill: "Lessons Learned: Enduring Changes for Telework and Telehealth", date: "December 2022"}
 
 writing:
+  - {year: 2026, authors: "Wen Fan and Phyllis Moen", title: "远程办公真的能减轻在职父母的压力吗？疫情期间远程工作与远程教学的双重冲击", venue: "MDPI社科资讯 (WeChat)", url: "https://mp.weixin.qq.com/s/89xrRkWjQ_TSAQ2uc_w1Gg", lang: "中文", topic: remote}
   - {year: 2025, authors: "Richard Petts, Daniel L. Carlson, and Wen Fan", title: "Is Remote, Hybrid, or On-site Work Best for Workers? It Depends on Their Preferences", venue: "Council on Contemporary Families", url: "https://thesocietypages.org/ccf/2025/08/19/is-remote-hybrid-or-on-site-work-best-for-workers-it-depends-on-their-preferences/", topic: remote}
   - {year: 2023, authors: "Wen Fan and Richard J. Petts", title: "Can Remote Work Fuel Gender Equality? Evidence Shows Cause for Optimism but Challenges Remain", venue: "Council on Contemporary Families", url: "https://sites.utexas.edu/contemporaryfamilies/2023/11/14/covid-19-and-gender-equality-symposium-remote-work/", topic: remote}
   - {year: 2023, authors: "Juliet B. Schor and Wen Fan", title: "Can a Four-Day Workweek Really Work? Many Companies Have Already Learned the Answer", venue: "Los Angeles Times", url: "https://www.latimes.com/opinion/story/2023-06-06/four-day-workweek-california-congress-research", topic: worktime, oped: true}
