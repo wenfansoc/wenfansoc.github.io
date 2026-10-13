@@ -129,7 +129,6 @@
         <span class="o">{{ .outlet }}</span>
         <span>
           <span class="t">{{ with .url }}<a href="{{ . }}" target="_blank" rel="noopener">{{ end }}{{ .title }}{{ with .url }}</a>{{ end }}</span>{{ with .lang }}<span class="pe-tag lang">{{ . }}</span>{{ end }}
-          {{- with .lang }}<span class="pe-tag lang">{{ . }}</span>{{ end }}
           {{- if eq .kind "radio" }}<span class="pe-tag">Radio</span>{{ else if eq .kind "tv" }}<span class="pe-tag">TV</span>{{ else if eq .kind "podcast" }}<span class="pe-tag">Podcast</span>{{ end }}
           {{- with .translation }}<span class="m"><a href="{{ .url }}" target="_blank" rel="noopener">{{ .label }}</a></span>{{ end }}
         </span>
