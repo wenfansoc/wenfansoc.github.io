@@ -1,0 +1,218 @@
+{{ define "main" }}
+{{- $media := hugo.Data.media -}}
+{{- $eng := hugo.Data.engagement -}}
+{{- $map := hugo.Data.worldmap -}}
+
+{{- /* Countries with coverage, for the map. */ -}}
+{{- $countries := slice -}}
+{{- range $media -}}
+  {{- with .country }}{{ if not (in $countries .) }}{{ $countries = $countries | append . }}{{ end }}{{ end -}}
+  {{- with .translation }}{{ with .country }}{{ if not (in $countries .) }}{{ $countries = $countries | append . }}{{ end }}{{ end }}{{ end -}}
+{{- end -}}
+
+<style>
+
+  .pe-map{margin:0 0 36px; padding:16px 16px 10px; border:1px solid var(--line); border-radius:14px; background:var(--surface)}
+  .pe-map svg{display:block; width:100%; height:auto}
+  .pe-land{fill:color-mix(in srgb, var(--line) 75%, var(--bg)); stroke:var(--surface); stroke-width:.5}
+  .pe-dot{cursor:pointer; outline:none}
+  .pe-dot circle.core{fill:var(--accent); fill-opacity:.88; stroke:var(--surface); stroke-width:1.4; transition:r .15s}
+  .pe-dot circle.ring{fill:none; stroke:var(--accent); stroke-width:1.5; opacity:0}
+  .pe-dot:hover circle.core, .pe-dot:focus-visible circle.core, .pe-dot.on circle.core{r:8}
+  .pe-dot.on circle.core{fill-opacity:1}
+  .js .pe-dot{opacity:0}
+  .js .pe-dot.in{opacity:1; transition:opacity .35s}
+  .pe-dot.in circle.ring{animation:pe-ripple 1.3s ease-out 1}
+  @keyframes pe-ripple{from{r:6; opacity:.7} to{r:26; opacity:0}}
+  .pe-cap{display:flex; justify-content:space-between; align-items:baseline; gap:12px; font-size:13px; color:var(--muted); margin-top:6px; line-height:1.45}
+  .pe-cap button{font:inherit; font-size:12.5px; font-weight:600; color:var(--muted); background:none; border:1px solid var(--line); border-radius:999px; padding:3px 11px; cursor:pointer; white-space:nowrap}
+  .pe-cap button:hover{color:var(--accent); border-color:var(--ring)}
+  .pe-now{min-height:1.45em; font-weight:600; color:var(--ink)}
+
+  .page h2.pe-h{font-family:var(--serif); font-weight:600; font-size:1.55rem; border:none; padding:0; margin:34px 0 14px}
+
+  .pe-house{display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:14px; margin:0 0 10px}
+  .pe-card{border:1px solid var(--line); border-left:3px solid var(--accent); border-radius:10px; background:var(--surface); padding:14px 16px}
+  .pe-card .d{font-size:12px; text-transform:uppercase; letter-spacing:.1em; font-weight:700; color:var(--accent); margin:0 0 6px}
+  .pe-card .b{font-family:var(--serif); font-size:1.12rem; font-weight:600; line-height:1.3; margin:0 0 4px}
+  .pe-card .c{font-size:14px; color:var(--muted); margin:0}
+
+  .pe-list{list-style:none; margin:0; padding:0}
+  .page ul.pe-list li{margin:0; padding-left:0; font-size:inherit}
+  .page ul.pe-list li::before{display:none}
+  .pe-list li{display:grid; grid-template-columns:3.4rem 1fr; gap:2px 16px; padding:10px 0; border-top:1px solid var(--line); line-height:1.5}
+  .pe-list li:first-child{border-top:none}
+  .pe-list .y{font-size:13px; color:var(--muted); padding-top:2px}
+  .pe-list .t{font-weight:600}
+  .pe-list .m{display:block; font-size:13.5px; color:var(--muted)}
+  .pe-list a{color:inherit; text-decoration:none; border-bottom:1px solid transparent}
+  .pe-list a:hover{color:var(--accent); border-bottom-color:var(--ring)}
+
+  .pe-filters{display:flex; flex-wrap:wrap; gap:6px; margin:0 0 10px}
+  .pe-filters button{font:inherit; font-size:13px; font-weight:600; padding:5px 11px; border-radius:999px; border:1px solid var(--line); background:var(--surface); color:var(--muted); cursor:pointer}
+  .pe-filters button.on{color:var(--accent); border-color:var(--ring); background:var(--accent-soft)}
+  .pe-filters .pe-place{display:none}
+  .pe-filters .pe-place.show{display:inline-block}
+  .pe-media li{grid-template-columns:11rem 1fr}
+  .pe-media .o{font-size:14px; font-weight:700; color:var(--ink); padding-top:1px}
+  .pe-media .t{font-weight:400}
+  .pe-tag{display:inline-block; font-size:11px; font-weight:600; letter-spacing:.04em; color:var(--muted); border:1px solid var(--line); border-radius:4px; padding:0 5px; margin-left:6px; vertical-align:1px; white-space:nowrap}
+  .pe-tag.lang{color:var(--accent); border-color:var(--ring)}
+  .pe-media li[hidden], .pe-media.short li.more{display:none}
+  .pe-more{font:inherit; font-size:13.5px; font-weight:600; color:var(--accent); background:none; border:1px solid var(--ring); border-radius:999px; padding:6px 14px; margin:12px 0 0; cursor:pointer}
+  .pe-more[hidden]{display:none}
+  @media (max-width:620px){ .pe-media li, .pe-list li{grid-template-columns:1fr} .pe-list .y{padding:0} }
+  @media (prefers-reduced-motion:reduce){ .js .pe-dot{opacity:1} .pe-dot.in circle.ring{animation:none} }
+</style>
+
+<div class="wrap">
+  <article class="page engagement">
+    <h1 class="page-title">{{ .Title }}</h1>
+    {{ .Content }}
+
+    <figure class="pe-map" aria-label="World map of where the research has been covered">
+      <svg viewBox="0 0 {{ $map.w }} {{ $map.h }}" role="img">
+        <path class="pe-land" d="{{ $map.d }}"/>
+        {{- range $c := $countries }}
+        {{- with index $map.dots $c }}
+        {{- $outlets := slice -}}
+        {{- range $media }}{{ if eq .country $c }}{{ if not (in $outlets .outlet) }}{{ $outlets = $outlets | append .outlet }}{{ end }}{{ end }}{{ with .translation }}{{ if eq .country $c }}{{ $outlets = $outlets | append "知识分子" }}{{ end }}{{ end }}{{ end }}
+        <g class="pe-dot" data-country="{{ $c }}" tabindex="0" role="button" aria-label="{{ $c }}: {{ delimit $outlets ", " }}">
+          <title>{{ $c }} — {{ delimit $outlets ", " }}</title>
+          <circle class="ring" cx="{{ index . 0 }}" cy="{{ index . 1 }}" r="6"/>
+          <circle class="core" cx="{{ index . 0 }}" cy="{{ index . 1 }}" r="6"/>
+        </g>
+        {{- end }}
+        {{- end }}
+      </svg>
+      <figcaption class="pe-cap">
+        <span class="pe-now" aria-live="polite">Each dot is a country where the research was covered. Click one to see the coverage.</span>
+        <button type="button" class="pe-replay">Replay</button>
+      </figcaption>
+    </figure>
+
+    <h2 class="pe-h">With lawmakers</h2>
+    <div class="pe-house">
+      {{- range $eng.testimony }}
+      <div class="pe-card">
+        <p class="d">{{ .date }}</p>
+        <p class="b">{{ .bill }}</p>
+        <p class="c">{{ .kind }}{{ if eq .kind "Briefing" }} for{{ else }},{{ end }} {{ .body }}</p>
+      </div>
+      {{- end }}
+    </div>
+
+    <h2 class="pe-h">Writing for the public</h2>
+    <ul class="pe-list">
+      {{- range $eng.writing }}
+      <li>
+        <span class="y">{{ .year }}</span>
+        <span>
+          <span class="t">{{ with .url }}<a href="{{ . }}" target="_blank" rel="noopener">{{ end }}{{ .title }}{{ with .url }}</a>{{ end }}</span>
+          <span class="m">{{ .authors }}. <em>{{ .venue }}</em>.</span>
+        </span>
+      </li>
+      {{- end }}
+    </ul>
+
+    <h2 class="pe-h" id="media">In the media</h2>
+    <div class="pe-filters" role="group" aria-label="Filter coverage">
+      <button type="button" class="on" data-topic="all">All</button>
+      <button type="button" data-topic="worktime">Four-day week &amp; work hours</button>
+      <button type="button" data-topic="remote">Remote &amp; hybrid work</button>
+      <button type="button" data-topic="other">Other</button>
+      <button type="button" class="pe-place on" data-clear-place>✕ <span></span></button>
+    </div>
+    <ul class="pe-list pe-media short">
+      {{- range $media }}
+      <li data-topic="{{ .topic }}" data-country="{{ .country }}{{ with .translation }}|{{ .country }}{{ end }}">
+        <span class="o">{{ .outlet }}</span>
+        <span>
+          <span class="t">{{ with .url }}<a href="{{ . }}" target="_blank" rel="noopener">{{ end }}{{ .title }}{{ with .url }}</a>{{ end }}</span>
+          {{- with .lang }}<span class="pe-tag lang">{{ . }}</span>{{ end }}
+          {{- if eq .kind "radio" }}<span class="pe-tag">Radio</span>{{ else if eq .kind "tv" }}<span class="pe-tag">TV</span>{{ else if eq .kind "podcast" }}<span class="pe-tag">Podcast</span>{{ end }}
+          {{- with .translation }}<span class="m"><a href="{{ .url }}" target="_blank" rel="noopener">{{ .label }}</a></span>{{ end }}
+        </span>
+      </li>
+      {{- end }}
+    </ul>
+    <button type="button" class="pe-more">Show all coverage</button>
+  </article>
+</div>
+
+<script>
+(function(){
+  document.documentElement.classList.add("js");
+  var dots=[].slice.call(document.querySelectorAll(".pe-dot"));
+  var rows=[].slice.call(document.querySelectorAll(".pe-media li"));
+  var now=document.querySelector(".pe-now"), defaultCap=now.textContent;
+  var place=document.querySelector("[data-clear-place]");
+  var topic="all", country=null;
+
+  /* Reveal order: the country of the oldest coverage first (the list runs newest first). */
+  var order=[];
+  rows.slice().reverse().forEach(function(r){
+    r.dataset.country.split("|").forEach(function(c){ if(c && order.indexOf(c)<0) order.push(c); });
+  });
+  dots.sort(function(a,b){ return order.indexOf(a.dataset.country)-order.indexOf(b.dataset.country); });
+
+  var timers=[];
+  function play(){
+    timers.forEach(clearTimeout); timers=[];
+    dots.forEach(function(d){ d.classList.remove("in"); });
+    var reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    dots.forEach(function(d,i){
+      timers.push(setTimeout(function(){
+        d.classList.add("in");
+        if(!reduce) now.textContent=d.dataset.country;
+        if(i===dots.length-1) timers.push(setTimeout(function(){ now.textContent=country||defaultCap; },1400));
+      }, reduce?0:300+i*420));
+    });
+  }
+  var started=false, fig=document.querySelector(".pe-map");
+  if("IntersectionObserver" in window){
+    new IntersectionObserver(function(es,ob){ if(es[0].isIntersecting && !started){ started=true; play(); ob.disconnect(); } },{threshold:.35}).observe(fig);
+  } else { play(); }
+  document.querySelector(".pe-replay").addEventListener("click", play);
+
+  var list=document.querySelector(".pe-media"), more=document.querySelector(".pe-more"), SHOW=12;
+  function trim(){
+    var n=0, short=list.classList.contains("short");
+    rows.forEach(function(r){ r.classList.remove("more"); if(!r.hidden){ n++; if(n>SHOW) r.classList.add("more"); } });
+    more.hidden = !short || n<=SHOW;
+  }
+  more.addEventListener("click", function(){ list.classList.remove("short"); trim(); });
+  function apply(){
+    rows.forEach(function(r){
+      var okT = topic==="all" || r.dataset.topic===topic;
+      var okC = !country || r.dataset.country.split("|").indexOf(country)>=0;
+      r.hidden = !(okT && okC);
+    });
+    dots.forEach(function(d){ d.classList.toggle("on", d.dataset.country===country); });
+    place.classList.toggle("show", !!country);
+    place.querySelector("span").textContent = country||"";
+    trim();
+  }
+  [].forEach.call(document.querySelectorAll("[data-topic]"), function(b){
+    if(b.tagName!=="BUTTON") return;
+    b.addEventListener("click", function(){
+      topic=b.dataset.topic;
+      [].forEach.call(document.querySelectorAll("button[data-topic]"), function(x){ x.classList.toggle("on", x===b); });
+      apply();
+    });
+  });
+  trim();
+  place.addEventListener("click", function(){ country=null; now.textContent=defaultCap; apply(); });
+  dots.forEach(function(d){
+    function pick(){
+      country = country===d.dataset.country ? null : d.dataset.country;
+      now.textContent = country || defaultCap;
+      apply();
+      if(country) document.getElementById("media").scrollIntoView({behavior:"smooth", block:"start"});
+    }
+    d.addEventListener("click", pick);
+    d.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); pick(); } });
+  });
+})();
+</script>
+{{ end }}
