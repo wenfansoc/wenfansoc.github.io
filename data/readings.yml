@@ -1,0 +1,146 @@
+# "Readings" page (content/readings.md, layout readings.html).
+# Shown as a reading path, oldest first, grouped by `year` (the year she read it).
+# Each note says what the reading did for her, not a summary of it.
+# Excerpts (collapsed on the page) come only from passages she highlighted or copied
+# into her own notes (Obsidian book notes, WeRead highlights, Daily Note 2025-03-15),
+# or, for web pages, sentences checked verbatim against the live page.
+#   ex: excerpt in the language she read it   ex_lang: set for Chinese
+#   ex_en: English translation (by Claude; ex_src must say so)   ex_src: small source line
+
+path:
+  - year: 2012
+    title: "Getting Things Done"
+    kind: book
+    by: "David Allen"
+    note: "It changed how I handle the whole flow of work. Ever since, my tasks have lived in a system I trust rather than in my head."
+
+  - year: 2014
+    title: "Writing Process Reengineering"
+    kind: article
+    by: "Thomas Basbøll"
+    url: "https://inframethodology.cbs.dk/?page_id=454"
+    note: "I found this while writing my dissertation. It took the mystery out of writing: a paper is no more than a few dozen paragraphs, each doing one thing, strung together. Seeing it that way made writing manageable, and it was a great relief."
+    ex: "Scholarly prose is composed in paragraphs. … Given a little training, you can compose a paragraph about anything you know in about half an hour."
+
+  - year: 2016
+    title: "The Art of Loving"
+    kind: book
+    by: "Erich Fromm"
+    note: "Fromm changed how I understand love: not a feeling for one person, but an attitude toward the world as a whole, and a capacity one learns and practices."
+    ex: "Love is not primarily a relationship to a specific person; it is an attitude, an orientation of character which determines the relatedness of a person to the world as a whole, not toward one “object” of love."
+
+  - year: 2020
+    title: "Siddhartha"
+    kind: book
+    by: "Hermann Hesse"
+    note: "Before this book, I had a vague sense that experience matters. Siddhartha made it clear: you do not really know something until you have lived it, until you have run up against the world yourself. Knowledge can be passed on; wisdom cannot."
+    also: "Since then I have read most of Hesse's novels, among them *Demian* and *Steppenwolf*."
+    ex: "“When someone is seeking,” said Siddhartha, “it happens quite easily that he only sees the thing that he is seeking; that he is unable to find anything, unable to absorb anything, because he is only thinking of the thing he is seeking, because he has a goal, because he is obsessed with his goal. Seeking means: to have a goal; but finding means: to be free, to be receptive, to have no goal.”"
+    ex_src: "Translated by Hilda Rosner."
+
+  - year: 2021
+    title: "Making the Familiar Unfamiliar"
+    kind: book
+    by: "Zygmunt Bauman, in conversation with Peter Haffner"
+    note: "Bauman had a rare gift for naming what is hard to name: the moods and undercurrents that run beneath the surface of a fluid, unsettled (post)modern world. Reading him, I saw what sociology can do at its best."
+    ex: "努力工作。画家创作艺术品，数学家解出难题，园丁种植植物并欣赏到其开花结果。这就是幸福。你要有所创造。……把工作做好的自豪，完成任务，克服看起来不可逾越的障碍，这些都会让我们幸福。每个人内心深处都有这样的渴望。今天，我们已经失去了自己工作中的快乐感，即把事情做好带来的那种快感。"
+    ex_lang: "zh-Hans"
+    ex_en: "Work hard. A painter creates a work of art, a mathematician solves a problem, a gardener plants and watches things bloom and bear fruit. That is happiness. You have to create something. … Pride in a job well done, finishing a task, overcoming what looked like an insurmountable obstacle—all of this makes us happy. Everyone longs for it deep down. Today we have lost the joy in our own work, the pleasure of doing something well."
+    ex_src: "From the Chinese edition I read; English translation by Claude (AI)."
+
+  - year: 2023
+    title: "Letters to a Young Poet"
+    kind: book
+    by: "Rainer Maria Rilke"
+    note: "I give a copy to each graduate student I advise. Feng Zhi's Chinese translation opens with his own preface, which I love."
+    ex: "人们爱把青年比作春，这比喻是正确的。可是彼此的相似点与其说是青年人的晴朗有如春阳的明丽，倒不如从另一方面看，青年人的愁苦、青年人的生长，更像那在阴云暗淡的风里、雨里、寒里演变着的春。"
+    ex_lang: "zh-Hans"
+    ex_en: "People like to compare youth to spring, and the comparison is apt. Yet the likeness lies less in youth's brightness, like the radiance of the spring sun, than in another side: the sorrows of youth, and its growing, are more like a spring that unfolds through overcast wind, rain, and cold."
+    ex_src: "From Feng Zhi's preface; English translation by Claude (AI)."
+
+  - year: 2024
+    title: "Mimetic desire"
+    kind: idea
+    by: "René Girard, as I first heard it from Zhu Rui"
+    note: "I first met Girard's idea through Zhu Rui, a philosopher at Renmin University, where I studied, who kept teaching while he was dying of cancer. A boy does not want a toy car until his sister reaches for it. Since then, I keep asking how much of what I want, including what I want from work, I learned by watching what others want."
+    ex: "在基拉尔看来，这里面所包含的道理实际上是一种成人和儿童共有的欲望机制，也就是说，我们大部分的欲望，是靠社会模仿产生的。小男孩他本来不希望要这个车，但是因为他妹妹要这个车，所以他也要这个车。女孩也是如此。也就是说当我们不知道我们想要什么，当欲望跟事物的价值出现脱钩、脱节的情形时，一个很随意的外在机制，就可以导致这种欲望的冲突，甚至引发战争。"
+    ex_lang: "zh-Hans"
+    ex_en: "For Girard, the lesson here is a mechanism of desire shared by adults and children alike: most of our desires are produced by imitating others. The boy did not want the car to begin with; he wants it because his sister wants it. The same goes for the girl. When we do not know what we want, when desire comes loose from the worth of things, some quite arbitrary outside trigger can set off a conflict of desires, even a war."
+    ex_src: "From Zhu Rui, as I noted it down; English translation by Claude (AI)."
+
+  - year: 2025
+    title: "You and Your Research"
+    kind: article
+    by: "Richard Hamming"
+    url: "https://www.cs.virginia.edu/~robins/YouAndYourResearch.html"
+    note: "Worth reading whole. Among the many things that stayed with me: his “Great Thoughts Time,” and his habit of thinking a problem through himself before looking at anyone else's answers."
+    ex: "If you read all the time what other people have done you will think the way they thought. If you want to think new thoughts that are different, then do what a lot of creative people do - get the problem reasonably clear and then refuse to look at any answers until you've thought the problem through carefully how you would do it, how you could slightly change the problem to be the correct one."
+
+  - year: 2025
+    title: "心的表达"
+    kind: book
+    title_lang: "zh-Hans"
+    title_en: "Expressions of the Heart"
+    by: "李沁云 Li Qinyun"
+    note: "A therapist's account of her own years in analysis and training. I read it with my own life in view, stopping at nearly every idea to ask whether it described me. What stayed with me was the idea of reclaiming the unlived parts of a life: pieces of the past we never fully lived, which keep surfacing until we take them back as our own."
+    ex: "奥格登后来又提出，精神分析是分析师帮助访客“找回未被活过的人生”的过程。他所使用的英文词是reclaim，它的内涵其实大于“找回”，因为它包含了重新主张对事物的所有权的意思。……这个整合的过程，相当于把那些未曾被好好活过——一般是由于情感通路的阻塞——的人生片段甚至人生阶段，以开放的态度清醒地、完整地重新活一遍，使它们真真实实地成为自身生活经验的一部分。从此它们不会再像以前那样，只能从心灵的暗处冒头，让我们感觉或恐惧或惊恸或悲伤难抑却说不出所以然。"
+    ex_lang: "zh-Hans"
+    ex_en: "Ogden later proposed that psychoanalysis is a process in which the analyst helps the patient “reclaim the unlived life.” His English word, reclaim, means more than “recover”: it carries the sense of asserting ownership over something once again. … This work of integration amounts to living again—openly, consciously, and fully—the fragments and even whole stretches of life that were never really lived, usually because the paths of feeling were blocked, so that they truly become part of one’s own experience. From then on, they no longer surface only from the dark corners of the mind, leaving us afraid, shaken, or overcome with grief without knowing why."
+    ex_src: "English translation by Claude (AI)."
+
+  - year: 2025
+    title: "Existential Psychotherapy"
+    kind: book
+    by: "Irvin D. Yalom"
+    note: "I put off this long book for years. When I finally opened it, at a time I needed it, I could not stop. It gave me names for four givens of existence—death, freedom, isolation, and meaninglessness—and a way to see how much of our anxiety comes from facing them."
+    also: "Since then I have read most of Yalom's books, among them *When Nietzsche Wept*, *The Schopenhauer Cure*, and *Staring at the Sun*."
+    ex: "存在主义观点强调一种不同类型的基本冲突：既不是与被压抑的本能抗争之间的冲突，也不是与内化了的成人之间的冲突，而是，在个体面对存在的既定事实时引发出来的冲突。……本书涉及四个终极关怀：死亡、自由、孤独和无意义。"
+    ex_lang: "zh-Hans"
+    ex_en: "The existential view stresses a different kind of basic conflict: neither a struggle with repressed instincts nor one with internalized adults, but a conflict that arises when the individual confronts the givens of existence. … This book deals with four ultimate concerns: death, freedom, isolation, and meaninglessness."
+    ex_src: "From the Chinese edition I read; English translation by Claude (AI)."
+
+  - year: 2025
+    title: "The Death of Ivan Ilyich"
+    kind: book
+    by: "Leo Tolstoy"
+    note: "As he is dying, Ivan Ilyich begins to suspect he has lived the wrong life. Reading it, I came down with a mild case of what Yalom would call death anxiety."
+    ex: "“Maybe I did not live as I ought to have done,” it suddenly occurred to him. “But how could that be, when I did everything properly?” he replied, and immediately dismissed from his mind this, the sole solution of all the riddles of life and death, as something quite impossible."
+    ex_src: "From a public-domain English translation."
+
+  - year: 2026
+    title: "Claude Blattman"
+    kind: site
+    by: "Chris Blattman"
+    url: "https://claudeblattman.com/"
+    note: "The resource that helped me most in building AI into my daily work."
+
+  - year: 2026
+    title: "Alienation and Acceleration"
+    kind: book
+    by: "Hartmut Rosa"
+    note: "Rosa does not pretend to be value-neutral. Behind his account of a world that keeps speeding up is a clear idea of what a good society would be, which he later works out in *Resonance*: one that makes room for a relationship in which people and the world answer each other."
+    ex: "Hence, modern subjects can be described as minimally restricted by ethical rules and sanctions, and therefore as ‘free,’ while they are tightly regulated, dominated and suppressed by a largely invisible, de-politicized, undiscussed, under-theorized and unarticulated time-regime."
+
+  - year: 2026
+    title: "The Ethics of Authenticity"
+    kind: book
+    by: "Charles Taylor"
+    note: "I have long been skeptical of “follow your heart.” Taylor did not change my mind about it, but he showed me where the real problem lies. Being true to oneself is a genuine ideal, he argues; it goes wrong when it cuts itself off from anything that matters beyond the self."
+    ex: "I can define my identity only against the background of things that matter. But to bracket out history, nature, society, the demands of solidarity, everything but what I find in myself, would be to eliminate all candidates for what matters. … Authenticity is not the enemy of demands that emanate from beyond the self; it supposes such demands."
+
+# Not placed yet (no year): Stearns, "Some Modest Advice for Graduate Students", https://stearnslab.yale.edu/modest-advice
+#   note: "Practical advice on graduate school from an evolutionary biologist."
+
+tools:
+  - { name: "Stata", use: "statistical analysis" }
+  - { name: "R", use: "analysis and graphs" }
+  - { name: "Zotero", use: "references" }
+  - { name: "Obsidian", use: "notes" }
+  - { name: "OmniFocus", use: "tasks and projects" }
+  - { name: "Scrivener", use: "long drafts" }
+  - { name: "Wispr Flow", use: "voice dictation" }
+  - { name: "Voicenotes", use: "voice memos" }
+  - { name: "Raycast", use: "launcher and shortcuts" }
+  - { name: "Claude Code", use: "AI assistant for research and admin" }
+  - { name: "Sublime Text", use: "text editor" }
+  - { name: "Ghostty", use: "terminal" }
