@@ -54,6 +54,14 @@
     transition:color .18s;
   }
   .nav-links a:hover,.nav-links a.active{color:var(--accent)}
+  /* phones: name + theme button on top, links in a tidy 3-column grid below */
+  @media (max-width:620px){
+    .nav-in{flex-direction:column; align-items:stretch; gap:10px; position:relative; padding:10px 22px 12px}
+    .brand{line-height:34px; padding-right:44px}
+    .nav-links{display:grid; grid-template-columns:repeat(3,auto); justify-content:space-between; gap:8px 12px}
+    .nav-links a{font-size:12.5px; letter-spacing:.05em}
+    .nav-links .toggle{position:absolute; top:10px; right:22px}
+  }
   .toggle{
     appearance:none; border:1px solid var(--line); background:var(--surface);
     color:var(--muted); width:34px; height:34px; border-radius:50%;
