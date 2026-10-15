@@ -103,7 +103,7 @@
             </div>
             {{- with .ex }}
             <div class="rd-face rd-back" aria-hidden="true">
-              <p class="bt">From <i>{{ $it.title }}</i></p>
+              <p class="bt">From {{ with $it.ex_from }}{{ . | markdownify }}{{ else }}<i>{{ $it.title }}</i>{{ end }}</p>
               <blockquote class="rd-quote">
                 <p class="q"{{ with $it.ex_lang }} lang="{{ . }}"{{ end }}><span class="hl">{{ . }}</span></p>
                 {{- with $it.ex_en }}<p class="en-q">{{ . }}</p>{{ end }}

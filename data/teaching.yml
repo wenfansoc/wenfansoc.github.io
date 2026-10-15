@@ -17,6 +17,22 @@ courses:
     description: "The course is built around five questions sociologists keep asking: Is it a personal trouble or a public issue? Who gets to define it? Who gains and who loses? What holds people together? How are people shaped, and how do they act? Each class works through one case, often from health and medicine, and students learn to look at the same case through different theoretical lenses."
     terms: ["Fall 2015", "Spring 2016", "Fall 2016", "Spring 2017", "Spring 2018", "Fall 2018", "Spring 2019", "Fall 2019", "Spring 2020", "Fall 2020", "Spring 2021", "Fall 2021", "Fall 2023", "Fall 2024", "Fall 2025", "Spring 2026"]
     upcoming: ["Spring 2027"]
+    # Clips and articles students sent her, newest first. Collapsed under the course on the page.
+    # 2015–2019 items moved from the old Resources page; later ones found in her BC Gmail (2026-10-15).
+    # Dropped: "MA One Dot Per Person Map" (geocambridge.com, Bryant Chang, Spring 2016) — domain gone.
+    # WSJ headline could not be read (paywall), so the link text describes it; no url = no public copy found.
+    sent:
+      - { topic: "Health", title: "On sports-betting addiction", kind: "Wall Street Journal", url: "https://www.wsj.com/business/hospitality/gambling-addiction-sports-betting-apps-4463cde0", who: "Owen Franzen", term: "Spring 2026" }
+      - { topic: "Health", title: "U.S. life expectancy creeps up as Covid deaths fall", kind: "New York Times", url: "https://www.nytimes.com/2023/11/29/health/us-life-expectancy-covid-deaths.html", who: "Lydia Boer", term: "Fall 2023" }
+      - { topic: "Health", title: "The doctor-nurse game", kind: "Leonard Stein, Archives of General Psychiatry, 1967", also_title: "The doctor–nurse game revisited", also_url: "https://doi.org/10.1056/NEJM199002223220810", also_kind: "New England Journal of Medicine, 1990", url: "https://doi.org/10.1001/archpsyc.1967.01730240055009", who: "Isabelle Nikkhoo", term: "Fall 2023" }
+      - { topic: "Gender", title: "Men named John outnumber all women in most American industries", kind: "Observer", url: "https://observer.com/2018/04/diversity-women-in-the-workplace-john/", who: "Alicia Bergeron", term: "Fall 2021" }
+      - { topic: "Class", title: "Time millionaires: meet the people pursuing the pleasure of leisure", kind: "The Guardian", url: "https://www.theguardian.com/lifeandstyle/2021/oct/12/time-millionaires-meet-the-people-pursuing-the-pleasure-of-leisure", who: "Hannah Ianelli", term: "Fall 2021" }
+      - { topic: "Class", title: "Learning from dirty jobs", kind: "TED talk by Mike Rowe", url: "https://www.youtube.com/watch?v=IRVdiHu1VCc", who: "Julie Suh", term: "Fall 2019" }
+      - { topic: "Race", title: "Whites swim in racial preference", kind: "Tim Wise", who: "Olivia Palmer", term: "Spring 2017" }
+      - { topic: "Gender", title: "Worried about your teenage daughter? Move to the Netherlands", kind: "Los Angeles Times", url: "https://www.latimes.com/opinion/op-ed/la-oe-0410-orenstein-girls-sex-dutch-20160410-story.html", who: "Jessica Lyons", term: "Spring 2016" }
+      - { topic: "Gender", title: "Fifty shades of gay", kind: "TED talk by iO Tillett Wright", url: "https://www.ted.com/talks/io_tillett_wright_fifty_shades_of_gay", who: "Emily Lynch", term: "Fall 2015" }
+      - { topic: "Gender", title: "Famous quotes, the way a woman would have to say them during a meeting", kind: "Washington Post", url: "https://www.washingtonpost.com/blogs/compost/wp/2015/10/13/jennifer-lawrence-has-a-point-famous-quotes-the-way-a-woman-would-have-to-say-them-during-a-meeting/", who: "Katie Wheeler", term: "Fall 2015" }
+      - { topic: "Immigration", title: "The two Asian Americas", kind: "The New Yorker", url: "https://www.newyorker.com/books/page-turner/the-two-asian-americas", who: "Tiffany Kwan", term: "Fall 2015" }
 
   - group: undergraduate
     code: "SOCY 3072"
@@ -87,7 +103,9 @@ courses:
 quotes:
   - text: "This course has made me a better thinker, a better citizen, a better person, and a better future healthcare provider. … Everybody who is going to work as a healthcare provider should take this course to better understand what their patients might be going through."
     who: "Introductory Sociology for Healthcare Professions"
-  - text: "The class is intellectually stimulating, and it may force you to think about society in a different perspective."
+  # The next one is from a thank-you email a student sent her (BC Gmail, 2020),
+  # quoted verbatim and kept anonymous at her request (2026-10-15). The others are from course evaluations.
+  - text: "As a pre-medical student, I’ve always been competing for the best scores and focused on getting an A in a class. Being in your course was the first time I felt like I was encouraged to learn."
     who: "Introductory Sociology for Healthcare Professions"
   - text: "Covered advanced material without being overwhelming. … Gave a lot of really helpful, practical information that we can use immediately in our work."
     who: "Regression Models for Categorical Data"

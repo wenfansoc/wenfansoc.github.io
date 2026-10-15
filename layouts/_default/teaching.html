@@ -48,6 +48,17 @@
           <h2 class="t-title">{{ .title }}</h2>
           <p class="t-q">{{ .question | safeHTML }}</p>
           <p class="t-desc">{{ .description }}{{ with .syllabus }} <a class="t-syl" href="{{ . }}">Syllabus{{ with $course.syllabus_term }} ({{ . }}){{ end }}</a>{{ end }}</p>
+          {{- with .sent }}
+          <details class="t-sent" id="sent-by-students">
+            <summary>Sent by my students ({{ len . }})</summary>
+            <p class="t-sent-note">Videos and articles students sent me because they connected them to something we discussed in class. The list began in 2015, when Tiffany Kwan suggested I keep a place on my website where these could accumulate over the years.</p>
+            <ul>
+              {{- range . }}
+              <li><span class="t-sent-topic">{{ .topic }}</span>{{ if .url }}<a href="{{ .url }}">{{ .title }}</a>{{ else }}<span class="t-sent-title">{{ .title }}</span>{{ end }} <span class="t-sent-meta">{{ .kind }}{{ if .also_title }}; with a follow-up, <a href="{{ .also_url }}">{{ .also_title }}</a> ({{ .also_kind }}){{ end }} · sent by {{ .who }}, {{ .term }}</span></li>
+              {{- end }}
+            </ul>
+          </details>
+          {{- end }}
         </div>
       </div>
       {{- end }}

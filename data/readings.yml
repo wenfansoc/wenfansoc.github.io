@@ -23,6 +23,12 @@ path:
     ex: "Scholarly prose is composed in paragraphs. … Given a little training, you can compose a paragraph about anything you know in about half an hour."
 
   - year: 2016
+    title: "Deep Work"
+    kind: book
+    by: "Cal Newport"
+    note: "Newport showed me that not all work is equal. The work that matters most needs long, dedicated stretches of time, and we have only a few hours a day for it, so working longer does not mean working better. He also made me braver about saying no to what distracts me."
+
+  - year: 2016
     title: "The Art of Loving"
     kind: book
     by: "Erich Fromm"
@@ -30,11 +36,21 @@ path:
     ex: "Love is not primarily a relationship to a specific person; it is an attitude, an orientation of character which determines the relatedness of a person to the world as a whole, not toward one “object” of love."
 
   - year: 2020
+    title: "Man's Search for Meaning"
+    kind: book
+    by: "Viktor E. Frankl"
+    note: "I read it during the pandemic, when it felt especially fitting. Looking back, I think the book planted a seed, an interest in the question of meaning that I have slowly followed since."
+    # Excerpt chosen by her 2026-10-15 from a list of the book's well-known lines; wording checked against
+    # quoted book text (two sources agree; Wikiquote's shorter version is a paraphrase).
+    ex: "Live as if you were living already for the second time and as if you had acted the first time as wrongly as you are about to act now!"
+    ex_src: "From “Logotherapy in a Nutshell,” the second part of the book."
+
+  - year: 2020
     title: "Siddhartha"
     kind: book
     by: "Hermann Hesse"
-    note: "Before this book, I had a vague sense that experience matters. Siddhartha made it clear: you do not really know something until you have lived it, until you have run up against the world yourself. Knowledge can be passed on; wisdom cannot."
-    also: "Since then I have read most of Hesse's novels, among them *Demian* and *Steppenwolf*."
+    note: "I had a vague sense that experience matters. Siddhartha made it clear: you do not really know something until you have lived it, until you have run up against the world yourself."
+    also: "Since then I have read most of Hesse's novels, among them *Demian*, *Steppenwolf*, and *The Glass Bead Game*. Of these, *Demian* is the one I love most, at least for now."
     ex: "“When someone is seeking,” said Siddhartha, “it happens quite easily that he only sees the thing that he is seeking; that he is unable to find anything, unable to absorb anything, because he is only thinking of the thing he is seeking, because he has a goal, because he is obsessed with his goal. Seeking means: to have a goal; but finding means: to be free, to be receptive, to have no goal.”"
     ex_src: "Translated by Hilda Rosner."
 
@@ -56,7 +72,8 @@ path:
     ex: "人们爱把青年比作春，这比喻是正确的。可是彼此的相似点与其说是青年人的晴朗有如春阳的明丽，倒不如从另一方面看，青年人的愁苦、青年人的生长，更像那在阴云暗淡的风里、雨里、寒里演变着的春。"
     ex_lang: "zh-Hans"
     ex_en: "People like to compare youth to spring, and the comparison is apt. Yet the likeness lies less in youth's brightness, like the radiance of the spring sun, than in another side: the sorrows of youth, and its growing, are more like a spring that unfolds through overcast wind, rain, and cold."
-    ex_src: "From Feng Zhi's preface; English translation by Claude (AI)."
+    ex_from: "Feng Zhi's preface to *Letters to a Young Poet*"
+    ex_src: "English translation by Claude (AI)."
 
   - year: 2024
     title: "Mimetic desire"
@@ -66,7 +83,8 @@ path:
     ex: "在基拉尔看来，这里面所包含的道理实际上是一种成人和儿童共有的欲望机制，也就是说，我们大部分的欲望，是靠社会模仿产生的。小男孩他本来不希望要这个车，但是因为他妹妹要这个车，所以他也要这个车。女孩也是如此。也就是说当我们不知道我们想要什么，当欲望跟事物的价值出现脱钩、脱节的情形时，一个很随意的外在机制，就可以导致这种欲望的冲突，甚至引发战争。"
     ex_lang: "zh-Hans"
     ex_en: "For Girard, the lesson here is a mechanism of desire shared by adults and children alike: most of our desires are produced by imitating others. The boy did not want the car to begin with; he wants it because his sister wants it. The same goes for the girl. When we do not know what we want, when desire comes loose from the worth of things, some quite arbitrary outside trigger can set off a conflict of desires, even a war."
-    ex_src: "From Zhu Rui, as I noted it down; English translation by Claude (AI)."
+    ex_from: "Zhu Rui, on Girard"
+    ex_src: "As I noted it down; English translation by Claude (AI)."
 
   - year: 2025
     title: "You and Your Research"
